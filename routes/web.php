@@ -17,6 +17,18 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/sobre', function () {
+    return view('sobre');
+});
+
 Route::get('/cadastro', function () {
     return view('cadastro');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/doacao', function () {
+    return view('doacao');
 });
