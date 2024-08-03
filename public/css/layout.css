@@ -1,5 +1,8 @@
 * {
     font-family: Helvetica;
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
 
 html, body {
@@ -44,13 +47,42 @@ html, body {
 
 .footer {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1rem;
     letter-spacing: 1px;
-    background-color: white;
+    background: rgb(252,87,59);
+    background: linear-gradient(90deg, rgba(252,87,59,1) 35%, rgba(255,145,77,1) 100%);
     padding: 10px;
     margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border-bottom: 1px solid white;
 }
 
 .footer p {
     margin: 0;
+    color: white;
+    padding: 20px;
+    padding-top: 30px;
+}
+
+.footer img {
+    padding: 10px;
+}
+
+.menu {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.menu p {
+    padding: 0;
 }
