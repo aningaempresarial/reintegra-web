@@ -15,7 +15,7 @@
     <!-- Seção de doação -->
     <section id="doacao" class="home-doacao">
         <div>
-            <img src="{{ asset('images/img-doacao.png') }}">
+            <img class="img-doacao" src="{{ asset('images/img-doacao.png') }}">
         </div>
         <div>
             <h1>Pix Reintegra</h1>
@@ -27,13 +27,13 @@
     <section id="app">
         <h1 class='title-app'>Conheça o app Reintegra!</h1>
         <div class="home-app">
-            <div>
-                <img src="{{ asset('images/img-app.png') }}" width="400">
+            <div class="img-app">
+                <img src="{{ asset('images/img-app.png') }}">
             </div>
-            <div>
+            <div class="img-install">
                 <h1>Disponível para baixar em:</h1>
-                <a href=""><img src="{{ asset('images/img-googleplay.png') }}" width="200"></a>
-                <a href=""><img src="{{ asset('images/img-appstore.png') }}" width="200"></a>
+                <a href=""><img src="{{ asset('images/img-googleplay.png') }}"></a>
+                <a href=""><img src="{{ asset('images/img-appstore.png') }}"></a>
             </div>
         </div>
     </section>

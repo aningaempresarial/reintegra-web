@@ -19,5 +19,6 @@
             <!-- Rodapé -->
             @include('partials.footer')
         </div>
+        <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     </body>
 </html>

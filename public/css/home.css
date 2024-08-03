@@ -3,16 +3,17 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: grid;
-    grid-template-columns: repeat(2, calc(50vw - 200px));
-    padding-inline: 200px;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .home-doacao div {
-    width: 30vw;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     color: white;
+    width: 30vw;
 }
 
 .home-doacao a {
@@ -21,6 +22,8 @@
     border-radius: 15px;
     text-decoration: none;
     color: white;
+    width: fit-content;
+    font-size: 1.5vw;
 }
 
 .home-doacao a:hover {
@@ -31,14 +34,20 @@
 .home-doacao h1 {
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 2.6vw;
 }
 
 .home-doacao p {
-    font-size: 1.2rem;
+    font-size: 1.5vw;
+}
+
+.img-doacao {
+    width: 25vw;
+    height: auto;
 }
 
 .title-app {
-    font-size: 2.2rem;
+    font-size: 2.5vw;
     text-align: center;
     padding-top: 30px;
     letter-spacing: 1px;
@@ -49,16 +58,88 @@
 .home-app {
     height: calc(100vh - 15vh - 70px);
     padding-inline: 80px;
-    display: grid;
-    grid-template-columns: repeat(2, calc(50vw - 80px));
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .home-app div {
     width: 30vw;
     margin: auto;
+    text-align: center;
 }
 
 .home-app h1 {
-    font-size: 2rem;
+    font-size: 1.5vw;
+}
+
+.img-app img {
+    width: 30vw;
+}
+
+.img-install img {
+    width: 18vw;
+}
+
+@media (max-width: 768px) {
+    .home-doacao {
+        flex-direction: column;
+        padding: 0;
+        text-align: center;
+    }
+
+    .home-doacao div {
+        display: flex;
+        width: fit-content;
+        text-align: center;
+        align-items: center;
+        padding-block: 20px;
+    }
+
+    .home-app {
+        height: fit-content;
+        padding: 20px;
+    }
+
+    .home-app div {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .img-app {
+        display: none !important;
+    }
+
+    .title-app {
+        font-size: 6vw;
+    }
+
+    .home-app h1 {
+        font-size: 5vw;
+    }
+
+    .img-doacao {
+        width: 60vw;
+    }
+    
+    .img-install img {
+        width: 40vw;
+    }
+
+    .home-doacao h1 {
+        font-size: 6vw;
+    }
+
+    .home-doacao p {
+        font-size: 5vw;
+        padding: 10px;
+    }
+
+    .home-doacao a {
+        font-size: 5vw;
+    }
 }

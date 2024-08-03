@@ -26,11 +26,11 @@ html, body {
 }
 
 .logo {
-    height: 15vh;
+    width: 15vw;
 }
 
 .nav-link {
-    font-size: 1.3rem;
+    font-size: 1.5vw;
     margin-inline: 20px;
     color: black;
     letter-spacing: 1px;
@@ -85,4 +85,10 @@ html, body {
 
 .menu p {
     padding: 0;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 30vw;
+    }
 }
