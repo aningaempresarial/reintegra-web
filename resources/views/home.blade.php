@@ -20,7 +20,7 @@
         <div>
             <h1>Pix Reintegra</h1>
             <p>Fortaleça organizações que quebram o ciclo da criminalidade.</p>
-            <a href="">Doar</a>
+            <a href="{{ url('/doacao') }}">Doar</a>
         </div>
     </section>
     <!-- Seção de divulgação do app -->
