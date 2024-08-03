@@ -1,0 +1,64 @@
+.home-doacao {
+    height: calc(100vh - 15vh - 40px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(2, calc(50vw - 200px));
+    padding-inline: 200px;
+    align-items: center;
+}
+
+.home-doacao div {
+    width: 30vw;
+    margin: auto;
+    color: white;
+}
+
+.home-doacao a {
+    border: 1px solid white;
+    padding: 12px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.home-doacao a:hover {
+    background-color: white;
+    color: black;
+}
+
+.home-doacao h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.home-doacao p {
+    font-size: 1.2rem;
+}
+
+.title-app {
+    font-size: 2.2rem;
+    text-align: center;
+    padding-top: 30px;
+    letter-spacing: 1px;
+    color: #071234;
+    font-weight: bold;
+}
+
+.home-app {
+    height: calc(100vh - 15vh - 70px);
+    padding-inline: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, calc(50vw - 80px));
+    align-items: center;
+}
+
+.home-app div {
+    width: 30vw;
+    margin: auto;
+}
+
+.home-app h1 {
+    font-size: 2rem;
+}
