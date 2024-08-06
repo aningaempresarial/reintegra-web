@@ -144,3 +144,36 @@
         font-size: 5vw;
     }
 }
+
+.destaques {
+    padding-bottom: 50px;
+    background-color: #fff;
+}
+
+.destaques-title {
+    font-size: 2.5vw;
+    text-align: center;
+    padding: 30px;
+    letter-spacing: 1px;
+    color: #071234;
+    font-weight: bold;
+}
+
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img {
+    height: 30vh;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.5vw;
+}
+
+.card-text {
+    font-size: 1.2vw;
+}
