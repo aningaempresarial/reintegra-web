@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/sobre') }}">Sobre nós</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item login-button">
                     <a class="nav-link" href="{{ url('/login') }}">Login</a>
                 </li>
             </ul>
