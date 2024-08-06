@@ -11,25 +11,13 @@
                     <h2 class="title">Login</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="CNPJ" />
+                        <input type="text" placeholder="CNPJ ou e-mail" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Senha" />
                     </div>
-                    <input type="submit" value="Entrar" class="btn solid" />
-                    <p class="social-text">Ou entre com</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                        <img src="{{ asset('images/google-icon.png') }}">
-                        </a>
-                        <a href="#" class="social-icon">
-                        <img src="{{ asset('images/facebook-icon.png') }}">
-                        </a>
-                        <a href="#" class="social-icon">
-                            <img src="{{ asset('images/linkedin-icon.png') }}">
-                        </a>
-                    </div>
+                    <input type="submit" value="Entrar" class="btn solid"/>
                 </form>
                 <form action="#" class="sign-up-form">
                     <h2 class="title">Cadastre-se</h2>
@@ -45,19 +33,7 @@
                         <i class="fas fa-envelope"></i>
                         <input type="email" placeholder="E-mail" />
                     </div>
-                    <input type="submit" class="btn" value="Continuar" />
-                    <p class="social-text">Ou entre com</p>
-                    <div class="social-media">
-                    <a href="#" class="social-icon">
-                        <img src="{{ asset('images/google-icon.png') }}">
-                        </a>
-                        <a href="#" class="social-icon">
-                        <img src="{{ asset('images/facebook-icon.png') }}">
-                        </a>
-                        <a href="#" class="social-icon">
-                            <img src="{{ asset('images/linkedin-icon.png') }}">
-                        </a>
-                    </div>
+                    <input type="submit" class="btn" value="Continuar"/>
                 </form>
             </div>
         </div>

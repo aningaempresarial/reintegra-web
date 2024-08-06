@@ -1,6 +1,8 @@
 <nav class="navbar sticky-top navbar-expand-lg">
     <div class="container-fluid">
-        <img class="logo" src="{{ asset('images/logo.png') }}" alt="Navbar">
+        <a href="{{ url('/') }}">
+            <img class="logo" src="{{ asset('images/logo.png') }}" alt="Navbar">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
