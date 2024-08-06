@@ -26,22 +26,38 @@ html, body {
 }
 
 .logo {
-    width: 15vw;
+    width: 12vw;
+}
+
+.nav-item {
+    padding: 8px;
+    padding-inline: 0;
+    margin: 0;
 }
 
 .nav-link {
-    font-size: 1.5vw;
-    margin-inline: 20px;
+    font-size: 1.3vw;
+    margin-inline: 30px;
     color: black;
     letter-spacing: 1px;
+    padding: 0;
 }
 
 .nav-item:hover {
-    background-color: #fc573b;
-    transition-duration: 300ms;
+    border-bottom: 2px solid #fc573b;
+}
+
+.login-button {
+    border: 1px solid #fc573b;
+    border-radius: 40px;
+    padding: 8px;
+    padding-inline: 15px;
+}
+
+.login-button:hover {
+    background: #fc573b;
     .nav-link {
         color: white;
-        transition-duration: 300ms;
     }
 }
 
