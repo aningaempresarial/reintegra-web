@@ -46,42 +46,45 @@
     <h1 class="destaques-title">Destaques</h1>
     <div class="carousel">
         <div class="carousel-item">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{ asset('images/d1.jpg') }}" class="card-img-top">
                 <div class="card-body">
                 <h1 class="card-title">Dunder Mifflin</h1>
-                <p class="card-text">Transformando vidas através da educação inclusiva e de qualidade</p>
+                <p class="card-text">Fornecendo soluções de papel personalizadas e de alta qualidade.</p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{ asset('images/d2.jpg') }}" class="card-img-top">
                 <div class="card-body">
-                    <h1 class="card-title">Escola de Todos</h1>
-                    <p class="card-text">Transformando vidas através da educação inclusiva e de qualidade</p>
+                    <h1 class="card-title">Inclusão Já</h1>
+                    <p class="card-text">Promovendo a igualdade e a integração social através de ações transformadoras.</p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('images/d2.jpg') }}" class="card-img-top">
+            <div class="card">
+                <img src="{{ asset('images/d3.jpg') }}" class="card-img-top">
                 <div class="card-body">
                     <h1 class="card-title">Escola de Todos</h1>
-                    <p class="card-text">Transformando vidas através da educação inclusiva e de qualidade</p>
+                    <p class="card-text">Transformando vidas através da educação inclusiva e de qualidade.</p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('images/d2.jpg') }}" class="card-img-top">
+            <div class="card">
+                <img src="{{ asset('images/d4.jpg') }}" class="card-img-top">
                 <div class="card-body">
-                    <h1 class="card-title">Escola de Todos</h1>
-                    <p class="card-text">Transformando vidas através da educação inclusiva e de qualidade</p>
+                    <h1 class="card-title">Vozes da liberdade</h1>
+                    <p class="card-text">Defendendo a liberdade de expressão em todas as suas formas.</p>
                 </div>
             </div>
         </div>
     </div>
+</section>
+<section class="sobre">
+    
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>

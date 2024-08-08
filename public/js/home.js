@@ -11,3 +11,11 @@ $(document).ready(function(){
         dots: false
     });
 });
+
+$carousel.on('mouseenter', function() {
+    $carousel.slick('slickSetOption', 'autoplay', false, true);
+});
+
+$carousel.on('mouseleave', function() {
+    $carousel.slick('slickSetOption', 'autoplay', true, true);
+});

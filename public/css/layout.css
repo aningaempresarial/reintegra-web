@@ -6,7 +6,7 @@
 }
 
 html, body {
-    background-color: #f5f8ff;
+    background-color: #fff;
     display: flex;
     margin: 0;
     flex-direction: column;
@@ -108,5 +108,8 @@ html, body {
 @media (max-width: 768px) {
     .logo {
         width: 30vw;
+    }
+    .menu {
+        display: none;
     }
 }
