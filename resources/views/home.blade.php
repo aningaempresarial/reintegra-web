@@ -83,7 +83,7 @@
         </div>
     </div>
 </section>
-<section class="sobre">
+<section class="home-sobre">
     
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
