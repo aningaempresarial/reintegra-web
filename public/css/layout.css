@@ -115,13 +115,47 @@ html, body {
     }
 }
 
-#sidebar-wrapper {
+.sidebar {
     min-height: 100vh;
-    min-width: 80px;
-    background-color: #343a40;
+    width: 80px;
+    background-color: #fff !important;
     position: fixed;
     top: 0;
     left: 0;
-    transition: all 0.3s ease;
+    transition: width 0.3s ease;
     text-align: center;
+    overflow: hidden;
+}
+
+.sidebar a {
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff !important;
+}
+
+.sidebar p {
+    display: none;
+    font-size: 0.8rem;
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar:hover p {
+    display: inline;
+}
+
+.sidebar a:hover {
+    color: black;
+}
+
+.sidebar:hover ~ section {
+    margin-left: 170px;
 }

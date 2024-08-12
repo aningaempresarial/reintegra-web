@@ -1,0 +1,17 @@
+body {
+    background-color: #f5f8ff;
+    margin-left: 80px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+.panel {
+    background-color: white;
+    height: 100%;
+    margin: 20px;
+    box-sizing: border-box;
+}
