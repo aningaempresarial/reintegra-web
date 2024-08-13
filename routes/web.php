@@ -36,3 +36,11 @@ Route::get('/doacao', function () {
 Route::get('/admin/dashboard', function () {
     return view('admin/dashboard');
 });
+
+Route::get('/admin/dashboard/users', function () {
+    return view('admin/users/index');
+});
+
+Route::get('/admin/dashboard/users/edit', function () {
+    return view('admin/users/edit');
+});
