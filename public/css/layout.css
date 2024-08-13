@@ -156,6 +156,6 @@ html, body {
     color: black;
 }
 
-.sidebar:hover ~ section {
+.sidebar:hover ~ .container-dashboard {
     margin-left: 170px;
 }

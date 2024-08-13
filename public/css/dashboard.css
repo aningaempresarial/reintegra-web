@@ -3,15 +3,65 @@ body {
     margin-left: 80px;
 }
 
+.container-dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
 h1 {
     font-size: 2rem;
-    margin: 20px;
+    margin: 30px;
     margin-bottom: 0;
 }
 
 .panel {
     background-color: white;
     height: 100%;
-    margin: 20px;
     box-sizing: border-box;
+    width: calc(100% - 60px);
+    margin: 30px;
+    border-radius: 10px;
+}
+
+.row, .col {
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    margin: 30px;
+    border: none;
+    width: calc(100% - 60px);
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 0;
+}
+
+.c1 {
+    background-color: #e3e0ff;
+}
+
+.c2 {
+    background-color: #ffece5;
+}
+
+.c3 {
+    background-color: #e3f9ff;
+}
+
+.c4 {
+    background-color: #fff4db;
+}
+
+.edit-icon {
+    width: 50px;
+    opacity: 0.5;
+}
+
+.edit-icon:hover {
+    opacity: 1;
+    cursor: pointer;
 }
