@@ -37,10 +37,15 @@ Route::get('/admin/dashboard', function () {
     return view('admin/dashboard');
 });
 
-Route::get('/admin/dashboard/users', function () {
+Route::get('/admin/users', function () {
     return view('admin/users/index');
 });
 
-Route::get('/admin/dashboard/users/edit', function () {
+Route::get('/admin/users/admin', function () {
+    return view('admin/users/admin');
+});
+
+Route::get('/admin/users/edit', function () {
     return view('admin/users/edit');
 });
+
