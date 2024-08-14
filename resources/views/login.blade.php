@@ -10,30 +10,30 @@
                 <form action="#" class="sign-in-form">
                     <h2 class="title">Login</h2>
                     <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="CNPJ ou e-mail" />
+                        <img src="{{ asset('images/input-name.png') }}">
+                        <input type="text" placeholder="CNPJ ou e-mail" required autocomplete="off"/>
                     </div>
                     <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Senha" />
+                        <img src="{{ asset('images/input-pass.png') }}">
+                        <input type="password" placeholder="Senha" required autocomplete="off"/>
                     </div>
                     <input type="submit" value="Entrar" class="btn solid"/>
                 </form>
-                <form action="#" class="sign-up-form">
+                <form action="/cadastro" class="sign-up-form">
                     <h2 class="title">Cadastre-se</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Nome da empresa" />
+                        <input type="text" placeholder="Nome da empresa" required autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="CNPJ" />
+                        <input type="text" placeholder="CNPJ" required autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="E-mail" />
+                        <input type="email" placeholder="E-mail" required autocomplete="off"/>
                     </div>
-                    <input type="submit" class="btn" value="Continuar"/>
+                    <input class="btn" type="submit" value="Continuar">
                 </form>
             </div>
         </div>
