@@ -6,10 +6,6 @@
     box-sizing: border-box;
 }
 
-input {
-    font-family: "Poppins", sans-serif;
-}
-
 .container {
     position: relative;
     width: 100%;
@@ -67,24 +63,11 @@ form.sign-in-form {
 }
 
 .input-field {
-    max-width: 380px;
-    width: 100%;
     background-color: #f0f0f0;
     margin: 10px 0;
-    height: 55px;
     border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
-    padding: 0 0.4rem;
-    position: relative;
-}
-
-.input-field i {
-    text-align: center;
-    line-height: 55px;
-    color: #acacac;
-    transition: 0.5s;
-    font-size: 1.1rem;
+    padding: 15px 20px;
+    width: 100%;
 }
 
 .input-field input {
@@ -95,6 +78,13 @@ form.sign-in-form {
     font-weight: 600;
     font-size: 1.1rem;
     color: #333;
+}
+
+.input-field img {
+    box-sizing: border-box;
+    height: 26px;
+    padding: 5px;
+    opacity: 0.5;
 }
 
 .input-field input::placeholder {
@@ -144,12 +134,12 @@ form.sign-in-form {
     background-color: #112257;
     border: none;
     outline: none;
-    height: 49px;
     border-radius: 49px;
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
     margin: 10px 0;
+    padding: 10px;
     cursor: pointer;
     transition: 0.5s;
 }
