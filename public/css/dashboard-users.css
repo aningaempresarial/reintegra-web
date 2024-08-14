@@ -1,0 +1,26 @@
+.icon {
+    width: 50px;
+    opacity: 0.5;
+}
+
+.icon:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.searchbar {
+    background-color: #fff;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+}
+
+.search-input {
+    width: 300px;
+    margin-right: 5px;
+}
+
+.btn-add-admin {
+    width: fit-content;
+    margin: 30px;
+    margin-bottom: 0;
+    background: #fff;
+}

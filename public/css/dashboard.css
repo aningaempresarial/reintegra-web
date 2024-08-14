@@ -11,8 +11,8 @@ body {
     box-sizing: border-box;
 }
 
-h1 {
-    font-size: 2rem;
+.page-title {
+    font-size: 1.5rem;
     margin: 30px;
     margin-bottom: 0;
 }
@@ -24,44 +24,53 @@ h1 {
     width: calc(100% - 60px);
     margin: 30px;
     border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
 }
 
-.row, .col {
-    margin: 0;
+.cards-panel {
+    flex: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.footer {
+    background: #fff;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
     padding: 0;
 }
 
+.footer p {
+    color: black;
+    padding: 10px;
+}
+
 .card {
-    margin: 30px;
+    margin: 20px;
     border: none;
     width: calc(100% - 60px);
     box-sizing: border-box;
     border-radius: 10px;
-    margin-bottom: 0;
 }
 
 .c1 {
     background-color: #e3e0ff;
+    margin-right: 0;
 }
 
 .c2 {
     background-color: #ffece5;
+    margin-right: 0;
 }
 
 .c3 {
     background-color: #e3f9ff;
+    margin-right: 0;
 }
 
 .c4 {
     background-color: #fff4db;
-}
-
-.edit-icon {
-    width: 50px;
-    opacity: 0.5;
-}
-
-.edit-icon:hover {
-    opacity: 1;
-    cursor: pointer;
 }
