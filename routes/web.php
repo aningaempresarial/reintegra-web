@@ -41,11 +41,6 @@ Route::get('/admin/users', function () {
     return view('admin/users/index');
 });
 
-Route::get('/admin/users/admin', function () {
-    return view('admin/users/admin');
+Route::get('/admin/config', function () {
+    return view('admin/config');
 });
-
-Route::get('/admin/users/edit', function () {
-    return view('admin/users/edit');
-});
-
