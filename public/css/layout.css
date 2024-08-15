@@ -105,7 +105,13 @@ html, body {
 }
 
 .menu p {
+    text-align: left;
     padding: 0;
+    font-size: 0.7rem;
+}
+
+.menu a {
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {
