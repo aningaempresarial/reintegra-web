@@ -6,13 +6,10 @@
 @endsection
 @section('conteudo')
 <div class="container-dashboard">
-    <div class="searchbar">
-        <form class="d-flex p-2" role="search">
-            <input class="form-control search-input" type="search" placeholder="Procurar algo" aria-label="Search">
-            <button class="btn btn-light" type="submit">Pesquisar</button>
-        </form>
-    </div>
+    @include('partials.searchbar')
     <h1 class="page-title">Usuários cadastrados</h1>
+    <button type="button" class="btn btn-light btn-add-admin" data-bs-toggle="modal"
+        data-bs-target="#addAdminModal">Adicionar administrador</button>
     <div class="panel">
         <select class="form-select" aria-label="Default select example">
             <option selected>Filtrar tipo de usuário</option>
@@ -52,4 +49,7 @@
     </div>
     @include('partials.dashboard-footer')
 </div>
+
+@include('admin.users.create')
+
 @endsection

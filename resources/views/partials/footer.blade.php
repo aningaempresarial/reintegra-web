@@ -5,6 +5,7 @@
         <div class="menu">
             <p>Fale conosco</p>
             <p>Termos de uso</p>
+            <a href=""><p>Administração</p></a>
         </div>
     </div>
     <p>&copy; Reintegra 2024 | Todos os direitos reservados.</p>
