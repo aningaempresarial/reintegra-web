@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,10 @@ Route::get('/admin/dashboard', function () {
     return view('admin/dashboard');
 });
 
+Route::get('/empresa/dashboard', function () {
+    return view('empresa/dashboard');
+});
+
 Route::get('/admin/users', function () {
     return view('admin/users/index');
 });
@@ -44,3 +49,5 @@ Route::get('/admin/users', function () {
 Route::get('/admin/config', function () {
     return view('admin/config');
 });
+
+Route::get('/teste', [EmpresaController::class, 'index']);
