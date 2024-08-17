@@ -1,5 +1,5 @@
 @extends('layouts.layout-admin')
-@section('titulo', 'Reintegra | Usuários')
+@section('titulo', 'Reintegra | Configurações')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
 @endsection
