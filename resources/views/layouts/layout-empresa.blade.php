@@ -17,9 +17,9 @@
         <div class="container-dashboard">
             <!-- Conteúdo -->
             @yield('conteudo')
-            <!-- Footer -->
-            @include('partials.footer-dashboard')
         </div>
+        <!-- Footer -->
+        @include('partials.footer-dashboard')
         <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     </body>
 </html>

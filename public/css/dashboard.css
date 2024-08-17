@@ -1,6 +1,6 @@
 body {
-    background-color: #f5f8ff;
     margin-left: 80px;
+    background-color: #f5f8ff;
 }
 
 .sidebar {
@@ -50,34 +50,41 @@ body {
     margin-left: 190px;
 }
 
+.sidebar:hover ~ .footer {
+    margin-left: 190px;
+    width: calc(100% - 270px);
+}
+
 .container-dashboard {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 100vh;
+    padding-inline: 30px;
     box-sizing: border-box;
+    background-color: #f5f8ff;
 }
 
 .page-title {
     font-size: 1.5rem;
-    margin: 30px;
-    margin-bottom: 0;
+    margin: 0;
+    margin-top: 30px;
 }
 
 .panel {
     background-color: white;
-    height: 100%;
-    box-sizing: border-box;
-    width: calc(100% - 60px);
-    margin: 30px;
     border-radius: 10px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
     display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 30px;
     flex-direction: column;
 }
 
+.main-panel {
+    margin-bottom: 74px;
+}
+
 .cards-panel {
-    flex: 2;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -86,11 +93,13 @@ body {
 
 .footer {
     background: #fff;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: -3px -3px 3px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 80px);
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-sizing: border-box;
 }
 
 .footer p {
@@ -132,6 +141,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-inline: -30px;
 }
 
 .search-input {

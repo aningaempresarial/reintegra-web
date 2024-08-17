@@ -27,9 +27,14 @@
         </div>
     </div>
 </div>
-<div class="panel">
+<div class="panel main-panel">
     <div id="my-chart">
-        <table class="charts-css pie show-heading">
+        <table class="charts-css column multiple">
+            <tr>
+                <td style="--size: 0.4"> <span class="data"> $ 40K </span> </td>
+                <td style="--size: 0.4"> <span class="data"> $ 40K </span> </td>
+                <td style="--size: 0.4"> <span class="data"> $ 40K </span> </td>
+            </tr>
         </table>
     </div>
 </div>
