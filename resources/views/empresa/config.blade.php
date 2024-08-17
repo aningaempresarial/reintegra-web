@@ -14,6 +14,6 @@
             <a class="list-group-item button-config">Gerar relatório completo</a>
         </ul>
     </div>
-
+@include('empresa.edit')
 
 @endsection

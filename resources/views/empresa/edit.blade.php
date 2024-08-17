@@ -11,10 +11,17 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control">
                     </div>
-                    <label class="form-label">E-mail</label>
+                    <label class="form-label">E-mail público</label>
                     <div class="input-group mb-3">
                         <input type="email" class="form-control">
                     </div>
+                    <label class="form-label">Endereços</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="Rua X" disabled>
+                        <a class="btn btn-light" data-bs-toggle="modal"
+                        data-bs-target="#editEnderecoModal">Editar</a>
+                    </div>
+                    <a style="display: block; width: fit-content; margin-bottom: 16px" class="btn btn-light" href="#">Novo endereço</a>
                     <label class="form-label">Senha</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control">
@@ -29,3 +36,5 @@
         </div>
     </div>
 </div>
+
+@include('empresa.edit-endereco')
