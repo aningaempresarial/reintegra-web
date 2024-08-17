@@ -1,0 +1,89 @@
+.icon {
+    width: 50px;
+    opacity: 0.5;
+}
+
+.icon:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.searchbar {
+    background-color: #fff;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.search-input {
+    width: 300px;
+    margin-right: 5px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-info p {
+    margin: 0;
+    padding: 0 20px;
+}
+
+.profile-photo {
+    width: 50px;
+    height: 30px;
+    align-self: center;
+    padding-right: 20px;
+}
+
+.btn-add-admin {
+    width: fit-content;
+    margin: 30px;
+    margin-bottom: 0;
+    background: #fff;
+}
+
+.admin-edit-panel {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: auto;
+    padding-top: 40px;
+}
+
+.edit-profile-photo {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-profile-photo img {
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+.edit-profile-photo button {
+    width: fit-content;
+}
+
+.admin-form {
+    flex: 2;
+}
+
+.button-config {
+    cursor: pointer;
+}
+
+.button-config:hover {
+    background-color: rgba(244, 244, 244, 0.6);
+}
