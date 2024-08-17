@@ -16,7 +16,7 @@ form {
     margin: 10px 0;
     border-radius: 55px;
     padding: 15px 20px;
-    width: 100%;
+    width: 400px;
 }
 
 .input-field input {
@@ -27,6 +27,7 @@ form {
     font-weight: 600;
     font-size: 1.1rem;
     color: #333;
+    width: 100%;
 }
 
 .input-field input::placeholder {
@@ -56,12 +57,12 @@ form {
 
 .input-group input:first-child {
     display: inline;
-    width: 280px;
+    width: 70%;
     border-right: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .input-group input:last-child {
     display: inline;
-    width: 60px;
+    width: 30%;
     padding-left: 20px;
 }

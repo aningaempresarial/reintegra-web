@@ -11,7 +11,7 @@
                     <h2 class="title">Login</h2>
                     <div class="input-field">
                         <img src="{{ asset('images/input-name.png') }}">
-                        <input type="text" placeholder="CNPJ ou e-mail" required autocomplete="off"/>
+                        <input type="text" placeholder="Usuário, CNPJ ou e-mail" required autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <img src="{{ asset('images/input-pass.png') }}">
@@ -22,15 +22,15 @@
                 <form action="/cadastro" class="sign-up-form">
                     <h2 class="title">Cadastre-se</h2>
                     <div class="input-field">
-                        <i class="fas fa-user"></i>
+                        <img src="{{ asset('images/input-name.png') }}">
                         <input type="text" placeholder="Nome da empresa" required autocomplete="off"/>
                     </div>
                     <div class="input-field">
-                        <i class="fas fa-user"></i>
+                        <img src="{{ asset('images/input-doc.png') }}">
                         <input type="text" placeholder="CNPJ" required autocomplete="off"/>
                     </div>
                     <div class="input-field">
-                        <i class="fas fa-envelope"></i>
+                        <img src="{{ asset('images/input-email.png') }}">
                         <input type="email" placeholder="E-mail" required autocomplete="off"/>
                     </div>
                     <input class="btn" type="submit" value="Continuar">
