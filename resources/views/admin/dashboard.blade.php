@@ -1,10 +1,6 @@
-@extends('layouts.dashboard-layout')
+@extends('layouts.layout-admin')
 @section('titulo', 'Reintegra | Dashboard')
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-@endsection
 @section('conteudo')
-<div class="container-dashboard">
     <h1 class="page-title">Bem vindo, Administrador!</h1>
     <div class="panel cards-panel">
         <div class="card c1">
@@ -29,6 +25,4 @@
         </div>
     </div>
     <div class="panel"></div>
-    @include('partials.dashboard-footer')
-</div>
 @endsection
