@@ -1,11 +1,9 @@
-@extends('layouts.dashboard-layout')
-@section('titulo', 'Reintegra | Usuários')
+@extends('layouts.layout-empresa')
+@section('titulo', 'Reintegra | Configurações')
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-<link rel="stylesheet" href="{{ asset('css/dashboard-users.css') }}">
+<link rel="stylesheet" href="{{ asset('css/dashboard-empresa.css') }}">
 @endsection
 @section('conteudo')
-<div class="container-dashboard">
     @include('partials.searchbar')
     <h1 class="page-title">Opções de configuração</h1>
     <div class="panel">
@@ -16,9 +14,6 @@
             <a class="list-group-item button-config">Gerar relatório completo</a>
         </ul>
     </div>
-    @include('partials.dashboard-footer')
-</div>
 
-@include('admin.edit')
 
 @endsection

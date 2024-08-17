@@ -1,0 +1,7 @@
+.button-config {
+    cursor: pointer;
+}
+
+.button-config:hover {
+    background-color: rgba(244, 244, 244, 0.6);
+}

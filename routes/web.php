@@ -50,4 +50,8 @@ Route::get('/admin/config', function () {
     return view('admin/config');
 });
 
+Route::get('/empresa/config', function () {
+    return view('empresa/config');
+});
+
 Route::get('/teste', [EmpresaController::class, 'index']);
