@@ -24,7 +24,7 @@
     text-decoration: none;
     color: white;
     width: fit-content;
-    font-size: 1.5vw;
+    font-size: 1.2rem;
 }
 
 .home-doacao a:hover {
@@ -35,20 +35,20 @@
 .home-doacao h1 {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 2.6vw;
+    font-size: 2.2rem;
 }
 
 .home-doacao p {
-    font-size: 1.5vw;
+    font-size: 1.2rem;
 }
 
 .img-doacao {
-    width: 25vw;
+    width: 300px;
     height: auto;
 }
 
 .title-app {
-    font-size: 2.5vw;
+    font-size: 2rem;
     text-align: center;
     padding-top: 30px;
     letter-spacing: 1px;
@@ -71,15 +71,15 @@
 }
 
 .home-app h1 {
-    font-size: 1.5vw;
+    font-size: 1.2rem;
 }
 
 .img-app img {
-    width: 30vw;
+    width: 350px;
 }
 
 .img-install img {
-    width: 18vw;
+    width: 200px;
 }
 
 .destaques {
@@ -89,7 +89,7 @@
 }
 
 .destaques-title {
-    font-size: 2.5vw;
+    font-size: 2rem;
     text-align: center;
     padding: 30px;
     letter-spacing: 1px;
@@ -120,14 +120,14 @@
 }
 
 .card-title {
-    font-size: 1.5vw;
+    font-size: 1.2rem;
 }
 
 .card-text {
-    font-size: 1.2vw;
+    font-size: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .home-doacao {
         flex-direction: column;
         padding: 0;

@@ -12,7 +12,7 @@
 }
 
 .logo {
-    width: 12vw;
+    width: 150px;
 }
 
 .nav-item {
@@ -22,7 +22,7 @@
 }
 
 .nav-link {
-    font-size: 1.3vw;
+    font-size: 1rem;
     color: black;
     letter-spacing: 1px;
     padding: 0 !important;
