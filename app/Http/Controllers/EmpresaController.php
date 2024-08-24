@@ -36,7 +36,7 @@ class EmpresaController extends Controller
             'senha' => $request->input('senha'),
         ];
     
-        $resposta = Http::post(env('EXTERNAL_API_URL') . '/empresa', $dados);
+        $resposta = Http::asForm()->post(env('EXTERNAL_API_URL') . '/empresa', $dados);
 
         Log::info('Resposta da API:', [
             'status' => $resposta->status(),
