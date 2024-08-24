@@ -55,3 +55,5 @@ Route::get('/empresa/config', function () {
 });
 
 Route::get('/teste', [EmpresaController::class, 'index']);
+
+Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);

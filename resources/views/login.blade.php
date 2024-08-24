@@ -7,23 +7,32 @@
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="#" class="sign-in-form">
+                <form action="/cadastrar-empresa" method="POST" class="sign-in-form" enctype="multipart/form-data">
+                    @csrf
                     <h2 class="title">Cadastre-se</h2>
                     <div class="input-field">
                         <img src="{{ asset('images/input-name.png') }}">
-                        <input type="text" placeholder="Nome da empresa" required autocomplete="off"/>
+                        <input type="text" placeholder="Nome da empresa" required autocomplete="off" name="nome"/>
                     </div>
                     <div class="input-field">
                         <img src="{{ asset('images/input-doc.png') }}">
-                        <input type="text" placeholder="CNPJ" required autocomplete="off"/>
+                        <input type="text" placeholder="CNPJ" required autocomplete="off" name="cnpj"/>
                     </div>
                     <div class="input-field">
                         <img src="{{ asset('images/input-email.png') }}">
-                        <input type="email" placeholder="E-mail" required autocomplete="off"/>
+                        <input type="email" placeholder="E-mail" required autocomplete="off" name="email"/>
+                    </div>
+                    <div class="input-field">
+                        <img src="{{ asset('images/input-pass.png') }}">
+                        <input type="password" placeholder="Senha" required autocomplete="off" name="senha"/>
+                    </div>
+                    <div class="input-field">
+                        <img src="{{ asset('images/input-pass.png') }}">
+                        <input type="password" placeholder="Confirme a senha" required autocomplete="off" name="senha_confirmation"/>
                     </div>
                     <input class="btn" type="submit" value="Continuar">
                 </form>
-                <form action="/cadastro" class="sign-up-form">
+                <form action="#" class="sign-up-form">
                     <h2 class="title">Login</h2>
                     <div class="input-field">
                         <img src="{{ asset('images/input-name.png') }}">
@@ -65,3 +74,13 @@
     </div>
     <script src="{{ asset('js/login.js') }}"></script>
 @endsection
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
