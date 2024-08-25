@@ -6,19 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
+use App\Http\Controllers\UsuarioController;
 
 class EmpresaController extends Controller
 {
     public function index()
     {
-        $response = Http::get(env('EXTERNAL_API_URL') . '/empresa');
+        $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa');
 
-        if ($response->successful()) {
-            $data = $response->json();
+        if ($resposta->successful()) {
+            $data = $resposta->json();
             return view('teste', compact('data'));
         } else {
-            return response()->json(['error' => 'Algo deu errado...'], $response->status());
+            return response()->json(['error' => 'Algo deu errado...'], $resposta->status());
         }
     }
 
@@ -36,7 +36,7 @@ class EmpresaController extends Controller
             'senha' => $request->input('senha'),
         ];
     
-        $resposta = Http::asForm()->post(env('EXTERNAL_API_URL') . '/empresa', $dados);
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa', $dados);
 
         Log::info('Resposta da API:', [
             'status' => $resposta->status(),
@@ -44,10 +44,41 @@ class EmpresaController extends Controller
         ]);
 
         if ($resposta->successful()) {
-            return redirect()->route('home');
+            $userController = new UsuarioController();
+            $user = $userController->getUserByCnpj($request->input('cnpj'));
+            session(['user' => $user]);
+            return redirect('/cadastro');
         } else { 
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
         }
     }
+
+    public function storeAddress(Request $request) {
+        $dadosEndereco = [
+            'logradouro' => $request->input('logradouro'),
+            'numero' => $request->input('num'),
+            'cep' => $request->input('cep'),
+            'bairro' => $request->input('bairro'),
+            'estado' => $request->input('estado'),
+        ];
+
+        $user = session('user');
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);
+
+        $dadosTelefone = [
+            'numero' => $request->input('telefone'),
+        ];
+
+        $resposta2 = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/telefone/' . $user, $dadosTelefone);
+
+        if ($resposta->successful() && $resposta2->successful()) {
+            return redirect('/empresa/dashboard');
+        } else { 
+            $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
+
 }

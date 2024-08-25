@@ -5,30 +5,24 @@
 @endsection
 @section('conteudo')
 <div class="container form-container">
-    <h2 class="title">Cadastro</h2>
-    <form action="{{ url('/confirmar-email') }}">
+    <h2 class="title">Agora, falta pouco!</h2>
+    <form action="{{ url('/cadastrar-infos-empresa') }}">
         <div class="input-field">
-            <input type="text" placeholder="Telefone" required autocomplete="off"/>
+            <input type="text" placeholder="Telefone" required autocomplete="off" name="telefone"/>
+        </div>
+        <div class="input-field">
+            <input type="text" placeholder="CEP" required autocomplete="off" name="cep"/>
         </div>
         <div class="input-field input-group">
-            <input type="text" placeholder="Logradouro" required autocomplete="off">
-            <input type="text" placeholder="Nº" required autocomplete="off">
+            <input type="text" placeholder="Logradouro" required autocomplete="off" name="logradouro">
+            <input type="text" placeholder="Nº" required autocomplete="off" name="num">
         </div>
         <div class="input-field">
-            <input type="text" placeholder="CEP" required autocomplete="off"/>
-        </div>
-        <div class="input-field">
-            <input type="text" placeholder="Bairro" required autocomplete="off"/>
+            <input type="text" placeholder="Bairro" required autocomplete="off" name="bairro"/>
         </div>
         <div class="input-field input-group">
-            <input type="text" placeholder="Cidade" required autocomplete="off">
-            <input type="text" placeholder="UF" required autocomplete="off">
-        </div>
-        <div class="input-field">
-            <input type="password" placeholder="Senha" required autocomplete="off"/>
-        </div>
-        <div class="input-field">
-            <input type="password" placeholder="Confirme a senha" required autocomplete="off"/>
+            <input type="text" placeholder="Cidade" required autocomplete="off" name="cidade">
+            <input type="text" placeholder="UF" required autocomplete="off" name="estado">
         </div>
         <input class="btn" type="submit" value="Enviar">
     </form>

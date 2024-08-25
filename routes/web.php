@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,3 +58,7 @@ Route::get('/empresa/config', function () {
 Route::get('/teste', [EmpresaController::class, 'index']);
 
 Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);
+
+Route::get('/cadastrar-infos-empresa', [EmpresaController::class, 'storeAddress']);
+
+Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);

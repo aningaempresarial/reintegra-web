@@ -49,8 +49,8 @@
             <div class="card">
                 <img src="{{ asset('images/d1.jpg') }}" class="card-img-top">
                 <div class="card-body">
-                <h1 class="card-title">Dunder Mifflin</h1>
-                <p class="card-text">Fornecendo soluções de papel personalizadas e de alta qualidade.</p>
+                    <h1 class="card-title">Dunder Mifflin</h1>
+                    <p class="card-text">Fornecendo soluções de papel personalizadas e de alta qualidade.</p>
                 </div>
             </div>
         </div>
@@ -59,7 +59,8 @@
                 <img src="{{ asset('images/d2.jpg') }}" class="card-img-top">
                 <div class="card-body">
                     <h1 class="card-title">Inclusão Já</h1>
-                    <p class="card-text">Promovendo a igualdade e a integração social através de ações transformadoras.</p>
+                    <p class="card-text">Promovendo a igualdade e a integração social através de ações transformadoras.
+                    </p>
                 </div>
             </div>
         </div>
@@ -83,8 +84,37 @@
         </div>
     </div>
 </section>
-<section class="home-sobre">
-    
+<section class="home-info">
+    <h1 class="info-title">Quem pode ajudar?</h1>
+    <div class="card-group">
+        <div class="card">
+            <img class="img-qrcode" src="{{ asset('images/ong-info.png') }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">ONGs</h5>
+                <a href="#" class="btn">
+                    <p>Saiba mais</p>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="img-qrcode" src="{{ asset('images/empresa-info.png') }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Empresas</h5>
+                <a href="" class="btn">
+                    <p>Saiba mais</p>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="img-qrcode" src="{{ asset('images/pessoas-info.png') }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Pessoas</h5>
+                <a class="btn" href="">
+                    <p>Saiba mais</p>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>

@@ -15,7 +15,7 @@
                     <a class="nav-link" href="{{ url('/sobre') }}">Sobre nós</a>
                 </li>
                 <li class="nav-item login-button">
-                    <a class="nav-link" href="{{ url('/login') }}">Login</a>
+                    <a class="nav-link" href="{{ url('/login') }}">Cadastro</a>
                 </li>
             </ul>
         </div>
