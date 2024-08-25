@@ -46,8 +46,8 @@ class EmpresaController extends Controller
         if ($resposta->successful()) {
             $userController = new UsuarioController();
             $user = $userController->getUserByCnpj(str_replace(['.', '/', '-'], '', $request->input('cnpj')));
-
-            session(['user' => $user->usuario]);
+            echo $user['usuario'];
+            session(['user' => $user['usuario']]);
             return redirect('/cadastro');
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
@@ -68,7 +68,6 @@ class EmpresaController extends Controller
 
         echo var_dump($user);
 
-        /*
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);
 
         $dadosTelefone = [
@@ -82,7 +81,7 @@ class EmpresaController extends Controller
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
-        }*/
+        }
     }
 
 }
