@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Http;
 class UsuarioController extends Controller
 {
     public function getUserByCnpj($cnpj) {
-        $resposta = Http::get(env('EXTERNAL_API_URL') . `/usuario/cnpj/$cnpj`);
-        return $resposta;
+        $resposta = Http::get(env('EXTERNAL_API_URL') . "/empresa/usuario/cnpj/" . $cnpj);
+        if ($resposta->successful()) {
+            return $resposta->json();
+        } else {
+            echo "erro";
+        }
     }
 }
