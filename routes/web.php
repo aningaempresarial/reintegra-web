@@ -4,6 +4,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CepController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,4 +70,12 @@ Route::post('/login-usuario', [LoginController::class, 'login']);
 
 Route::get('/cadastrar-infos-empresa', [EmpresaController::class, 'storeAddress']);
 
+
 Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
+
+Route::put('/atualizar-empresa/{user}', [EmpresaController::class, 'update']);
+
+Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
+
+Route::get('/cep/{cep}', [CepController::class, 'consultarCep']);
+

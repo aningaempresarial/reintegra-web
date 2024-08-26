@@ -5,7 +5,7 @@
 @endsection
 @include('partials.profilebar')
 @section('conteudo')
-    <h1 class="page-title">É um prazer recebê-los, Empresa X!</h1>
+    <h1 class="page-title">É um prazer recebê-la, empresa <b>{{ session('nome') }}</b>!</h1>
     <div class="panel cards-panel">
         <div class="card c1">
             <div class="card-body">
