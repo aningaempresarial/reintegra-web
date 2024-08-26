@@ -15,6 +15,10 @@
     }
 </style>
 @endsection
+
+<!-- Esquecendo sessão -->
+{{session()->flush();}}
+
 @section('conteudo')
 <!-- Seção de doação -->
 <section id="doacao" class="home-doacao">

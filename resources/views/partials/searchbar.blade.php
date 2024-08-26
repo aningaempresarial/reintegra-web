@@ -4,7 +4,7 @@
         <button class="btn btn-light" type="submit">Pesquisar</button>
     </form>
     <div class="profile-info">
-        <p>Martha</p>
+        <p>{{ session('user') }}</p>
         <img class="profile-photo" src="{{ asset('images/profile-photo.png') }}">
     </div>
 </div>

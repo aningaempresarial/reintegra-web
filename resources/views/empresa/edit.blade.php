@@ -6,30 +6,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="">
-                    <label class="form-label">Usuário</label>
+                <form action="{{ url('/atualizar-empresa/' . session('user')) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <label class="form-label">Nome da empresa</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" value="{{ session('nome') }}" name="nome">
                     </div>
                     <label class="form-label">E-mail público</label>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" value="{{ session('emailcontato') }}" name="email">
                     </div>
                     <label class="form-label">Endereços</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" value="Rua X" disabled>
+                        <input type="text" class="form-control" value="{{ session('logradouro') }}, {{ session('num') }}, {{ session('bairro') }}, {{ session('cidade') }}, {{ session('estado') }}" disabled>
                         <a class="btn btn-light" data-bs-toggle="modal"
                         data-bs-target="#editEnderecoModal">Editar</a>
                     </div>
                     <a style="display: block; width: fit-content; margin-bottom: 16px" class="btn btn-light" href="#">Novo endereço</a>
-                    <label class="form-label">Senha</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control">
-                    </div>
-                    <label class="form-label">Confirme a senha</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control">
-                    </div>
                     <button type="submit" class="btn btn-light">Atualizar</button>
                 </form>
             </div>
