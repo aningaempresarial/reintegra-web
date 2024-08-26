@@ -28,3 +28,16 @@
     max-width: 650px;
     margin: 0 auto;
 }
+
+.table-responsive {
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.style-thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 2;
+}
+

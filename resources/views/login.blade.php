@@ -32,15 +32,16 @@
                     </div>
                     <input class="btn" type="submit" value="Continuar">
                 </form>
-                <form action="#" class="sign-up-form">
+                <form action="/login-usuario" method="POST" class="sign-up-form" enctype="multipart/form-data">
+                    @csrf
                     <h2 class="title">Login</h2>
                     <div class="input-field">
                         <img src="{{ asset('images/input-name.png') }}">
-                        <input type="text" placeholder="Usuário, CNPJ ou e-mail" required autocomplete="off"/>
+                        <input type="text" name="identificacao" placeholder="Usuário, CNPJ ou e-mail" required autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <img src="{{ asset('images/input-pass.png') }}">
-                        <input type="password" placeholder="Senha" required autocomplete="off"/>
+                        <input type="password" name="senha" placeholder="Senha" required autocomplete="off"/>
                     </div>
                     <input type="submit" value="Entrar" class="btn solid"/>
                 </form>
