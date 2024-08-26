@@ -1,0 +1,20 @@
+.container-info {
+    padding: 50px;
+}
+
+.info-title {
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 30px;
+    letter-spacing: 1px;
+    color: #071234;
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+}
+
+.card-title {
+    text-align: center;
+}

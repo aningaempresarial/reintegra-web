@@ -154,6 +154,25 @@
     border: none;
 }
 
+.btn-infos {
+    border: #fc573b 1px solid;
+    border-radius: 30px;
+    padding: 10px 15px;
+    margin: 5px;
+}
+
+.btn-infos p {
+    margin: 0;
+}
+
+.btn-infos:hover {
+    background-color: #fc573b;
+}
+
+.btn-infos:hover > p {
+    color: white;
+}
+
 @media (max-width: 1000px) {
     .home-doacao {
         flex-direction: column;

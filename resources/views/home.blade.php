@@ -95,7 +95,7 @@
             <img class="img-qrcode" src="{{ asset('images/ong-info.png') }}" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">ONGs</h5>
-                <a href="#" class="btn">
+                <a href="#" class="btn btn-infos">
                     <p>Saiba mais</p>
                 </a>
             </div>
@@ -104,7 +104,7 @@
             <img class="img-qrcode" src="{{ asset('images/empresa-info.png') }}" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">Empresas</h5>
-                <a href="" class="btn">
+                <a href="/info-empresa" class="btn btn-infos">
                     <p>Saiba mais</p>
                 </a>
             </div>
@@ -113,7 +113,7 @@
             <img class="img-qrcode" src="{{ asset('images/pessoas-info.png') }}" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">Pessoas</h5>
-                <a class="btn" href="">
+                <a class="btn btn-infos" href="">
                     <p>Saiba mais</p>
                 </a>
             </div>

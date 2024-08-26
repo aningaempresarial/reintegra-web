@@ -38,6 +38,10 @@ Route::get('/doacao', function () {
     return view('doacao');
 });
 
+Route::get('/info-empresa', function () {
+    return view('empresa-info');
+});
+
 /*Route::get('/admin/dashboard', function () {
     return view('admin/dashboard');
 });*/
