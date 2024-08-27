@@ -26,5 +26,15 @@
                 </div>
             </div>
         </div>
+        <div class="persuasao">
+            <h1 class="info-title">Por que ajudar?</h1>
+            <ul>
+                <li><p class="info-text">Impacto social positivo</p></li>
+                <li><p class="info-text">Valorização da sua marca</p></li>
+                <li><p class="info-text">Benefícios econômicos</p></li>
+            </ul>
+            <a href="/login" class="btn btn-infos">Fazer parte dessa jornada</a>
+        </div>
     </section>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 @endsection
