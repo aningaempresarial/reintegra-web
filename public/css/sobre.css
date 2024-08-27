@@ -1,0 +1,38 @@
+.sobre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.sobre-text {
+    max-width: 600px;
+}
+
+.sobre-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.sobre-text h1 span {
+    color: #00704A;
+}
+
+.sobre-text p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.sobre-text button {
+    background-color: #00704A;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sobre-image img {
+    max-width: 100%;
+    height: auto;
+}
