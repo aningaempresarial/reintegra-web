@@ -52,6 +52,9 @@
             </select>
         </div>
         <input class="btn" type="submit" value="Enviar">
+        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" style="width: 50%"></div>
+        </div>
     </form>
 </div>
 @endsection

@@ -17,16 +17,6 @@
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" value="{{ $item['numEnderecoEmpresa'] }}">
                             </div>
-                        </div>
-                        <div class="col">
-                            <label class="form-label">Logradouro</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ $item['logradouroEnderecoEmpresa'] }}" id="logradouro">
-                            </div>
-                            <label class="form-label">Bairro</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ $item['bairroEnderecoEmpresa'] }}" id="bairro">
-                            </div>
                             <label class="form-label">Estado</label>
                             <div class="input-group mb-3">
                                 <select class="form-select" aria-label="Default select example" id="uf">
@@ -61,8 +51,19 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col">
+                            <label class="form-label">Logradouro</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="{{ $item['logradouroEnderecoEmpresa'] }}" id="logradouro">
+                            </div>
+                            <label class="form-label">Bairro</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="{{ $item['bairroEnderecoEmpresa'] }}" id="bairro">
+                            </div>
+                            <label class="form-label special-label">Conclua:</label>
+                            <button type="submit" class="btn btn-light btn-update">Atualizar</button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-light">Atualizar</button>
                 </form>
             </div>
         </div>

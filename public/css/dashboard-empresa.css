@@ -5,3 +5,11 @@
 .button-config:hover {
     background-color: rgba(244, 244, 244, 0.6);
 }
+
+.special-label {
+    color: transparent;
+}
+
+.btn-update {
+    display: block !important;
+}
