@@ -6,20 +6,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/atualizar-empresa/' . session('user')) }}" method="POST">
+                <form action="{{ url('/atualizar-empresa/' . $data['usuario']) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <label class="form-label">Nome da empresa</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" value="{{ session('nome') }}" name="nome">
+                        <input type="text" class="form-control" value="{{ $data['nomeEmpresa'] }}" name="nome">
                     </div>
                     <label class="form-label">E-mail público</label>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" value="{{ session('emailcontato') }}" name="email">
+                        <input type="email" class="form-control" value="{{ $data['emailEmpresaContato'] }}" name="email">
                     </div>
                     <label class="form-label">Endereços</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" value="{{ session('logradouro') }}, {{ session('num') }}, {{ session('bairro') }}, {{ session('cidade') }}, {{ session('estado') }}" disabled>
+                        @foreach ($data['enderecos'] as $item)
+                        <input type="text" class="form-control" value="{{ $item['logradouroEnderecoEmpresa'] }}, {{ $item['numEnderecoEmpresa'] }}, {{ $item['bairroEnderecoEmpresa'] }}, {{ $item['estadoEnderecoEmpresa'] }}" disabled>
+                        @endforeach
                         <a class="btn btn-light" data-bs-toggle="modal"
                         data-bs-target="#editEnderecoModal">Editar</a>
                     </div>

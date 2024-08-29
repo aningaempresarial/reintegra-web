@@ -9,7 +9,6 @@ function consultarCep() {
                     document.getElementById("logradouro").value =
                         data.logradouro;
                     document.getElementById("bairro").value = data.bairro;
-                    document.getElementById("cidade").value = data.localidade;
                     document.getElementById("uf").value = data.uf;
                 } else {
                     alert("CEP não encontrado.");

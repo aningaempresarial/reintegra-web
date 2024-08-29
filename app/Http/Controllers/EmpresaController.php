@@ -12,17 +12,31 @@ class EmpresaController extends Controller
 {
     public function index()
     {
-        $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa');
+            $user = session("usuario");
 
-        if ($resposta->successful()) {
-            $data = $resposta->json();
-            return view('teste', compact('data'));
-        } else {
-            return response()->json(['error' => 'Algo deu errado...'], $resposta->status());
-        }
+            $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
+
+            if ($resposta->successful()) {
+                $data = $resposta->json();
+                if (request()->routeIs('empresa-dashboard')) {
+                    return view('/empresa/dashboard', compact('data'));
+                }
+            
+                if (request()->routeIs('empresa-config')) {
+                    return view('/empresa/config', compact('data'));
+                }
+            } else {
+                Log::error('Erro na API externa:', [
+                    'status' => $resposta->status(),
+                    'body' => $resposta->body()
+                ]);
+
+                return response()->json(['error' => 'Algo deu errado...'], $resposta->status());
+            }
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'nome' => 'required|string|max:255',
             'email' => 'required|email',
@@ -46,11 +60,9 @@ class EmpresaController extends Controller
         if ($resposta->successful()) {
             $userController = new UsuarioController();
             $user = $userController->getUserByCnpj(str_replace(['.', '/', '-'], '', $request->input('cnpj')));
+
             session(['user' => $user['usuario']]);
-            session(['nome' => $request->input('nome')]);
-            session(['cnpj' => $request->input('cnpj')]);
-            session(['email' => $request->input('email')]);
-            session(['senha' => $request->input('senha')]);
+
             return redirect('/cadastro');
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
@@ -58,7 +70,8 @@ class EmpresaController extends Controller
         }
     }
 
-    public function storeAddress(Request $request) {
+    public function storeAddress(Request $request)
+    {
         $dadosEndereco = [
             'logradouro' => $request->input('logradouro'),
             'numero' => $request->input('num'),
@@ -78,21 +91,15 @@ class EmpresaController extends Controller
         $resposta2 = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/telefone/' . $user, $dadosTelefone);
 
         if ($resposta->successful() && $resposta2->successful()) {
-            session(['telefone'=> $request->input('telefone')]);
-            session(['cep'=> $request->input('cep')]);
-            session(['logradouro'=> $request->input('logradouro')]);
-            session(['num'=> $request->input('num')]);
-            session(['bairro'=> $request->input('bairro')]);
-            session(['cidade'=> $request->input('cidade')]);
-            session(['estado'=> $request->input('estado')]);
-            return redirect('/empresa/dashboard');
+            return redirect('empresa/dashboard');
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
         }
     }
 
-    public function update(Request $request, $user) {
+    public function update(Request $request, $user)
+    {
         $dados = [
             'nome' => $request->input('nome'),
             'emailContato' => $request->input('email'),
@@ -106,8 +113,8 @@ class EmpresaController extends Controller
         ]);
 
         if ($resposta->successful()) {
-            session(['nome'=> $dados['nome']]);
-            session(['emailcontato'=> $dados['emailContato']]);
+            session(['nome' => $dados['nome']]);
+            session(['emailcontato' => $dados['emailContato']]);
             return redirect('/empresa/config');
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível atualizar a empresa.']);

@@ -15,5 +15,5 @@
         </ul>
     </div>
 @include('empresa.edit')
-
+<script src="{{ asset('js/cep.js') }}"></script>
 @endsection

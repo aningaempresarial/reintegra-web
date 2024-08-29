@@ -4,7 +4,7 @@
         <button class="btn btn-light" type="submit">Pesquisar</button>
     </form>
     <div class="profile-info">
-        <p>{{ session('user') ?? $nome ?? 'Martha' }}</p>
+        <p>{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</p>
         <img class="profile-photo" src="{{ asset('images/profile-photo.png') }}">
     </div>
 </div>

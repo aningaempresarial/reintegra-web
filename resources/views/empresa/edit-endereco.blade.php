@@ -11,30 +11,26 @@
                         <div class="col">
                             <label class="form-label">CEP</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ session('cep') }}">
+                                <input type="text" class="form-control" value="{{ $item['cepEnderecoEmpresa'] }}" onblur="consultarCep()" id="cep">
                             </div>
                             <label class="form-label">Número</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ session('num') }}">
-                            </div>
-                            <label class="form-label">Cidade</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ session('cidade') }}">
+                                <input type="text" class="form-control" value="{{ $item['numEnderecoEmpresa'] }}">
                             </div>
                         </div>
                         <div class="col">
                             <label class="form-label">Logradouro</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{session('logradouro')}}">
+                                <input type="text" class="form-control" value="{{ $item['logradouroEnderecoEmpresa'] }}" id="logradouro">
                             </div>
                             <label class="form-label">Bairro</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ session('bairro') }}">
+                                <input type="text" class="form-control" value="{{ $item['bairroEnderecoEmpresa'] }}" id="bairro">
                             </div>
                             <label class="form-label">Estado</label>
                             <div class="input-group mb-3">
-                                <select class="form-select" aria-label="Default select example" value="{{ session('estado') }}">
-                                    <option value="{{ session('estado') }}" disabled selected>{{ session('estado') }}</option>
+                                <select class="form-select" aria-label="Default select example" id="uf">
+                                    <option value="{{ $item['estadoEnderecoEmpresa'] }}" disabled selected>{{ $item['estadoEnderecoEmpresa'] }}</option>
                                     <option value="AC">AC</option>
                                     <option value="AL">AL</option>
                                     <option value="AP">AP</option>

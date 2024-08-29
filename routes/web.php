@@ -48,13 +48,12 @@ Route::get('/info-empresa', function () {
 
 Route::get('/admin/dashboard', [AdminController::class, 'getData']);
 
-Route::get('/empresa/dashboard', function () {
-    return view('empresa/dashboard');
-});
+Route::get('/empresa/dashboard', [EmpresaController::class, 'index'])->name('empresa-dashboard');
 
 /*Route::get('/admin/users', function () {
     return view('admin/users/index');
 });*/
+
 Route::get('/admin/users', [AdminController::class, 'getUsers']);
 
 
@@ -62,9 +61,7 @@ Route::get('/admin/config', function () {
     return view('admin/config');
 });
 
-Route::get('/empresa/config', function () {
-    return view('empresa/config');
-});
+Route::get('/empresa/config', [EmpresaController::class, 'index'])->name('empresa-config');
 
 Route::get('/teste', [EmpresaController::class, 'index']);
 
@@ -73,7 +70,6 @@ Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);
 Route::post('/login-usuario', [LoginController::class, 'login']);
 
 Route::get('/cadastrar-infos-empresa', [EmpresaController::class, 'storeAddress']);
-
 
 Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
 
