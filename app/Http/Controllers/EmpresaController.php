@@ -61,7 +61,7 @@ class EmpresaController extends Controller
             $userController = new UsuarioController();
             $user = $userController->getUserByCnpj(str_replace(['.', '/', '-'], '', $request->input('cnpj')));
 
-            session(['user' => $user['usuario']]);
+            session(['usuario' => $user['usuario']]);
 
             return redirect('/cadastro');
         } else {
@@ -80,7 +80,7 @@ class EmpresaController extends Controller
             'estado' => $request->input('estado'),
         ];
 
-        $user = session('user');
+        $user = session('usuario');
 
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);
 
