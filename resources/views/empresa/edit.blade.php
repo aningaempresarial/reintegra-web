@@ -18,14 +18,15 @@
                         <input type="email" class="form-control" value="{{ $data['emailEmpresaContato'] }}" name="email">
                     </div>
                     <label class="form-label">Endereços</label>
-                    <div class="input-group mb-3">
                         @foreach ($data['enderecos'] as $item)
+                        <div class="input-group mb-3">
                         <input type="text" class="form-control" value="{{ $item['logradouroEnderecoEmpresa'] }}, {{ $item['numEnderecoEmpresa'] }}, {{ $item['bairroEnderecoEmpresa'] }}, {{ $item['estadoEnderecoEmpresa'] }}" disabled>
-                        @endforeach
                         <a class="btn btn-light" data-bs-toggle="modal"
                         data-bs-target="#editEnderecoModal">Editar</a>
-                    </div>
-                    <a style="display: block; width: fit-content; margin-bottom: 16px" class="btn btn-light" href="#">Novo endereço</a>
+                        </div>
+                        @endforeach
+                    <a style="display: block; width: fit-content; margin-bottom: 16px" class="btn btn-light" data-bs-toggle="modal"
+                    data-bs-target="#createEnderecoModal">Novo endereço</a>
                     <button type="submit" class="btn btn-light">Atualizar</button>
                 </form>
             </div>
@@ -33,4 +34,5 @@
     </div>
 </div>
 
+@include('empresa.create-endereco')
 @include('empresa.edit-endereco')

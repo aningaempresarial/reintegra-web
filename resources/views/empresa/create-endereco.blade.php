@@ -1,29 +1,29 @@
-<div class="modal fade" id="editEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createEnderecoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar endereço</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar endereço</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/atualizar-endereco-empresa/' . $data['usuario']) }}" method="POST">
+                <form action="{{ url('/cadastrar-endereco-empresa/' . $data['usuario']) }}" method="POST">
                     @csrf
-                    @method('PUT')
+                    @method('POST')
                     <input type="hidden" name="id" value="{{$data['idEmpresa']}}">
                     <div class="row">
                         <div class="col">
                             <label class="form-label">CEP</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ $item['cepEnderecoEmpresa'] }}" onblur="consultarCep()" id="cep" name="cep">
+                                <input type="text" class="form-control" onblur="consultarCep()" id="cep" name="cep">
                             </div>
                             <label class="form-label">Número</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ $item['numEnderecoEmpresa'] }}" name="num">
+                                <input type="text" class="form-control" name="num">
                             </div>
                             <label class="form-label">Estado</label>
                             <div class="input-group mb-3">
                                 <select class="form-select" aria-label="Default select example" id="uf" name="estado">
-                                    <option value="{{ $item['estadoEnderecoEmpresa'] }}" disabled selected>{{ $item['estadoEnderecoEmpresa'] }}</option>
+                                    <option value="" disabled selected>UF</option>
                                     <option value="AC">AC</option>
                                     <option value="AL">AL</option>
                                     <option value="AP">AP</option>
@@ -57,14 +57,14 @@
                         <div class="col">
                             <label class="form-label">Logradouro</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ $item['logradouroEnderecoEmpresa'] }}" id="logradouro" name="logradouro">
+                                <input type="text" class="form-control" id="logradouro" name="logradouro">
                             </div>
                             <label class="form-label">Bairro</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" value="{{ $item['bairroEnderecoEmpresa'] }}" id="bairro" name="bairro">
+                                <input type="text" class="form-control" id="bairro" name="bairro">
                             </div>
                             <label class="form-label special-label">Conclua:</label>
-                            <button type="submit" class="btn btn-light btn-update">Atualizar</button>
+                            <button type="submit" class="btn btn-light btn-update">Enviar</button>
                         </div>
                     </div>
                 </form>

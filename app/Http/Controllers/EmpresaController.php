@@ -70,7 +70,7 @@ class EmpresaController extends Controller
         }
     }
 
-    public function storeAddress(Request $request)
+    public function storeImportantInfo(Request $request)
     {
         $dadosEndereco = [
             'logradouro' => $request->input('logradouro'),
@@ -91,6 +91,7 @@ class EmpresaController extends Controller
         $resposta2 = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/telefone/' . $user, $dadosTelefone);
 
         if ($resposta->successful() && $resposta2->successful()) {
+            session(['acesso'=> 'primeiro']);
             return redirect('empresa/dashboard');
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
@@ -122,4 +123,53 @@ class EmpresaController extends Controller
         }
     }
 
+    public function updateAddress(Request $request, $user) {
+        $dadosEndereco = [
+            'id' => $request->input('id'),
+            'logradouro' => $request->input('logradouro'),
+            'numero' => $request->input('num'),
+            'cep' => $request->input('cep'),
+            'bairro' => $request->input('bairro'),
+            'estado' => $request->input('estado'),
+        ];
+
+        $resposta = Http::asMultipart()->put(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);
+
+        Log::info('Resposta da API:', [
+            'status' => $resposta->status(),
+            'body' => $resposta->body()
+        ]);
+
+        if ($resposta->successful()) {
+            return redirect('/empresa/config');
+        } else {
+            $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível atualizar o endereço da empresa.']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
+
+    public function createAddress(Request $request, $user) {
+        $dadosEndereco = [
+            'id' => $request->input('id'),
+            'logradouro' => $request->input('logradouro'),
+            'numero' => $request->input('num'),
+            'cep' => $request->input('cep'),
+            'bairro' => $request->input('bairro'),
+            'estado' => $request->input('estado'),
+        ];
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);
+
+        Log::info('Resposta da API:', [
+            'status' => $resposta->status(),
+            'body' => $resposta->body()
+        ]);
+
+        if ($resposta->successful()) {
+            return redirect('/empresa/config');
+        } else {
+            $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar um endereço da empresa.']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
 }

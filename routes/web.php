@@ -69,7 +69,7 @@ Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);
 
 Route::post('/login-usuario', [LoginController::class, 'login']);
 
-Route::get('/cadastrar-infos-empresa', [EmpresaController::class, 'storeAddress']);
+Route::get('/cadastrar-infos-empresa', [EmpresaController::class, 'storeImportantInfo']);
 
 Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
 
@@ -79,3 +79,6 @@ Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
 
 Route::get('/cep/{cep}', [CepController::class, 'consultarCep']);
 
+Route::post('/cadastrar-endereco-empresa/{usuario}', [EmpresaController::class,'createAddress']);
+
+Route::put('/atualizar-endereco-empresa/{usuario}', [EmpresaController::class,'updateAddress']);
