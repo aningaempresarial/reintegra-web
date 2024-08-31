@@ -32,7 +32,7 @@ Route::get('/cadastro', function () {
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 
 Route::get('/doacao', function () {
     return view('doacao');

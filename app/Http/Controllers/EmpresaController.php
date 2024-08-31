@@ -10,30 +10,37 @@ use App\Http\Controllers\UsuarioController;
 
 class EmpresaController extends Controller
 {
+
     public function index()
     {
-            $user = session("usuario");
+        $user = session("usuario");
 
-            $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+        }
 
-            if ($resposta->successful()) {
-                $data = $resposta->json();
-                if (request()->routeIs('empresa-dashboard')) {
-                    return view('/empresa/dashboard', compact('data'));
-                }
-            
-                if (request()->routeIs('empresa-config')) {
-                    return view('/empresa/config', compact('data'));
-                }
-            } else {
-                Log::error('Erro na API externa:', [
-                    'status' => $resposta->status(),
-                    'body' => $resposta->body()
-                ]);
+        $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
 
-                return response()->json(['error' => 'Algo deu errado...'], $resposta->status());
+        if ($resposta->successful()) {
+            $data = $resposta->json();
+
+            if (request()->routeIs('empresa-dashboard')) {
+                return view('empresa.dashboard', compact('data'));
             }
+
+            if (request()->routeIs('empresa-config')) {
+                return view('empresa.config', compact('data'));
+            }
+        } else {
+            Log::error('Erro na API externa:', [
+                'status' => $resposta->status(),
+                'body' => $resposta->body()
+            ]);
+
+            return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
+        }
     }
+
 
     public function store(Request $request)
     {
@@ -72,6 +79,15 @@ class EmpresaController extends Controller
 
     public function storeImportantInfo(Request $request)
     {
+        $request->validate([
+            'logradouro' => 'required|string|max:255',
+            'num' => 'required|string|max:20',
+            'cep' => 'required|string|max:10',
+            'bairro' => 'required|string|max:255',
+            'estado' => 'required|string|max:2',
+            'telefone' => 'required|string|max:20',
+        ]);
+
         $dadosEndereco = [
             'logradouro' => $request->input('logradouro'),
             'numero' => $request->input('num'),
@@ -82,6 +98,10 @@ class EmpresaController extends Controller
 
         $user = session('usuario');
 
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+        }
+
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);
 
         $dadosTelefone = [
@@ -90,14 +110,25 @@ class EmpresaController extends Controller
 
         $resposta2 = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/telefone/' . $user, $dadosTelefone);
 
+        Log::info('Resposta da API:', [
+            'status' => $resposta->status(),
+            'body' => $resposta->body()
+        ]);
+
+        Log::info('Resposta da API:', [
+            'status' => $resposta2->status(),
+            'body' => $resposta2->body()
+        ]);
+
         if ($resposta->successful() && $resposta2->successful()) {
-            session(['acesso'=> 'primeiro']);
+            session(['acesso' => 'primeiro']);
             return redirect('empresa/dashboard');
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Não foi possível cadastrar a empresa.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
         }
     }
+
 
     public function update(Request $request, $user)
     {
@@ -123,7 +154,8 @@ class EmpresaController extends Controller
         }
     }
 
-    public function updateAddress(Request $request, $user) {
+    public function updateAddress(Request $request, $user)
+    {
         $dadosEndereco = [
             'id' => $request->input('id'),
             'logradouro' => $request->input('logradouro'),
@@ -148,7 +180,8 @@ class EmpresaController extends Controller
         }
     }
 
-    public function createAddress(Request $request, $user) {
+    public function createAddress(Request $request, $user)
+    {
         $dadosEndereco = [
             'id' => $request->input('id'),
             'logradouro' => $request->input('logradouro'),

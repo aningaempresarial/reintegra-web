@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-
     public function getData() {
 
         $dados = [
             'token' => session('token'),
         ];
+
+        if (!$dados['token']) {
+            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+        }
 
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
 
