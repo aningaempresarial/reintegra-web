@@ -18,7 +18,7 @@ function consultarCep() {
     }
 }
 
-function consultarCep(input) {
+function consultarCepEmModal(input) {
     const modalBody = input.closest('.modal-body');
 
     const logradouroInput = modalBody.querySelector('#logradouro');
