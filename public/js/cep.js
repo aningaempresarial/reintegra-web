@@ -17,3 +17,30 @@ function consultarCep() {
             .catch((error) => console.error("Erro ao consultar o CEP:", error));
     }
 }
+
+function consultarCep(input) {
+    const modalBody = input.closest('.modal-body');
+
+    const logradouroInput = modalBody.querySelector('#logradouro');
+    const bairroInput = modalBody.querySelector('#bairro');
+    const ufSelect = modalBody.querySelector('#uf');
+
+    const cep = input.value.replace(/\D/g, '');
+
+    if (cep.length === 8) {
+        fetch(`/cep/${cep}`)
+            .then((response) => response.json())
+            .then((data) => {
+                if (!data.erro) {
+                    logradouroInput.value = data.logradouro;
+                    bairroInput.value = data.bairro;
+                    ufSelect.value = data.uf;
+                } else {
+                    alert("CEP não encontrado.");
+                }
+            })
+            .catch((error) => console.error("Erro ao consultar o CEP:", error));
+    } else {
+        alert("CEP inválido.");
+    }
+}

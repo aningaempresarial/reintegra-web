@@ -14,7 +14,7 @@
                         <div class="col">
                             <label class="form-label">CEP</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" onblur="consultarCep()" id="cep" name="cep">
+                                <input type="text" class="form-control" onblur="consultarCep(this)" id="cep" name="cep">
                             </div>
                             <label class="form-label">Número</label>
                             <div class="input-group mb-3">
