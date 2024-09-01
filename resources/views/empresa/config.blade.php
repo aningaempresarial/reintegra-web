@@ -12,6 +12,7 @@
             data-bs-target="#editModal">Editar dados de perfil</a>
             <a class="list-group-item button-config">Gerenciar templates de e-mail</a>
             <a class="list-group-item button-config">Gerar relatório completo</a>
+            <a class="list-group-item button-config">Inativar conta</a>
         </ul>
     </div>
     

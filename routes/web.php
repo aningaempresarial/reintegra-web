@@ -82,3 +82,5 @@ Route::get('/cep/{cep}', [CepController::class, 'consultarCep']);
 Route::post('/cadastrar-endereco-empresa/{usuario}', [EmpresaController::class,'createAddress']);
 
 Route::put('/atualizar-endereco-empresa/{usuario}', [EmpresaController::class,'updateAddress']);
+
+Route::get('/empresa/perfil', [EmpresaController::class, 'index'])->name('empresa-perfil');

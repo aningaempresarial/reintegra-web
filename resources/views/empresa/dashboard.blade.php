@@ -33,7 +33,82 @@
             </div>
         </div>
     </div>
-    <div class="panel"></div>
+    <div class="panel main-panel panel-empresa">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="panel">
+                        <h1 class="page-subtitle">Engajamento da última publicação</h1>
+                        <div class="container-tables">
+                            <table class="table table-publicacoes">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan='2' class="table-header">Publicação: Vaga de atendente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Visualizações:</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Curtidas:</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inscrições:</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-publicacoes">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan='2' class="table-header">Detalhes da vaga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Quantidade de vagas:</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nível:</td>
+                                        <td>Médio</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Habilidades desejadas:</td>
+                                        <td>Comunicação</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel">
+                        <h1 class="page-subtitle">Minhas publicações</h1>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 30px" class="col-4">
+                <div class="row">
+                    <div class="panel">
+                        <h1 class="page-subtitle">Notificações</h1>
+                        <ul class="list-group list-notificacao">
+                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

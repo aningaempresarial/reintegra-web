@@ -13,3 +13,38 @@
 .btn-update {
     display: block !important;
 }
+
+.panel-empresa {
+    background: transparent;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+.container-tables {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.table-publicacoes {
+    width: fit-content;
+    border: 5px solid white;
+}
+
+.list-notificacao {
+    padding-inline: 8px;
+    padding-bottom: 20px;
+}
+
+.list-notificacao img {
+    width: 25px;
+    padding-right: 5px;
+}
+
+.list-notificacao span {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8rem;
+    display: block;
+    padding-top: 2px;
+}
