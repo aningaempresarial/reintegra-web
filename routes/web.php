@@ -57,10 +57,6 @@ Route::get('/empresa/dashboard', [EmpresaController::class, 'index'])->name('emp
 Route::get('/admin/users', [AdminController::class, 'getUsers']);
 
 
-Route::get('/admin/config', function () {
-    return view('admin/config');
-});
-
 Route::get('/empresa/config', [EmpresaController::class, 'index'])->name('empresa-config');
 
 Route::get('/teste', [EmpresaController::class, 'index']);
@@ -89,3 +85,12 @@ Route::get('/empresa/perfil', [EmpresaController::class, 'index'])->name('empres
 
 /* ADMIN PAINEL */
 Route::post('/admin/change', [AdminController::class, 'changeStatusUser']);
+
+
+Route::get('/admin/config', [AdminController::class, 'configData']);
+
+
+/* Alterar Usuario Dados */
+
+Route::post('/usuario/atualizar-dados', [UsuarioController::class,'updateDadosUsuario']);
+Route::post('/usuario/atualizar-senha', [UsuarioController::class,'updateSenhaUsuario']);

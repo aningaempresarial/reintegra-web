@@ -96,4 +96,25 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($errorMessages)->withInput();
         }
     }
+
+    public function configData() {
+
+        $dados = [
+            'token' => session('token'),
+        ];
+
+        if (!$dados['token']) {
+            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+        }
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
+
+        if ($resposta->successful()) {
+            return view('admin/config', ['nome' => $resposta['nomeAdmin'], 'usuario' => $resposta['usuario'], 'email' => $resposta['emailUsuario']]);
+        } else {
+            $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+
+    }
 }

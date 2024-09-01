@@ -29,7 +29,15 @@ class EmpresaController extends Controller
             }
 
             else if (request()->routeIs('empresa-config')) {
-                return view('empresa.config', compact('data'));
+
+
+                $resposta = Http::get(env('EXTERNAL_API_URL') . '/user/info/' . $user);
+
+                if ($resposta->successful()) {
+                    return view('empresa.config', ['data' => $data, 'usuario' => $resposta['usuario'], 'email' => $resposta['emailUsuario']]);
+                } else {
+                    return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
+                }
             }
             else if (request()->routeIs('empresa-perfil')) {
                 return view('empresa.perfil', compact('data'));
