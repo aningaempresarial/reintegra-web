@@ -28,8 +28,11 @@ class EmpresaController extends Controller
                 return view('empresa.dashboard', compact('data'));
             }
 
-            if (request()->routeIs('empresa-config')) {
+            else if (request()->routeIs('empresa-config')) {
                 return view('empresa.config', compact('data'));
+            }
+            else if (request()->routeIs('empresa-perfil')) {
+                return view('empresa.perfil', compact('data'));
             }
         } else {
             Log::error('Erro na API externa:', [
