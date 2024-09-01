@@ -9,14 +9,18 @@
     <div class="panel">
         <ul class="list-group list-group-flush">
             <a class="list-group-item button-config" data-bs-toggle="modal"
-            data-bs-target="#editModal">Editar dados de perfil</a>
+            data-bs-target="#editModalEmpresa">Editar dados da empresa</a>
+            <a class="list-group-item button-config" data-bs-toggle="modal" data-bs-target="#editModal">Editar dados de usuário</a>
+            <a class="list-group-item button-config" data-bs-toggle="modal" data-bs-target="#editModalPass">Atualizar senha</a>
             <a class="list-group-item button-config">Gerenciar templates de e-mail</a>
             <a class="list-group-item button-config">Gerar relatório completo</a>
             <a class="list-group-item button-config">Inativar conta</a>
         </ul>
     </div>
-    
+
 @include('empresa.edit')
+@include('user.edit')
+@include('user.editpass')
 
 <script src="{{ asset('js/cep.js') }}"></script>
 @endsection
@@ -31,3 +35,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+
+<script>
+    @if (session('success'))
+        alert('{{ session('success') }}');
+    @endif
+</script>
+
+@include('admin.users.create')
