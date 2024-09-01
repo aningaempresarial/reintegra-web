@@ -41,12 +41,29 @@
                     <td>{{ $usuario['usuario'] }}</td>
                     <td>{{ $usuario['tipoEntidade'] }}</td>
                     <td>{{ $usuario['statusEntidade'] }}</td>
-                    <td><a href="{{ url('admin/users/edit') }}"><img src="{{ asset('images/edit-icon.png') }}"
+                    <td><a href="admin/users/edit"><img src="{{ asset('images/edit-icon.png') }}"
                                 class="icon"></a></td>
-                    <td><a href="{{ url('admin/dashboard/users/edit') }}"><img src="{{ asset('images/block-icon.png') }}"
-                                class="icon"></a></td>
-                    <td><a href="{{ url('admin/users/edit') }}"><img src="{{ asset('images/delete-icon.png') }}"
-                                class="icon"></a></td>
+
+                    <td>
+                        <form action="/admin/change" method="POST" onsubmit="return confirm('Tem certeza que deseja bloquear este usuário?');" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="usuario" value="{{ $usuario['usuario'] }}">
+                            <input type="hidden" name="status" value="bloqueado">
+                            <button type="submit" style="border: none; background: none;">
+                                <img src="{{ asset('images/block-icon.png') }}" class="icon" alt="Excluir">
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/admin/change" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="usuario" value="{{ $usuario['usuario'] }}">
+                            <input type="hidden" name="status" value="excluido">
+                            <button type="submit" style="border: none; background: none;">
+                                <img src="{{ asset('images/delete-icon.png') }}" class="icon" alt="Excluir">
+                            </button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -58,8 +75,21 @@
     function submitForm() {
         document.getElementById('filterForm').submit();
     }
+
+    @if (session('success'))
+        alert('{{ session('success') }}');
+    @endif
 </script>
 
 @include('admin.users.create')
 
 @endsection
+
+
+@if ($errors->any())
+    <script>
+            @foreach ($errors->all() as $error)
+                alert('{{ $error }}')
+            @endforeach
+    </script>
+@endif

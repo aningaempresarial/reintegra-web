@@ -55,4 +55,45 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($errorMessages)->withInput();
         }
     }
+
+    public function changeStatusUser(Request $request) {
+        $usuario = $request->get('usuario');
+        $status = $request->get('status');
+
+        $dados = [
+            'token' => session('token'),
+        ];
+
+        if (!$dados['token']) {
+            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+        }
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
+
+        if ($resposta->successful()) {
+            $usuario_admin = $resposta['usuario'];
+
+            if ($usuario == $usuario_admin) {
+                $errorMessages = $resposta->json('errors', ['error' => 'Você não pode se auto-bloquear ou remover do sistema!']);
+                return redirect()->back()->withErrors($errorMessages)->withInput();
+            }
+
+            $dados = [
+                'status' => $status,
+            ];
+
+            $resposta = Http::asMultipart()->put(env('EXTERNAL_API_URL') . '/admin/usuario/status/' . $usuario, $dados);
+
+            if ($resposta->successful()) {
+                return redirect()->back()->with('success', 'Usuario `' . $usuario . '` ' . $status . ' com êxito!');
+            } else {
+                $errorMessages = $resposta->json('errors', ['error' => 'Erro ao mudar status do usuário. Tente novamente mais tarde!']);
+                return redirect()->back()->withErrors($errorMessages)->withInput();
+            }
+
+        } else {
+            $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
 }

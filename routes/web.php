@@ -84,3 +84,8 @@ Route::post('/cadastrar-endereco-empresa/{usuario}', [EmpresaController::class,'
 Route::put('/atualizar-endereco-empresa/{usuario}', [EmpresaController::class,'updateAddress']);
 
 Route::get('/empresa/perfil', [EmpresaController::class, 'index'])->name('empresa-perfil');
+
+
+
+/* ADMIN PAINEL */
+Route::post('/admin/change', [AdminController::class, 'changeStatusUser']);
