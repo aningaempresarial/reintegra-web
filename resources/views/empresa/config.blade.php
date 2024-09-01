@@ -19,6 +19,7 @@
 @include('empresa.edit')
 
 <script src="{{ asset('js/cep.js') }}"></script>
+<script src="{{ asset('js/editar-endereco.js') }}"></script>
 @endsection
 
 @if ($errors->any())

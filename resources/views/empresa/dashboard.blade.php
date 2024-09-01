@@ -96,13 +96,11 @@
                     <div class="panel">
                         <h1 class="page-subtitle">Notificações</h1>
                         <ul class="list-group list-notificacao">
-                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
                         </ul>
                     </div>
                 </div>
