@@ -42,42 +42,29 @@ Route::get('/info-empresa', function () {
     return view('empresa-info');
 });
 
+Route::get('/teste', [EmpresaController::class, 'index']);
+
 /*Route::get('/admin/dashboard', function () {
     return view('admin/dashboard');
 });*/
 
 Route::get('/admin/dashboard', [AdminController::class, 'getData']);
 
-Route::get('/empresa/dashboard', [EmpresaController::class, 'index'])->name('empresa-dashboard');
-
-/*Route::get('/admin/users', function () {
-    return view('admin/users/index');
-});*/
-
 Route::get('/admin/users', [AdminController::class, 'getUsers']);
-
 
 Route::get('/admin/config', function () {
     return view('admin/config');
 });
 
-Route::get('/empresa/config', [EmpresaController::class, 'index'])->name('empresa-config');
+Route::get('/empresa/dashboard', [EmpresaController::class, 'index'])->name('empresa-dashboard');
 
-Route::get('/teste', [EmpresaController::class, 'index']);
+Route::get('/empresa/config', [EmpresaController::class, 'index'])->name('empresa-config');
 
 Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);
 
-Route::post('/login-usuario', [LoginController::class, 'login']);
-
 Route::get('/cadastrar-infos-empresa', [EmpresaController::class, 'storeImportantInfo']);
 
-Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
-
 Route::put('/atualizar-empresa/{user}', [EmpresaController::class, 'update']);
-
-Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
-
-Route::get('/cep/{cep}', [CepController::class, 'consultarCep']);
 
 Route::post('/cadastrar-endereco-empresa/{usuario}', [EmpresaController::class,'createAddress']);
 
@@ -85,7 +72,17 @@ Route::put('/atualizar-endereco-empresa/{usuario}', [EmpresaController::class,'u
 
 Route::get('/empresa/perfil', [EmpresaController::class, 'index'])->name('empresa-perfil');
 
+Route::put('/inativar-empresa/{usuario}', [UsuarioController::class, 'desativarConta']);
 
+/*Route::get('/admin/users', function () {
+    return view('admin/users/index');
+});*/
+
+Route::post('/login-usuario', [LoginController::class, 'login']);
+
+Route::get('/usuario/cnpj/{cnpj}', [UsuarioController::class, 'getUserByCnpj']);
+
+Route::get('/cep/{cep}', [CepController::class, 'consultarCep']);
 
 /* ADMIN PAINEL */
 Route::post('/admin/change', [AdminController::class, 'changeStatusUser']);

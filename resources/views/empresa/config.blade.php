@@ -12,11 +12,12 @@
             data-bs-target="#editModal">Editar dados de perfil</a>
             <a class="list-group-item button-config">Gerenciar templates de e-mail</a>
             <a class="list-group-item button-config">Gerar relatório completo</a>
-            <a class="list-group-item button-config">Inativar conta</a>
+            <a class="list-group-item button-config" data-bs-toggle="modal" data-bs-target="#inativaContaModal">Inativar conta</a>
         </ul>
     </div>
     
 @include('empresa.edit')
+@include('empresa.inativa-conta')
 
 <script src="{{ asset('js/cep.js') }}"></script>
 <script src="{{ asset('js/editar-endereco.js') }}"></script>
