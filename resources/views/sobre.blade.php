@@ -5,16 +5,16 @@
 @endsection
 @section('conteudo')
 <section class="sobre">
-    <div class="sobre-text">
-        <h1>Sobre <span>nós</span></h1>
-        <p>O projeto "Reintegra" visa facilitar a reintegração de ex-presidiários à sociedade, abordando as complexas
-            questões enfrentadas por essa população ao sair do sistema prisional. A iniciativa se propõe a oferecer
-            apoio integral, incluindo assistência psicológica, orientação profissional e suporte social, para reduzir a
-            reincidência criminal e promover uma reintegração bem-sucedida</p>
-        <button>Learn More</button>
+    <div class="box1">
+        <video autoplay muted loop>
+            <source src="{{ asset('videos/rio.mp4') }}" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
     </div>
-    <div class="sobre-image">
-        <img src="{{ asset('images/sobre.gif') }}">
+    <div class="box">
+        <h1>Sobre nós</h1>
+        <p>O Reintegra é uma plataforma inovadora criada para facilitar a reintegração de ex-presidiários na sociedade. Nossa missão é fornecer apoio e recursos essenciais, incluindo oportunidades de emprego, capacitação profissional e orientação pessoal, para que essas pessoas possam reconstruir suas vidas, superar desafios e contribuir positivamente para a comunidade.</p>
+        <a class="btn btn-sobre" href="{{ url('/login') }}">Cadastrar minha empresa</a>
     </div>
 </section>
 @endsection

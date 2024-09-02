@@ -1,38 +1,48 @@
 .sobre {
+    height: 100vh;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 50px;
+    padding-inline: 50px;
 }
 
-.sobre-text {
-    max-width: 600px;
+.box {
+    width: 50%;
 }
 
-.sobre-text h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+.box h1 {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #fc573b;
+    letter-spacing: 1px;
 }
 
-.sobre-text h1 span {
-    color: #00704A;
+.box p {
+    margin: 20px 0px;
+    font-size: 1.3rem;
+    text-align: justify;
 }
 
-.sobre-text p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.sobre-text button {
-    background-color: #00704A;
-    color: #fff;
+.btn-sobre { 
+    padding: 12px 16px;
+    background: #fc573b;
+    color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    border-radius: 2px;
     cursor: pointer;
 }
 
-.sobre-image img {
-    max-width: 100%;
-    height: auto;
+.btn-sobre:hover {
+    background-color: #fc573b;
+    color: white;
+    border: #fc573b 1px solid;
+}
+
+.box1 {
+    width: 50%;
+}
+
+.box1 video {
+    width: 90%;
+    border: 5px solid #fc573b;
 }
