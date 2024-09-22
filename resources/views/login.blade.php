@@ -19,8 +19,7 @@
             </div>
             <div class="col-md">
 
-                <div class="step ">
-
+                <div class="step active">
                     <form action="/login-usuario" method="POST" enctype="multipart/form-data">
                         @csrf
                         <h2 class="title">Entrar na sua conta</h2>
@@ -41,10 +40,10 @@
                 </div>
 
 
-                <div class="step active">
+                <div class="step">
 
                     <form>
-                        <h2 class="title">Escolha o tipo de conta:</h2>
+                        <h2 class="title">Escolha o tipo de conta</h2>
 
                         <div class="div-contas">
 
