@@ -1,11 +1,27 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
+document.addEventListener('DOMContentLoaded', function() {
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
 
-sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
-});
+    function showStep(step) {
+        steps.forEach((element, index) => {
+            if (index === step) {
+                element.classList.add('active');
+            } else {
+                element.classList.remove('active');
+            }
+        });
+    }
 
-sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
+    document.getElementById('btn-next').addEventListener('click', function() {
+        currentStep = 1;
+        showStep(currentStep);
+    });
+
+
+    document.getElementById('btn-prev').addEventListener('click', function() {
+        currentStep = 0;
+        showStep(currentStep);
+    });
+
+
 });

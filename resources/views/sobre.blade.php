@@ -17,4 +17,8 @@
         <a class="btn btn-sobre" href="{{ url('/login') }}">Cadastrar minha empresa</a>
     </div>
 </section>
+
+
+@include('partials.footer')
 @endsection
+

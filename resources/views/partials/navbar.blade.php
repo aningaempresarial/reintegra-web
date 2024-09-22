@@ -8,14 +8,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                <li class="nav-item {{ Request::is('/') ? 'selected-item' : '' }}">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ Request::is('sobre') ? 'selected-item' : '' }}">
                     <a class="nav-link" href="{{ url('/sobre') }}">Sobre nós</a>
                 </li>
-                <li class="nav-item login-button">
-                    <a class="nav-link" href="{{ url('/login') }}">Cadastro</a>
+                <li class="nav-item {{ Request::is('login') ? 'selected-item' : '' }}">
+                    <a class="nav-link" href="{{ url('/login') }}">Entrar</a>
                 </li>
             </ul>
         </div>

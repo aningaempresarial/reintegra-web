@@ -40,7 +40,14 @@ class EmpresaController extends Controller
                 }
             }
             else if (request()->routeIs('empresa-perfil')) {
-                return view('empresa.perfil', compact('data'));
+
+                $resposta = Http::get(env('EXTERNAL_API_URL') . '/user/info/' . $user);
+
+                if ($resposta->successful()) {
+                    return view('empresa.perfil', ['data' => $data, 'usuario' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL')]);
+                } else {
+                    return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
+                }
             }
         } else {
             Log::error('Erro na API externa:', [
