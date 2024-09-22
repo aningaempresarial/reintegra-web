@@ -144,9 +144,9 @@
 
 
                             <div class="input-div">
-                                <label for="nomeOng">Nome da Empresa<span class="obrigatorio">*</span></label>
+                                <label for="nomeEmpresa">Nome da Empresa<span class="obrigatorio">*</span></label>
                                 <div class="input-field">
-                                    <input type="text" name="nomeOng" id="nomeOng" placeholder="Empresa X..." required autocomplete="off"/>
+                                    <input type="text" name="nomeEmpresa" id="nomeEmpresa" placeholder="Empresa X..." required autocomplete="off"/>
                                 </div>
                             </div>
 
@@ -154,18 +154,18 @@
 
                         <div class="form-input">
                             <div class="input-div">
-                                <label for="emailOng">Email da Empresa<span class="obrigatorio">*</span></label>
+                                <label for="emailEmpresa">Email da Empresa<span class="obrigatorio">*</span></label>
                                 <div class="input-field">
-                                    <input type="text" name="emailOng" id="emailOng" placeholder="empresa@gmail.com" required autocomplete="off"/>
+                                    <input type="text" name="emailEmpresa" id="emailEmpresa" placeholder="empresa@gmail.com" required autocomplete="off"/>
                                 </div>
                                 <span id="email-error" class="error-message"></span>
                             </div>
 
 
                             <div class="input-div">
-                                <label for="cnpjOng">CNPJ da Empresa<span class="obrigatorio">*</span></label>
+                                <label for="cnpjEmpresa">CNPJ da Empresa<span class="obrigatorio">*</span></label>
                                 <div class="input-field">
-                                    <input type="text" name="cnpjOng" id="cnpjOng" placeholder="**.***.***/****-**" required autocomplete="off"/>
+                                    <input type="text" name="cnpjEmpresa" id="cnpjEmpresa" placeholder="**.***.***/****-**" required autocomplete="off"/>
                                 </div>
                                 <span id="cnpj-error" class="error-message"></span>
                             </div>
@@ -176,9 +176,9 @@
 
 
                             <div class="input-div">
-                                <label for="nomeOng">Área de Atuação<span class="obrigatorio">*</span></label>
+                                <label for="areaAtuacao">Área de Atuação<span class="obrigatorio">*</span></label>
                                 <div class="input-field">
-                                    <select type="text" name="nomeOng" id="nomeOng" placeholder="Empresa X..." required autocomplete="off">
+                                    <select type="text" name="areaAtuacao" id="areaAtuacao" placeholder="Empresa X..." required autocomplete="off">
                                         <option value="0" default>Selecione uma opção...</option>
                                         @foreach($areas as $area)
                                             <option value="{{ $area['idAreaAtuacao'] }}">{{ $area['nomeAreaAtuacao'] }}</option>
@@ -191,24 +191,24 @@
 
                         <div class="form-input">
                             <div class="input-div">
-                                <label for="senhaOng">Senha<span class="obrigatorio">*</span></label>
+                                <label for="senhaEmpresa">Senha<span class="obrigatorio">*</span></label>
                                 <div class="input-field">
-                                    <input type="password" name="senhaOng" id="senhaOng" required autocomplete="off"/>
+                                    <input type="password" name="senhaEmpresa" id="senhaEmpresa" required autocomplete="off"/>
                                 </div>
                             </div>
 
 
                             <div class="input-div">
-                                <label for="validaSenhaOng">Confirmação de Senha<span class="obrigatorio">*</span></label>
+                                <label for="validaSenhaEmpresa">Confirmação de Senha<span class="obrigatorio">*</span></label>
                                 <div class="input-field">
-                                    <input type="password" name="validaSenhaOng" id="validaSenhaOng" required autocomplete="off"/>
+                                    <input type="password" name="validaSenhaEmpresa" id="validaSenhaEmpresa" required autocomplete="off"/>
                                 </div>
                                 <span id="senha-error" class="error-message"></span>
                             </div>
                         </div>
 
                         <div class="form-input form-input-button">
-                            <button value="Próxima Etapa" class="btn btn-form solid" id="submitBtnOng" disabled>Próxima Etapa</button>
+                            <button value="Próxima Etapa" class="btn btn-form solid" id="submitBtnEmpresa" disabled>Próxima Etapa</button>
                         </div>
 
 
