@@ -30,9 +30,7 @@ Route::get('/cadastro', function () {
     return view('cadastro');
 });
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/login', [LoginController::class, 'index']);
 
 Route::get('/doacao', function () {
     return view('doacao');

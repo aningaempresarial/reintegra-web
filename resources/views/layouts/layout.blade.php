@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
         <link rel="stylesheet" href="{{ asset('css/layout-home.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+        <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ asset('js/constantes.js') }}"></script>
         @yield('css')
         @yield('style')
     </head>
@@ -19,6 +21,5 @@
             @yield('conteudo')
 
         </div>
-        <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     </body>
 </html>

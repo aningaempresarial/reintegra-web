@@ -9,6 +9,21 @@ class LoginController extends Controller
 {
     //
 
+    public function index(Request $request) {
+
+        $resposta = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/empresa/area-atuacao/get');
+
+        if ($resposta->successful()) {
+            $res = $resposta->json();
+
+            return view('login')->with('areas', $res['areas']);
+        } else {
+            $errorMessages = $resposta->json('errors', ['error' => 'O "Reintegra" está em manutenção. Volte mais tarde!']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+
+    }
+
     public function login(Request $request) {
 
         $request->validate([

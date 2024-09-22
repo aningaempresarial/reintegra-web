@@ -17,7 +17,7 @@
 <script>
     function showAlert(title, message) {
         document.getElementById('alertModalLabel').textContent = title;
-        document.getElementById('alertModalBody').textContent = message;
+        document.getElementById('alertModalBody').innerHTML = message;
 
         var alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
         alertModal.show();
