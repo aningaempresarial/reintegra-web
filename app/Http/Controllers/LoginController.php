@@ -16,7 +16,7 @@ class LoginController extends Controller
         if ($resposta->successful()) {
             $res = $resposta->json();
 
-            return view('login')->with('areas', $res['areas']);
+            return view('login', ['areas' => $res['areas'], 'estados' => ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MS', 'MT', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']]);
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'O "Reintegra" está em manutenção. Volte mais tarde!']);
             return redirect()->back()->withErrors($errorMessages)->withInput();

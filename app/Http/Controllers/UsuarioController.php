@@ -22,23 +22,23 @@ class UsuarioController extends Controller
             'senha' => $request->input('senha'),
             'confirmaSenha' => $request->input('confirma-senha'),
         ];
-    
+
         if (empty($dados['senha']) || empty($dados['confirmaSenha'])) {
             return redirect()->back()->withErrors(['error' => 'As senhas não podem ser vazias.'])->withInput();
         }
-    
+
         if ($dados['senha'] !== $dados['confirmaSenha']) {
             return redirect()->back()->withErrors(['error' => 'As senhas não coincidem.'])->withInput();
         }
-    
+
         try {
             $resposta = Http::asMultipart()->put(env('EXTERNAL_API_URL') . '/user/inativar/' . $user, $dados);
-    
+
             Log::info('Resposta da API:', [
                 'status' => $resposta->status(),
                 'body' => $resposta->body()
             ]);
-    
+
             if ($resposta->successful()) {
                 return redirect('/')->with('success', 'Conta inativada com sucesso.');
             } else {
@@ -51,7 +51,7 @@ class UsuarioController extends Controller
             ]);
             return redirect()->back()->withErrors(['error' => 'Ocorreu um erro ao tentar inativar a conta.'])->withInput();
         }
-    }    
+    }
 
 
     public function updateDadosUsuario(Request $request) {
@@ -98,5 +98,26 @@ class UsuarioController extends Controller
             return redirect()->back()->withErrors($errorMessages)->withInput();
         }
 
+    }
+
+    public function verificarCNPJ($cnpj) {
+        $resposta = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/user/verificar/cnpj/'. $cnpj);
+
+        if ($resposta->successful()) {
+            return $resposta->json();
+        } else {
+            return $resposta->json('errors', ['error' => 'Erro inesperado.']);
+        }
+    }
+
+
+    public function verificarEmail($email) {
+        $resposta = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/user/verificar/email/'. $email);
+
+        if ($resposta->successful()) {
+            return $resposta->json();
+        } else {
+            return $resposta->json('errors', ['error' => 'Erro inesperado.']);
+        }
     }
 }
