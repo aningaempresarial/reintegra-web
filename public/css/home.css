@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .home-doacao {
     height: calc(100vh - 15vh - 40px);
     background-size: cover;
@@ -56,8 +60,11 @@
     font-weight: bold;
 }
 
+#app {
+    background-color: #f2f2f2;
+}
+
 .home-app {
-    height: calc(100vh - 15vh - 70px);
     padding-inline: 80px;
     display: flex;
     align-items: center;
@@ -75,7 +82,12 @@
 }
 
 .img-app img {
-    width: 350px;
+    width: 400px;
+}
+
+.img-install {
+    display: flex;
+    flex-direction: column;
 }
 
 .img-install img {
@@ -84,16 +96,38 @@
 
 .destaques {
     padding-bottom: 50px;
-    background: rgb(252,87,59);
-    background: linear-gradient(90deg, rgba(252,87,59,1) 35%, rgba(255,145,77,1) 100%);
+}
+
+.more-destaque {
+    font-size: 12pt;
+    text-align: left;
+    color: #969696;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.more-destaque:hover {
+    cursor: pointer;
+    color: #3b3b3b;
+    text-decoration: none;
+}
+
+#porque p mark {
+    background-color: #ff914d;
+    color: white;
+}
+
+.link:hover {
+    color: #ff914d;
+    text-decoration: underline;
 }
 
 .destaques-title {
     font-size: 2rem;
-    text-align: center;
-    padding: 30px;
+    text-align: left;
+    padding-top: 30px;
     letter-spacing: 1px;
-    color: #fff;
+    color: #071234;
     font-weight: bold;
 }
 
@@ -128,13 +162,16 @@
 }
 
 .home-info {
-    height: calc(100vh - 15vh - 60px);
+    background-color: #f2f2f2;
+}
+
+.home-info .container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 30px;
 }
+
 
 .info-title {
     font-size: 2rem;
@@ -152,13 +189,18 @@
 .home-info .card {
     padding: 20px;
     border: none;
+    background-color: #f2f2f2;
 }
 
 .btn-infos {
-    border: #fc573b 1px solid;
     border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
     padding: 10px 15px;
     margin: 5px;
+    text-transform: lowercase;
+    font-weight: 500;
+    background-color: transparent;
 }
 
 .btn-infos p {
@@ -166,10 +208,62 @@
 }
 
 .btn-infos:hover {
-    background-color: #fc573b;
+    background-color: #ff914d;
 }
 
-.btn-infos:hover > p {
+
+.img-ajudar {
+    width: 200px;
+}
+
+.btn-empresa {
+    border-color: #3949ab !important;
+    color: #3949ab;
+}
+
+.btn-empresa:hover {
+    background-color: #3949ab !important;
+    color: white;
+}
+
+.btn-ong {
+    border-color: #2e8b57 !important;
+    color: #2e8b57;
+}
+
+
+.btn-ong:hover {
+    background-color: #2e8b57 !important;
+    color: white;
+}
+
+.btn-pessoa {
+    border-color: #38b6ff !important;
+    color: #38b6ff;
+}
+
+.btn-pessoa:hover {
+    background-color: #38b6ff;
+    color: white;
+}
+
+.home-info .card:hover {
+    cursor: pointer;
+}
+
+
+.card:hover .btn-ong {
+    background-color: #2e8b57 !important;
+    color: white;
+}
+
+.card:hover .btn-empresa {
+    background-color: #3949ab !important;
+    color: white;
+}
+
+.card:hover .btn-pessoa {
+    background-color: #38b6ff !important;
     color: white;
 }
 
@@ -217,7 +311,7 @@
     .img-doacao {
         width: 60vw;
     }
-    
+
     .img-install img {
         width: 40vw;
     }
@@ -249,8 +343,33 @@
     .card-title {
         font-size: 3vw;
     }
-    
+
     .card-text {
         font-size: 2.8vw;
     }
+}
+
+
+
+.img-info-1 {
+    background-image: url('/images/presidio.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 40vh;
+}
+
+.informacao-title {
+    color: white;
+    font-weight: bolder;
+}
+
+.color-1 {
+    background-color: #ff914d;
+    height: 100%;
+}
+
+.color-2 {
+    background-color: #071234;
+    height: 100%;
 }

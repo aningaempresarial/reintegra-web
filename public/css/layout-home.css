@@ -30,18 +30,18 @@
 }
 
 .nav-item:hover {
-    border-bottom: 2px solid #fc573b;
+    border-bottom: 2px solid #ff914d;
 }
 
 .selected-item {
-    border-bottom: 2px solid #fc573b;
+    border-bottom: 2px solid #ff914d;
 }
 
 .login-button {
     border-radius: 40px;
     padding: 10px;
     padding-inline: 25px;
-    background: #fc573b;
+    background: #ff914d;
 }
 
 .login-button .nav-link {
@@ -57,7 +57,7 @@
     font-size: 1rem;
     letter-spacing: 1px;
     background: rgb(252,87,59);
-    background: linear-gradient(90deg, rgba(252,87,59,1) 35%, rgba(255,145,77,1) 100%);
+    background: linear-gradient(90deg, #ff914d 35%, rgba(255,145,77,1) 100%);
     padding: 10px;
     margin-top: auto;
     display: flex;
