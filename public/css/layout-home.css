@@ -109,3 +109,24 @@
         display: none;
     }
 }
+
+@media (min-width: 1301px) {
+    .logo {
+        width: 200px;
+    }
+
+    .nav-link {
+        font-size: 1.3rem;
+        color: black;
+        letter-spacing: 1px;
+        padding: 0 !important;
+        margin: 0;
+    }
+    .footer {
+        font-size: 1.3rem;
+    }
+
+    .menu p {
+        font-size: 0.9rem;
+    }
+}
