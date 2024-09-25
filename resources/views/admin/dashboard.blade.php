@@ -5,7 +5,7 @@
 @endsection
 @include('partials.profilebar')
 @section('conteudo')
-<h1 class="page-title">Bem vindo, {{ $nome }}!</h1>
+<h1 class="page-title">Bem vindo, <b class="name-deco">{{ $nome }}!</b></h1>
 <div class="panel cards-panel">
     <div class="card c1">
         <div class="card-body">

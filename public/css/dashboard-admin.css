@@ -1,3 +1,7 @@
+.container-dashboard {
+    background-color: #fff7f5;
+}
+
 .icon {
     width: 50px;
     opacity: 0.5;
@@ -58,4 +62,8 @@
 
 .c4 {
     background-color: #ffe6ac;
+}
+
+.name-deco {
+    color: #ff3f26;
 }
