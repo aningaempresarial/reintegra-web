@@ -1,12 +1,12 @@
 body {
-    margin-left: 80px;
+    margin-left: 120px;
     background-color: #f5f8ff;
 }
 
 .sidebar {
     z-index: 10;
     min-height: 100vh;
-    width: 80px;
+    width: 120px;
     background-color: #fff !important;
     position: fixed;
     top: 0;
@@ -28,14 +28,19 @@ body {
 
 .sidebar p {
     display: none;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     margin: 0;
     font-weight: 600;
     white-space: nowrap;
 }
 
+.sidebar img {
+    width: 100px;
+    height: 100px;
+}
+
 .sidebar:hover {
-    width: 270px;
+    width: 400px;
 }
 
 .sidebar:hover p {
@@ -47,12 +52,12 @@ body {
 }
 
 .sidebar:hover ~ .container-dashboard {
-    margin-left: 190px;
+    margin-left: 280px;
 }
 
 .sidebar:hover ~ .footer {
-    margin-left: 190px;
-    width: calc(100% - 270px);
+    margin-left: 280px;
+    width: calc(100% - 400px);
 }
 
 .container-dashboard {
@@ -64,14 +69,17 @@ body {
 }
 
 .page-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin: 0;
     margin-top: 30px;
 }
 
 .page-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     margin: 20px;
+    padding: 8px;
+    border-radius: 5px;
+    width: fit-content;
 }
 
 .panel {
@@ -86,7 +94,7 @@ body {
 }
 
 .main-panel {
-    margin-bottom: 74px;
+    margin-bottom: 110px;
     padding: 10px;
 }
 
@@ -100,10 +108,13 @@ body {
 .footer {
     background: #fff;
     box-shadow: -3px -3px 3px rgba(0, 0, 0, 0.05);
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     bottom: 0;
     width: calc(100% - 80px);
+    height: 80px;
     padding: 0;
     box-sizing: border-box;
 }
@@ -112,6 +123,7 @@ body {
     color: black;
     padding: 10px;
     margin: 0;
+    font-size: 1.2rem;
 }
 
 .card {
@@ -120,25 +132,6 @@ body {
     width: calc(100% - 60px);
     box-sizing: border-box;
     border-radius: 10px;
-}
-
-.c1 {
-    background-color: #e3e0ff;
-    margin-right: 0;
-}
-
-.c2 {
-    background-color: #ffece5;
-    margin-right: 0;
-}
-
-.c3 {
-    background-color: #e3f9ff;
-    margin-right: 0;
-}
-
-.c4 {
-    background-color: #fff4db;
 }
 
 .searchbar {
@@ -164,11 +157,12 @@ body {
 .profile-info p {
     margin: 0;
     padding: 0 20px;
+    font-size: 1.5rem;
 }
 
 .profile-photo {
-    width: 50px;
-    height: 30px;
+    width: 80px;
+    height: 60px;
     align-self: center;
     padding-right: 20px;
 }
@@ -185,4 +179,13 @@ body {
 
 .card-body {
     text-align: center;
+}
+
+.card-data {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 1.5rem;
 }

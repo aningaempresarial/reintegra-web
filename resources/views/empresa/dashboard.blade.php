@@ -6,30 +6,30 @@
 @include('partials.profilebar')
 @section('conteudo')
 @if (!empty($data) && is_array($data))
-    <h1 class="page-title">É um prazer recebê-la, empresa <b>{{ $data['nomeEmpresa'] }}</b>!</h1>
+    <h1 class="page-title">É um prazer recebê-la, empresa <b class="name-deco">{{ $data['nomeEmpresa'] }}</b>!</h1>
     <div class="panel cards-panel">
         <div class="card c1">
             <div class="card-body">
-                <div>10</div>
-                <div>Visualizações</div>
+                <div class="card-data">10</div>
+                <div class="card-text">Visualizações</div>
             </div>
         </div>
         <div class="card c2">
             <div class="card-body">
-                <div>2</div>
-                <div>Conexões</div>
+                <div class="card-data">2</div>
+                <div class="card-text">Conexões</div>
             </div>
         </div>
         <div class="card c3">
             <div class="card-body">
-                <div>6</div>
-                <div>Publicações</div>
+                <div class="card-data">6</div>
+                <div class="card-text">Publicações</div>
             </div>
         </div>
         <div class="card c4">
             <div class="card-body">
-                <div>13</div>
-                <div>Inscritos</div>
+                <div class="card-data">13</div>
+                <div class="card-text">Inscritos</div>
             </div>
         </div>
     </div>
@@ -48,16 +48,16 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Visualizações:</td>
-                                        <td>5</td>
+                                        <td class="table-text">Visualizações:</td>
+                                        <td class="table-text">5</td>
                                     </tr>
                                     <tr>
-                                        <td>Curtidas:</td>
-                                        <td>2</td>
+                                        <td class="table-text">Curtidas:</td>
+                                        <td class="table-text">2</td>
                                     </tr>
                                     <tr>
-                                        <td>Inscrições:</td>
-                                        <td>1</td>
+                                        <td class="table-text">Inscrições:</td>
+                                        <td class="table-text">1</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -69,16 +69,16 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Quantidade de vagas:</td>
-                                        <td>6</td>
+                                        <td class="table-text">Quantidade de vagas:</td>
+                                        <td class="table-text">6</td>
                                     </tr>
                                     <tr>
-                                        <td>Nível:</td>
-                                        <td>Médio</td>
+                                        <td class="table-text">Nível:</td>
+                                        <td class="table-text">Médio</td>
                                     </tr>
                                     <tr>
-                                        <td>Habilidades desejadas:</td>
-                                        <td>Comunicação</td>
+                                        <td class="table-text">Habilidades desejadas:</td>
+                                        <td class="table-text">Comunicação</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -87,20 +87,68 @@
                 </div>
                 <div class="row">
                     <div class="panel">
-                        <h1 class="page-subtitle">Minhas publicações</h1>
+                        <div class="title-notificacao">
+                            <h1 class="page-subtitle">Minhas últimas postagens</h1>
+                            <a href="#" class="button-viewmore">Ver mais</a>
+                        </div>
+                        <div class="posts-panel">
+                            <div class="card card-post mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4 card-post-img">
+                                        <img src="{{ asset('images/postagem-pic.png') }}" class="img-fluid rounded-start">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-post-body">
+                                            <h5 class="card-post-title">Curso de datilografia</h5>
+                                            <p class="card-post-text">Uma pequena descrição sobre a publicação.</p>
+                                            <p class="card-post-text"><small class="text-body-secondary">12
+                                                    visualizações</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-post mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4 card-post-img">
+                                        <img src="{{ asset('images/postagem-pic.png') }}" class="img-fluid rounded-start">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-post-body">
+                                            <h5 class="card-post-title">Curso de datilografia</h5>
+                                            <p class="card-post-text">Uma pequena descrição sobre a publicação.</p>
+                                            <p class="card-post-text"><small class="text-body-secondary">12
+                                                    visualizações</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div style="margin-left: 30px" class="col-4">
                 <div class="row">
                     <div class="panel">
-                        <h1 class="page-subtitle">Notificações</h1>
+                        <div class="title-notificacao">
+                            <h1 class="page-subtitle">Notificações</h1>
+                            <a href="#" class="button-viewmore">Ver mais</a>
+                        </div>
                         <ul class="list-group list-notificacao">
-                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
-                            <li class="list-group-item list-group-item-action"><img src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span></li>
+                            <li class="list-group-item list-group-item-action"><img
+                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
+                            </li>
+                            <li class="list-group-item list-group-item-action"><img
+                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
+                            </li>
+                            <li class="list-group-item list-group-item-action"><img
+                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
+                            </li>
+                            <li class="list-group-item list-group-item-action"><img
+                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
+                            </li>
+                            <li class="list-group-item list-group-item-action"><img
+                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
+                            </li>
                         </ul>
                     </div>
                 </div>

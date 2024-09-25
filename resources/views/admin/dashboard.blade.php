@@ -9,26 +9,26 @@
 <div class="panel cards-panel">
     <div class="card c1">
         <div class="card-body">
-            <div>830</div>
-            <div>Usuários</div>
+            <div class="card-data">830</div>
+            <div class="card-text">Usuários</div>
         </div>
     </div>
     <div class="card c2">
         <div class="card-body">
-            <div>47</div>
-            <div>Empresa</div>
+            <div class="card-data">47</div>
+            <div class="card-text">Empresa</div>
         </div>
     </div>
     <div class="card c3">
         <div class="card-body">
-            <div>403</div>
-            <div>Vagas de emprego</div>
+            <div class="card-data">403</div>
+            <div class="card-text">Vagas de emprego</div>
         </div>
     </div>
     <div class="card c4">
         <div class="card-body">
-            <div>521</div>
-            <div>ONGs</div>
+            <div class="card-data">521</div>
+            <div class="card-text">ONGs</div>
         </div>
     </div>
 </div>
