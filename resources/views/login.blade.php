@@ -21,7 +21,7 @@
             </div>
             <div class="col-md">
 
-                <div class="step">
+                <div class="step active">
                     <form action="/login-usuario" method="POST" enctype="multipart/form-data">
                         @csrf
                         <h2 class="title">Entrar na sua conta</h2>
@@ -135,7 +135,7 @@
                 </div>
 
 
-                <div class="step active">
+                <div class="step">
                     <form>
                         <div class="div-title-icon">
                             <div class="voltar-icon-div"><img class="voltar-icon" id="voltar" src="{{ asset('icons/voltar.png') }}"></div>
