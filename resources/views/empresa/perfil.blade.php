@@ -31,26 +31,32 @@
                 </div>
             </div>
             <h2>{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</h2>
-            <h6 class="endereco-perfil">{{ $data['enderecos'][0]['bairroEnderecoEmpresa'] }} - {{ $data['enderecos'][0]['estadoEnderecoEmpresa'] }}</h6>
+            <h6 class="endereco-perfil">{{ $data['enderecos'][0]['cidadeEnderecoEmpresa'] }} - {{ $data['enderecos'][0]['bairroEnderecoEmpresa'] }}</h6>
 
             <ul>
                 <li>
-                    <p>Indústria</p>
+                    <p>{{ $usuario['nomeAreaAtuacao'] }}</p>
                 </li>
             </ul>
 
             <p class="descricaoPerfil">
-                <span class="short-text">
-                    {!! nl2br(e(Str::limit($usuario['descricaoPerfil'], 180))) !!}
-                </span>
-                <span class="full-text" style="display: none;">
-                    {!! nl2br(e($usuario['descricaoPerfil'])) !!}
-                </span>
-                @if (strlen($usuario['descricaoPerfil']) > 100)
-                    <a href="javascript:void(0);" class="ver-tudo">Ver tudo</a>
+                    <span class="short-text">
+                        {!! nl2br(e(Str::limit($usuario['descricaoPerfil'], 180))) !!}
+                    </span>
+                    <span class="full-text" style="display: none;">
+                        {!! nl2br(e($usuario['descricaoPerfil'])) !!}
+                    </span>
+                    @if (strlen($usuario['descricaoPerfil']) > 100)
+                        <a href="javascript:void(0);" class="ver-tudo">Ver tudo</a>
+                    @endif
+
+                @if (isset($usuario['descricaoPerfil']))
+                    <img class="img-editar" src="{{ asset('icons/edit.png') }}" data-bs-toggle="modal" data-bs-target="#editDescriptionModal">
+                @else
+                    <div class="desc-empresa" id="desc-empresa" data-bs-toggle="modal" data-bs-target="#editDescriptionModal">Adicionar descrição da empresa.</div>
                 @endif
 
-                <img class="img-editar" src="{{ asset('icons/edit.png') }}" data-bs-toggle="modal" data-bs-target="#editDescriptionModal">
+
             </p>
 
 
@@ -69,8 +75,6 @@
             <h5>Publicações</h5>
         </div>
     </div>
-
-
 
     @include('modals.image-cropper', ['modalId' => 'imageCropperModalBanner', 'title' => 'Cortar Imagem do Banner', 'inputId' => 'imageInputBanner', 'previewId' => 'imagePreviewBanner', 'cropButtonId' => 'cropButtonBanner', 'imageId' => 'bannerImage', 'aspectRatio' => '4.5 / 1', 'canvasWidth' => 1800, 'canvasHeight' => 400])
     @include('modals.image-cropper', ['modalId' => 'imageCropperFotoPerfil', 'title' => 'Cortar Imagem do Perfil', 'inputId' => 'imageInputPerfil', 'previewId' => 'imagePreviewPerfil', 'cropButtonId' => 'cropButtonPerfil', 'imageId' => 'perfilImage', 'aspectRatio' => '1 / 1', 'canvasWidth' => 500, 'canvasHeight' => 500])
@@ -283,12 +287,30 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var map = L.map('map').setView([-23.5489, -46.6388], 13);
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const enderecos = {!! json_encode($usuario['enderecos']) !!};
+
+        var map = L.map('map').setView([enderecos[0].latitudeEnderecoEmpresa, enderecos[0].longitudeEnderecoEmpresa], 13);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
+
+        function adicionarMarcadores(enderecos) {
+            enderecos.forEach((endereco) => {
+                console.log(endereco)
+                L.marker([endereco.latitudeEnderecoEmpresa, endereco.longitudeEnderecoEmpresa])
+                    .addTo(map)
+                    .bindPopup(
+                        `<b>${endereco.logradouroEnderecoEmpresa}, ${endereco.numEnderecoEmpresa}</b><br>` +
+                        `${endereco.bairroEnderecoEmpresa}, ${endereco.cidadeEnderecoEmpresa} - ${endereco.estadoEnderecoEmpresa}`
+                    );
+            });
+        }
+
+
+        adicionarMarcadores(enderecos);
     })
 </script>
 

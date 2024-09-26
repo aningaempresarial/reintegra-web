@@ -21,5 +21,8 @@
         <!-- Footer -->
         @include('partials.footer-dashboard')
         <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+
+
+        @yield('footer')
     </body>
 </html>

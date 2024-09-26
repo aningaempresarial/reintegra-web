@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/atualizar-endereco-empresa/' . $data['usuario']) }}" method="POST">
+                <form action="{{ url('/atualizar-endereco-empresa/' . $usuario['usuario']) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <input name="id" type="hidden">
@@ -53,6 +53,12 @@
                                     <option value="TO">TO</option>
                                 </select>
                             </div>
+
+
+                            <label class="form-label">Cidade</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="cidade" name="cidade">
+                            </div>
                         </div>
                         <div class="col">
                             <label class="form-label">Logradouro</label>
@@ -62,6 +68,11 @@
                             <label class="form-label">Bairro</label>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="bairro" name="bairro">
+                            </div>
+
+                            <label class="form-label">Complemento</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="complemento" name="complemento">
                             </div>
                             <label class="form-label special-label">Conclua:</label>
                             <button type="submit" class="btn btn-light btn-update">Atualizar</button>

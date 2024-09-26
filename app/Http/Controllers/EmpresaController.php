@@ -16,7 +16,7 @@ class EmpresaController extends Controller
         $user = session("usuario");
 
         if (!$user) {
-            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+            return redirect('/login')->with('error', 'Usuário não autenticado.');
         }
 
         $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
@@ -30,18 +30,26 @@ class EmpresaController extends Controller
 
             else if (request()->routeIs('empresa-config')) {
 
-
-                $resposta = Http::get(env('EXTERNAL_API_URL') . '/user/info/' . $user);
+                $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
 
                 if ($resposta->successful()) {
-                    return view('empresa.config', ['data' => $data, 'usuario' => $resposta['usuario'], 'email' => $resposta['emailUsuario']]);
+
+                    $resposta_areas = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/empresa/area-atuacao/get');
+
+                    if ($resposta_areas->successful()) {
+                        $areas = $resposta_areas->json();
+
+                        return view('empresa.config', ['data' => $data, 'usuario' => $resposta->json(), 'email' => $resposta->json()['emailUsuario'], 'API_URL' => env('EXTERNAL_API_URL'), 'areas' => $areas]);
+                    } else {
+                        return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
+                    }
                 } else {
                     return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
                 }
             }
             else if (request()->routeIs('empresa-perfil')) {
 
-                $resposta = Http::get(env('EXTERNAL_API_URL') . '/user/info/' . $user);
+                $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
 
                 if ($resposta->successful()) {
                     return view('empresa.perfil', ['data' => $data, 'usuario' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL')]);
@@ -179,8 +187,10 @@ class EmpresaController extends Controller
             'logradouro' => $request->input('logradouro'),
             'numero' => $request->input('num'),
             'cep' => $request->input('cep'),
+            'cidade' => $request->input('cidade'),
             'bairro' => $request->input('bairro'),
             'estado' => $request->input('estado'),
+            'complemento' => $request->input('complemento'),
         ];
 
         $resposta = Http::asMultipart()->put(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);
@@ -206,7 +216,9 @@ class EmpresaController extends Controller
             'numero' => $request->input('num'),
             'cep' => $request->input('cep'),
             'bairro' => $request->input('bairro'),
+            'cidade' => $request->input('cidade'),
             'estado' => $request->input('estado'),
+            'complemento' => $request->input('complemento'),
         ];
 
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $user, $dadosEndereco);

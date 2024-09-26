@@ -24,6 +24,7 @@ function consultarCepEmModal(input) {
     const logradouroInput = modalBody.querySelector('#logradouro');
     const bairroInput = modalBody.querySelector('#bairro');
     const ufSelect = modalBody.querySelector('#uf');
+    const cidadeSelect = modalBody.querySelector('#cidade');
 
     const cep = input.value.replace(/\D/g, '');
 
@@ -35,6 +36,7 @@ function consultarCepEmModal(input) {
                     logradouroInput.value = data.logradouro;
                     bairroInput.value = data.bairro;
                     ufSelect.value = data.uf;
+                    cidadeSelect.value = data.localidade;
                 } else {
                     alert("CEP não encontrado.");
                 }

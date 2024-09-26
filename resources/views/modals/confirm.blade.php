@@ -8,8 +8,8 @@
       <div class="modal-body" id="confirmModalBody">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" id="confirmCancelButton"></button>
-        <button type="button" class="btn btn-success" id="confirmOkButton"></button>
+        <button type="button" class="btn btn-secondary" id="confirmCancelButton"></button>
+        <button type="button" class="btn btn-primary" id="confirmOkButton"></button>
       </div>
     </div>
   </div>

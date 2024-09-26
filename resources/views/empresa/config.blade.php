@@ -3,6 +3,8 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard-empresa.css') }}">
 @endsection
+
+@include('modals.alerta')
 @section('conteudo')
     @include('partials.searchbar')
     <h1 class="page-title">Opções de configuração</h1>
@@ -27,21 +29,24 @@
 <script src="{{ asset('js/editar-endereco.js') }}"></script>
 @endsection
 
-@if ($errors->any())
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <ul style="list-style: none; margin: 0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
+@section('footer')
+
 
 <script>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            showAlert('ERRO','{{ $error }}');
+        @endforeach
+    @endif
+
+
     @if (session('success'))
-        alert('{{ session('success') }}');
+        showAlert('AVISO','{{ session('success') }}');
     @endif
 </script>
+
+@endsection
+
+
 
 @include('admin.users.create')

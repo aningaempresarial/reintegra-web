@@ -6,20 +6,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/atualizar-empresa/' . $data['usuario']) }}" method="POST">
+                <form action="{{ url('/atualizar-empresa/' . $usuario['usuario']) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <label class="form-label">Nome da empresa</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" value="{{ $data['nomeEmpresa'] }}" name="nome">
+                        <input type="text" class="form-control" value="{{ $usuario['nomeEmpresa'] }}" name="nome">
                     </div>
                     <label class="form-label">E-mail público</label>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" value="{{ $data['emailEmpresaContato'] }}"
+                        <input type="email" class="form-control" value="{{ $usuario['emailEmpresaContato'] }}"
                             name="email">
                     </div>
                     <label class="form-label">Endereços</label>
-                    @foreach ($data['enderecos'] as $item)
+                    @foreach ($usuario['enderecos'] as $item)
                         <div class="input-group mb-3">
                             <input type="text" class="form-control"
                                 value="{{ $item['logradouroEnderecoEmpresa'] }}, {{ $item['numEnderecoEmpresa'] }}, {{ $item['bairroEnderecoEmpresa'] }}, {{ $item['estadoEnderecoEmpresa'] }}"
@@ -29,7 +29,9 @@
                                 data-num="{{ $item['numEnderecoEmpresa'] }}"
                                 data-estado="{{ $item['estadoEnderecoEmpresa'] }}"
                                 data-logradouro="{{ $item['logradouroEnderecoEmpresa'] }}"
-                                data-bairro="{{ $item['bairroEnderecoEmpresa'] }}">Editar</a>
+                                data-bairro="{{ $item['bairroEnderecoEmpresa'] }}"
+                                data-cidade="{{ $item['cidadeEnderecoEmpresa'] }}"
+                                data-complemento="{{ $item['complementoEnderecoEmpresa'] }}">Editar</a>
                         </div>
                     @endforeach
                     <a style="display: block; width: fit-content; margin-bottom: 16px" class="btn btn-light"

@@ -22,7 +22,7 @@
             </div>
             <div class="col-md">
 
-                <div class="step">
+                <div class="step active">
                     <form action="/login-usuario" method="POST" enctype="multipart/form-data">
                         @csrf
                         <h2 class="title">Entrar na sua conta</h2>
@@ -313,7 +313,7 @@
                         </div>
 
                         <div class="form-input form-input-button">
-                            <button value="Próxima Etapa" class="btn btn-form solid" id="proximaEtapa" disabled>Próxima Etapa</button>
+                            <button type="button" value="Próxima Etapa" class="btn btn-form solid" id="proximaEtapa" disabled>Próxima Etapa</button>
                         </div>
 
 
@@ -322,7 +322,7 @@
                     </form>
                 </div>
 
-                <div class="step active">
+                <div class="step">
                     <form action="/login-usuario" method="POST" enctype="multipart/form-data">
                         @csrf
 
@@ -338,10 +338,10 @@
 
 
                         <div class="form-input form-input-button">
-                            <button value="Próxima Etapa" class="btn btn-form solid" id="finalizarCadastro">Finalizar</button>
+                            <button type="button" value="Próxima Etapa" class="btn btn-form solid" id="finalizarCadastro">Finalizar</button>
                         </div>
 
-                        <p class="new-account-text"><span class="destaque" id="btn-next">Deixar isso para depois.</span></p>
+                        <button type="button" class="new-account-text" style="background-color: transparent"><span class="destaque" id="btn-depois" >Deixar isso para depois.</span></button>
                     </form>
 
                 </div>
@@ -356,11 +356,93 @@
 
 
 
+<script src="{{ asset('js/axios.min.js') }}"></script>
 <script src="{{ asset('js/login.js') }}"></script>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
 <script src="{{ asset('js/virtual-select.js') }}"></script>
 <script src="{{ asset('js/cropper.min.js') }}"></script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    function imageToBlob(imageElement) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.src = imageElement;
+
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+
+                canvas.toBlob(function(blob) {
+                    if (blob) {
+                        resolve(blob);
+                    } else {
+                        reject(new Error('Conversion to Blob failed'));
+                    }
+                }, 'image/jpg');
+            };
+
+            img.onerror = function() {
+                reject(new Error('Image load error'));
+            };
+        });
+    }
+
+    function mensagemFim() {
+        currentStep = 0;
+        showStep(currentStep);
+
+        setTimeout(() => {
+            showAlert('Sucesso!', 'Informações salvas com sucesso! Agora é só fazer o login (entrar na sua conta) e bola para frente! 😎');
+        }, 1000)
+    }
+
+    async function sendImage() {
+        const formData = new FormData();
+
+        try {
+            const fotoBlob = await imageToBlob(document.getElementById('perfilImage').src);
+
+            formData.append('foto', fotoBlob, 'foto.jpg');
+
+            const response = await fetch(`{{ $API_URL }}/perfil/usuario/${usuario}`, {
+                method: 'PUT',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data) {
+                mensagemFim();
+            }
+
+        } catch (error) {
+            showAlert('Xiiii... Deu Erro!', 'Ocorreu um erro ao enviar a foto. Mas o cadastro ja foi realizado e você pode alterar a sua foto no seu perfil! Agora é só fazer o login (entrar na sua conta) e bola para frente! 😎');
+
+            currentStep = 0;
+            setTimeout(() => {
+                showStep(currentStep);
+            }, 1000)
+        }
+    }
+
+    document.getElementById('finalizarCadastro').addEventListener('click', () => {
+        sendImage();
+    })
+
+    document.getElementById('btn-depois').addEventListener('click', () => {
+        mensagemFim();
+    })
+})
+
+</script>
 @endsection
 
 

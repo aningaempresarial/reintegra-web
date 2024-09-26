@@ -1,6 +1,20 @@
 
+const steps = document.querySelectorAll('.step');
+let currentStep = 0;
+
+function showStep(step) {
+    steps.forEach((element, index) => {
+        if (index === step) {
+            element.classList.add('active');
+        } else {
+            element.classList.remove('active');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     let tipo_acesso = '';
+    let usuario = '';
 })
 
 
@@ -271,18 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-    const steps = document.querySelectorAll('.step');
-    let currentStep = 0;
-
-    function showStep(step) {
-        steps.forEach((element, index) => {
-            if (index === step) {
-                element.classList.add('active');
-            } else {
-                element.classList.remove('active');
-            }
-        });
-    }
 
     document.getElementById('btn-next').addEventListener('click', function () {
         currentStep = 1;
@@ -324,9 +326,62 @@ document.addEventListener('DOMContentLoaded', () => {
         tipo_acesso = 'ong';
     });
 
-    document.getElementById('proximaEtapa').addEventListener('click', () => {
+    async function criarUsuario() {
 
+        if (tipo_acesso === 'empresa') {
+            const dados = {
+                nome: document.getElementById('nomeEmpresa').value,
+                email: document.getElementById('emailEmpresa').value,
+                cnpj: document.getElementById('cnpjEmpresa').value,
+                atuacao: document.getElementById('areaAtuacao').value,
+                senha: document.getElementById('senhaEmpresa').value,
+                logradouro: document.getElementById('logradouro').value,
+                numero: document.getElementById('numero').value,
+                complemento: document.getElementById('complemento').value,
+                cep: document.getElementById('cep').value,
+                bairro: document.getElementById('bairro').value,
+                cidade: document.getElementById('cidade').value,
+                estado: document.getElementById('estado').value,
+                telefone: document.getElementById('telefone').value,
+            };
 
+            axios.post('/api/empresa/criar', dados)
+            .then(res => {
+                const perfilImagem = document.getElementById('perfilImage');
+                perfilImagem.src = res.data.foto_usuario;
+                usuario = res.data.usuario;
+                currentStep = 5;
+                showStep(currentStep);
+            })
+        } else {
+            const dados = {
+                nome: document.getElementById('nomeOng').value,
+                email: document.getElementById('emailOng').value,
+                cnpj: document.getElementById('cnpjOng').value,
+                senha: document.getElementById('senhaOng').value,
+                logradouro: document.getElementById('logradouro').value,
+                numero: document.getElementById('numero').value,
+                complemento: document.getElementById('complemento').value,
+                cep: document.getElementById('cep').value,
+                bairro: document.getElementById('bairro').value,
+                cidade: document.getElementById('cidade').value,
+                estado: document.getElementById('estado').value,
+                telefone: document.getElementById('telefone').value,
+            };
+
+            axios.post('/api/ong/criar', dados)
+            .then(res => {
+                const perfilImagem = document.getElementById('perfilImage');
+                perfilImagem.src = res.data.foto_usuario;
+                usuario = res.data.usuario;
+                currentStep = 5;
+                showStep(currentStep);
+            })
+        }
+
+    }
+
+    async function confirmData() {
         let mensagem = '';
 
         if (tipo_acesso === 'empresa') {
@@ -360,9 +415,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mensagem += '<p>Você pode CONFIRMAR ou REVISAR. Confirmando, você aceita os nossos <a href="#" class="termo-servico">Termos de Serviço</a>.</p>'
 
+        const res = await showConfirm('ATENÇÃO! Revise os seus dados!', mensagem, 'Confirmar', 'Revisar');
 
-        showConfirm('ATENÇÃO! Revise os seus dados!', mensagem, 'Confirmar', 'Revisar');
+        if (res) {
+            criarUsuario();
+        }
+    }
 
+    document.getElementById('proximaEtapa').addEventListener('click', () => {
+        confirmData();
     })
 
 
@@ -443,3 +504,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCropper('imageCropperFotoPerfil', 'imageInputPerfil', 'imagePreviewPerfil', 'cropButtonPerfil', '#perfilImage', 'perfil');
 
 });
+
+

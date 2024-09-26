@@ -6,10 +6,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/cadastrar-endereco-empresa/' . $data['usuario']) }}" method="POST">
+                <form action="{{ url('/cadastrar-endereco-empresa/' . $usuario['usuario']) }}" method="POST">
                     @csrf
                     @method('POST')
-                    <input type="hidden" name="id" value="{{$data['idEmpresa']}}">
+                    <input type="hidden" name="id" value="{{$usuario['idEmpresa']}}">
                     <div class="row">
                         <div class="col">
                             <label class="form-label">CEP</label>
@@ -53,16 +53,29 @@
                                     <option value="TO">TO</option>
                                 </select>
                             </div>
+
+                            <label class="form-label">Complemento</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="complemento" name="complemento">
+                            </div>
+
                         </div>
                         <div class="col">
                             <label class="form-label">Logradouro</label>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="logradouro" name="logradouro">
                             </div>
+
                             <label class="form-label">Bairro</label>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="bairro" name="bairro">
                             </div>
+
+                            <label class="form-label">Cidade</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="cidade" name="cidade">
+                            </div>
+
                             <label class="form-label special-label">Conclua:</label>
                             <button type="submit" class="btn btn-light btn-update">Enviar</button>
                         </div>

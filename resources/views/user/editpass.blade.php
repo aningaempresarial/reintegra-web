@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form action="/usuario/atualizar-senha" method="POST">
                     @csrf
-                    <input type="hidden" value="{{$usuario ?? 'meunick'}}" name="usuario"/>
+                    <input type="hidden" value="{{$usuario['usuario'] ?? 'meunick'}}" name="usuario"/>
                     <label class="form-label">Nova Senha</label>
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" name="new_senha">

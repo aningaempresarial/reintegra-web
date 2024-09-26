@@ -16,7 +16,7 @@ class LoginController extends Controller
         if ($resposta->successful()) {
             $res = $resposta->json();
 
-            return view('login', ['areas' => $res['areas'], 'estados' => ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MS', 'MT', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']]);
+            return view('login', ['areas' => $res['areas'], 'estados' => ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MS', 'MT', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], 'API_URL' => env('EXTERNAL_API_URL')]);
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'O "Reintegra" está em manutenção. Volte mais tarde!']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
@@ -62,6 +62,103 @@ class LoginController extends Controller
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Usuário ou senha incorretos. Máximo de tentativas 3.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
+
+
+
+    public function createEmpresa(Request $request) {
+
+        $dados = [
+            'nome' => $request->input('nome'),
+            'cnpj' => $request->input('cnpj'),
+            'email' => $request->input('email'),
+            'atuacao' => $request->input('atuacao'),
+            'senha' => $request->input('senha'),
+        ];
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa', $dados);
+
+
+        if ($resposta->successful()) {
+            $res = $resposta->json();
+
+            $usuario = $res['usuario'];
+            $perfil_id = $res['perfil'];
+            $foto_usuario = env('EXTERNAL_API_URL') . '/public/profiles/'. $perfil_id .'/foto.jpg';
+            $mensagem = $res['mensagem'];
+
+
+            $dados_residenciais = [
+                'logradouro' => $request->input('logradouro'),
+                'numero' => $request->input('numero'),
+                'complemento' => $request->input('complemento'),
+                'cep' => $request->input('cep'),
+                'bairro' => $request->input('bairro'),
+                'cidade' => $request->input('cidade'),
+                'estado' => $request->input('estado')
+            ];
+
+            $resposta_endereco = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/endereco/' . $usuario, $dados_residenciais);
+
+
+            $dados_telefonicos = [
+                'numero' => $request->input('telefone'),
+                'visibilidade' => 'false',
+            ];
+
+            $resposta_telefone = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/empresa/telefone/' . $usuario, $dados_telefonicos);
+
+            return response()->json(['foto_usuario' => $foto_usuario, 'usuario' => $usuario]);
+        } else {
+            return response()->json(['error' => 'Aconteceu um erro inesperado. Tente novamente mais tarde!'], $resposta->status());
+        }
+    }
+
+    public function createOng(Request $request) {
+
+        $dados = [
+            'nome' => $request->input('nome'),
+            'cnpj' => $request->input('cnpj'),
+            'email' => $request->input('email'),
+            'senha' => $request->input('senha'),
+        ];
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/ong', $dados);
+
+
+        if ($resposta->successful()) {
+            $res = $resposta->json();
+
+            $usuario = $res['usuario'];
+            $perfil_id = $res['perfil'];
+            $foto_usuario = env('EXTERNAL_API_URL') . '/public/profiles/'. $perfil_id .'/foto.jpg';
+            $mensagem = $res['mensagem'];
+
+
+            $dados_residenciais = [
+                'logradouro' => $request->input('logradouro'),
+                'numero' => $request->input('numero'),
+                'complemento' => $request->input('complemento'),
+                'cep' => $request->input('cep'),
+                'bairro' => $request->input('bairro'),
+                'cidade' => $request->input('cidade'),
+                'estado' => $request->input('estado')
+            ];
+
+            $resposta_endereco = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/ong/endereco/' . $usuario, $dados_residenciais);
+
+
+            $dados_telefonicos = [
+                'numero' => $request->input('telefone'),
+                'visibilidade' => 'false',
+            ];
+
+            $resposta_telefone = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/ong/telefone/' . $usuario, $dados_telefonicos);
+
+            return response()->json(['foto_usuario' => $foto_usuario, 'usuario' => $usuario]);
+        } else {
+            return response()->json(['error' => 'Aconteceu um erro inesperado. Tente novamente mais tarde!'], $resposta->status());
         }
     }
 }

@@ -8,14 +8,14 @@
             <div class="modal-body">
                 <form action="/usuario/atualizar-dados" method="POST">
                     @csrf
-                    <input type="hidden" value="{{$usuario ?? 'meunick'}}" name="usuario"/>
+                    <input type="hidden" value="{{$usuario['usuario'] ?? 'meunick'}}" name="usuario"/>
                     <label class="form-label">Usuário</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="new_usuario" value="{{ $usuario ?? 'meunick' }}">
+                        <input type="text" class="form-control" name="new_usuario" value="{{ $usuario['usuario'] ?? 'meunick' }}">
                     </div>
                     <label class="form-label">E-mail</label>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="new_email" value="{{ $email ?? 'meuemail@email.com' }}">
+                        <input type="email" class="form-control" name="new_email" value="{{ $usuario['emailUsuario'] ?? 'meuemail@email.com' }}">
                     </div>
                     <label class="form-label">Senha Atual</label>
                     <div class="input-group mb-3">
