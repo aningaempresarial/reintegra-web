@@ -44,4 +44,7 @@ var swiper = new Swiper('.swiper-container', {
             spaceBetween: 50,
         },
     },
+    autoplay: {
+        delay: 2500,
+    },
 });
