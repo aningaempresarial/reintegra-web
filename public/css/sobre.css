@@ -1,5 +1,4 @@
 .sobre {
-    height: 100vh;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -13,7 +12,7 @@
 .box h1 {
     font-size: 2.3rem;
     font-weight: bold;
-    color: #fc573b;
+    color: #ff914d;
     letter-spacing: 1px;
 }
 
@@ -23,17 +22,17 @@
     text-align: justify;
 }
 
-.btn-sobre { 
+.btn-sobre {
     padding: 12px 16px;
-    background: #fc573b;
+    background: #ff914d;
+    border: white 1px solid;
     color: white;
-    border: none;
     border-radius: 2px;
     cursor: pointer;
 }
 
 .btn-sobre:hover {
-    background-color: #fc573b;
+    background-color: #ff914d;
     color: white;
     border: #fc573b 1px solid;
 }
@@ -44,5 +43,5 @@
 
 .box1 video {
     width: 90%;
-    border: 5px solid #fc573b;
+    border: 5px solid #ff914d;
 }

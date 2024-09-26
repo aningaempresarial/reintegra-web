@@ -43,7 +43,7 @@
 
     <p>A Reintegra nasceu com o propósito de <b>oferecer uma segunda chance</b> para aqueles que cumpriram sua pena e desejam reconstruir suas vidas. Acreditamos que a tecnologia pode ser uma poderosa ferramenta para facilitar a reinserção social, profissional e emocional de ex-presidiários, ajudando-os a <b>quebrar o ciclo de reincidência</b>.</p>
     <p>Nosso compromisso é criar oportunidades através de capacitação, suporte psicológico, e conexão com empresas e ONGs. <b>Saiba mais</b> sobre nossa jornada e como estamos impactando a sociedade.</p>
-    <p><a class="more-destaque link" href="">Conhecer mais sobre Reintegra!</a></p>
+    <p><a class="more-destaque link" href="/sobre">Conhecer mais sobre Reintegra!</a></p>
 
 </section>
 
@@ -139,57 +139,79 @@
     </div>
 </section>
 
-
 <!-- Seção de destaques -->
-<section class="destaques container">
-    <h1 class="destaques-title">Destaques</h1>
-    <p class="more-destaque link">Ver mais iniciativas</p>
+<section class="destaques container" id="destaques">
+
+    <div class="destaques-header">
+        <div class="title">
+            <h1 class="destaques-title">Destaques</h1>
+            <p class="more-destaque link">Ver mais iniciativas</p>
+        </div>
+        <div class="setas">
+            <img class="prev" src="{{ asset('icons/seta_esquerda.png') }}" alt="">
+            <img class="next" src="{{ asset('icons/seta_direita.png') }}" alt="">
+        </div>
+    </div>
+
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="card">
-                    <img src="{{ asset('images/d1.jpg') }}" class="card-img-top">
+                    <div class="card-img-div">
+                        <div class="card-img" style="background-image: url('{{ asset('images/d1.jpg') }}');"></div>
+                    </div>
                     <div class="card-body">
                         <h1 class="card-title">Dunder Mifflin</h1>
                         <p class="card-text">Fornecendo soluções de papel personalizadas e de alta qualidade.</p>
+                        <a class="btn btn-alt" href="">
+                            <p>Conhecer</p>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="card">
-                    <img src="{{ asset('images/d2.jpg') }}" class="card-img-top">
+                    <div class="card-img-div">
+                        <div class="card-img" style="background-image: url('{{ asset('images/d2.jpg') }}');"></div>
+                    </div>
                     <div class="card-body">
                         <h1 class="card-title">Inclusão Já</h1>
                         <p class="card-text">Promovendo a igualdade e a integração social através de ações transformadoras.</p>
+                        <a class="btn btn-alt" href="">
+                            <p>Conhecer</p>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="card">
-                    <img src="{{ asset('images/d3.jpg') }}" class="card-img-top">
+                    <div class="card-img-div">
+                        <div class="card-img" style="background-image: url('{{ asset('images/d3.jpg') }}');"></div>
+                    </div>
                     <div class="card-body">
                         <h1 class="card-title">Escola de Todos</h1>
                         <p class="card-text">Transformando vidas através da educação inclusiva e de qualidade.</p>
+                        <a class="btn btn-alt" href="">
+                            <p>Conhecer</p>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="card">
-                    <img src="{{ asset('images/d4.jpg') }}" class="card-img-top">
+                    <div class="card-img-div">
+                        <div class="card-img" style="background-image: url('{{ asset('images/d4.jpg') }}');"></div>
+                    </div>
                     <div class="card-body">
                         <h1 class="card-title">Vozes da liberdade</h1>
                         <p class="card-text">Defendendo a liberdade de expressão em todas as suas formas.</p>
+                        <a class="btn btn-alt" href="">
+                            <p>Conhecer</p>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Controles de navegação -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-
-        <!-- Paginação -->
-        <div class="swiper-pagination"></div>
     </div>
 </section>
 

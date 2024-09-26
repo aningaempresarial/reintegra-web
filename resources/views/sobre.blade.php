@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/sobre.css') }}">
 @endsection
 @section('conteudo')
-<section class="sobre">
+<section class="sobre py-5">
     <div class="box1">
         <video autoplay muted loop>
             <source src="{{ asset('videos/rio.mp4') }}" type="video/mp4">

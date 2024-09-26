@@ -27,12 +27,8 @@ var swiper = new Swiper('.swiper-container', {
     spaceBetween: 10,
     loop: true,
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+        nextEl: '.next',
+        prevEl: '.prev',
     },
     breakpoints: {
         640: {

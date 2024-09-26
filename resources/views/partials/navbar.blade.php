@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item {{ Request::is('/') ? 'selected-item' : '' }}">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link" href="{{ url('/') }}">Início</a>
                 </li>
                 <li class="nav-item {{ Request::is('sobre') ? 'selected-item' : '' }}">
                     <a class="nav-link" href="{{ url('/sobre') }}">Sobre nós</a>
