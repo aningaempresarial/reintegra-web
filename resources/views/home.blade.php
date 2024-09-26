@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('titulo', 'Reintegra | Home')
+@section('titulo', 'Início | Reintegra')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 <link rel="stylesheet" type="text/css"

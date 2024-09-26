@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('titulo', 'Reintegra | Login')
+@section('titulo', 'Entrar | Reintegra')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 <link rel="stylesheet" href="{{ asset('css/virtual-select.min.css') }}"/>
