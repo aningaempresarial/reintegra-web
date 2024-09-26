@@ -1,0 +1,185 @@
+body {
+    background-color: #f4f4f2;
+}
+
+.container-dashboard {
+    background-color: #f4faf2;
+}
+
+.button-config {
+    cursor: pointer;
+}
+
+.button-config:hover {
+    background-color: rgba(244, 244, 244, 0.6);
+}
+
+.special-label {
+    color: transparent;
+}
+
+.btn-update {
+    display: block !important;
+}
+
+.panel-ong {
+    background: transparent;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+.table-publicacoes {
+    width: fit-content;
+    border: 5px solid white;
+}
+
+.list-div {
+    padding-inline: 8px;
+    padding-bottom: 20px;
+}
+
+.list-div img {
+    width: 35px;
+    padding-right: 5px;
+}
+
+.list-div span {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8rem;
+    display: block;
+    padding-top: 2px;
+}
+
+.c1 {
+    background-color: #efffcb;
+    margin-right: 0;
+}
+
+.c2 {
+    background-color: #d4ffcb;
+    margin-right: 0;
+}
+
+.c3 {
+    background-color: #cbffdf;
+    margin-right: 0;
+}
+
+.c4 {
+    background-color: #cbffef;
+}
+
+.name-deco {
+    color: #226834;
+    text-transform: capitalize;
+}
+
+.table-header {
+    font-size: 1.5rem;
+}
+
+.table-text {
+    font-size: 1.5rem;
+}
+
+.list-group-item {
+    font-size: 1.5rem;
+    border: white 5px solid;
+}
+
+.list-group-item span {
+    font-size: 1.2rem;
+}
+
+.page-subtitle {
+    background-color: #e8fff1;
+}
+
+.title-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-viewmore {
+    text-decoration: none;
+    color: black;
+    align-self: center;
+    margin: 28px;
+}
+
+.posts-panel {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-post {
+    width: 50%;
+}
+
+.card-post-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-post img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    padding: 20px;
+}
+
+.card-post-body {
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-post-title, .card-post-text {
+    text-align: left;
+}
+
+.card-post-title {
+    font-size: 1.5rem;
+}
+
+.card-post-text {
+    font-size: 1.2rem;
+}
+
+.card-post-body :last-child {
+    margin-bottom: 0;
+}
+
+#my-chart {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.title-chart {
+    text-align: center !important;
+    padding-block: 10px !important;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.64);
+}
+
+.data {
+    z-index: 100 !important;
+}
+
+.pix-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-pix {
+    background-color: #226834;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 20px;
+}

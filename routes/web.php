@@ -46,6 +46,10 @@ Route::get('/teste', [EmpresaController::class, 'index']);
     return view('admin/dashboard');
 });*/
 
+Route::get('/ong/dashboard', function () {
+    return view('/ong/dashboard');
+});
+
 Route::get('/admin/dashboard', [AdminController::class, 'getData']);
 
 Route::get('/admin/users', [AdminController::class, 'getUsers']);
