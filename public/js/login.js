@@ -259,11 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 estadoInput.value = data.uf || '';
                 numeroInput.focus();
             } else {
-                alert('CEP não encontrado.');
+                showAlert('Aviso', 'CEP não encontrado. Verifique se o CEP informado está digitado corretamente.');
             }
         } catch (error) {
             console.error('Erro ao buscar CEP:', error);
-            alert('Não foi possível buscar o CEP. Tente novamente.');
+            showAlert('Aviso', 'Não foi possível buscar o CEP. Tente novamente.');
         }
     }
 
