@@ -1,5 +1,15 @@
+body {
+    background-color: #fff7f5;
+}
+
 .container-dashboard {
     background-color: #fff7f5;
+}
+
+.panel-admin {
+    background: transparent;
+    box-shadow: none;
+    margin-top: 0;
 }
 
 .icon {
@@ -66,4 +76,44 @@
 
 .name-deco {
     color: #ff3f26;
+}
+
+.title-notificacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-notificacao {
+    padding-inline: 8px;
+    padding-bottom: 20px;
+    background-color: white !important;
+    margin: 0;
+}
+
+.list-notificacao img {
+    width: 35px;
+    padding-right: 5px;
+}
+
+.list-notificacao span {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8rem;
+    display: block;
+    padding-top: 2px;
+}
+
+.button-viewmore {
+    text-decoration: none;
+    color: black;
+    align-self: center;
+    margin: 28px;
+}
+
+.title-chart {
+     text-align: center !important;
+     padding-block: 10px !important;
+     font-size: 1.3rem;
+     color: black;
+     font-weight: 500;
 }
