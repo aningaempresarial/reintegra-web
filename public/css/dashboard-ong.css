@@ -84,6 +84,7 @@ body {
 
 .list-group-item {
     font-size: 1.5rem;
+    background-color: #f7fffa;
     border: white 5px solid;
 }
 
