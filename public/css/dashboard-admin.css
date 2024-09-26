@@ -78,6 +78,10 @@ body {
     color: #ff3f26;
 }
 
+.page-subtitle {
+    background-color: #fff1e4;
+}
+
 .title-notificacao {
     display: flex;
     flex-direction: row;
@@ -114,6 +118,5 @@ body {
      text-align: center !important;
      padding-block: 10px !important;
      font-size: 1.3rem;
-     color: black;
-     font-weight: 500;
+     color: rgba(0, 0, 0, 0.64);
 }

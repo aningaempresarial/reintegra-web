@@ -35,8 +35,9 @@
 <div class="panel main-panel panel-admin">
     <div class="row">
         <div class="panel">
+            <h1 class="page-subtitle">Taxa de emprego por mês em 2024</h1>
             <div id="my-chart">
-                <table class="charts-css column show-labels show-heading">
+                <table class="charts-css column show-labels">
 
                     <caption class="title-chart">Taxa de emprego por mês em 2024</caption>
 
@@ -98,9 +99,9 @@
     <div class="row">
         <div class="col-8" style="padding-left: 0">
             <div class="panel">
+                <h1 class="page-subtitle">Crescimento dos usuários</h1>
                 <div id="my-chart">
-
-                    <table class="charts-css line show-heading multiple">
+                    <table class="charts-css line multiple">
                         <caption class="title-chart">Crescimento da base de ex-presidiários
                             e empresas cadastradas
                         </caption>
