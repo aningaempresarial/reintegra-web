@@ -395,3 +395,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const cropperConfig = {
+        perfil: { aspectRatio: 1 / 1, canvasWidth: 500, canvasHeight: 500 },
+    };
+
+    function setupCropper(modalId, inputId, previewId, cropButtonId, imageId, configKey) {
+        let cropper;
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+        const cropButton = document.getElementById(cropButtonId);
+        const image = document.querySelector(imageId);
+
+        input.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                if (cropper) {
+                    cropper.destroy();
+                }
+                cropper = new Cropper(preview, {
+                    aspectRatio: cropperConfig[configKey].aspectRatio,
+                    viewMode: 1,
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+
+        cropButton.addEventListener('click', function() {
+            const canvas = cropper.getCroppedCanvas({
+                width: cropperConfig[configKey].canvasWidth,
+                height: cropperConfig[configKey].canvasHeight,
+            });
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                image.src = url;
+                const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+                modal.hide();
+                document.getElementById('saveChangesAlert').style.display = 'block';
+            });
+        });
+    }
+
+    setupCropper('imageCropperFotoPerfil', 'imageInputPerfil', 'imagePreviewPerfil', 'cropButtonPerfil', '#perfilImage', 'perfil');
+
+});

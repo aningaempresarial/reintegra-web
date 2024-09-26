@@ -3,6 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 <link rel="stylesheet" href="{{ asset('css/virtual-select.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">
 @endsection
 
 @include('modals.alerta')
@@ -21,7 +22,7 @@
             </div>
             <div class="col-md">
 
-                <div class="step active">
+                <div class="step">
                     <form action="/login-usuario" method="POST" enctype="multipart/form-data">
                         @csrf
                         <h2 class="title">Entrar na sua conta</h2>
@@ -321,17 +322,45 @@
                     </form>
                 </div>
 
+                <div class="step active">
+                    <form action="/login-usuario" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <h2 class="title">Selecione uma foto de perfil</h2>
+                        <p>Etapa 3 de 3</p>
+
+                        <div class="image-wrapper mb-3">
+                            <img class="fotoPerfil" id="perfilImage" src="{{ asset('images/default/empresa_foto.png') }}">
+                            <div class="hover-overlay-perfil" data-bs-toggle="modal" data-bs-target="#imageCropperFotoPerfil">
+                                <img src="{{ asset('icons/cam.png') }}">
+                            </div>
+                        </div>
+
+
+                        <div class="form-input form-input-button">
+                            <button value="Próxima Etapa" class="btn btn-form solid" id="finalizarCadastro">Finalizar</button>
+                        </div>
+
+                        <p class="new-account-text"><span class="destaque" id="btn-next">Deixar isso para depois.</span></p>
+                    </form>
+
+                </div>
+
             </div>
         </div>
 
     </div>
 </section>
 
+@include('modals.image-cropper', ['modalId' => 'imageCropperFotoPerfil', 'title' => 'Cortar Imagem do Perfil', 'inputId' => 'imageInputPerfil', 'previewId' => 'imagePreviewPerfil', 'cropButtonId' => 'cropButtonPerfil', 'imageId' => 'perfilImage', 'aspectRatio' => '1 / 1', 'canvasWidth' => 500, 'canvasHeight' => 500])
+
+
 
 <script src="{{ asset('js/login.js') }}"></script>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
 <script src="{{ asset('js/virtual-select.js') }}"></script>
+<script src="{{ asset('js/cropper.min.js') }}"></script>
 @endsection
 
 
