@@ -131,7 +131,8 @@
     justify-content: center;
 }
 
-.card-post-title, .card-post-text {
+.card-post-title,
+.card-post-text {
     text-align: left;
 }
 
@@ -147,23 +148,28 @@
     margin-bottom: 0;
 }
 
-.list-contato {
-    padding-inline: 8px;
-    padding-block: 20px;
+.panel-contato {
+    height: 86vh;
 }
 
-.list-contato img {
+.list-chat {
+    padding-inline: 8px;
+    padding-block: 20px;
+    overflow-y: scroll;
+}
+
+.list-chat img {
     width: 40px;
-    padding-right: 5px;
+    padding-inline: 5px;
     border-radius: 100%;
 }
 
-.list-contato span {
+.list-chat span {
     font-size: 1.5rem;
     padding-left: 10px;
 }
 
-.list-contato .list-group-item {
+.list-chat .list-group-item {
     border: none;
     display: flex;
     flex-direction: row;
@@ -180,41 +186,55 @@
     width: fit-content;
 }
 
-.list-message-contato img {
+.list-chat img {
     width: 60px;
-}
-
-.list-message img {
-    width: 60px;
-}
-
-.message-box-contato {
-    background-color: rgb(218, 238, 255);
-    width: 100%;
-    height: 40px;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
 }
 
 .message-box {
-    background-color: rgb(216, 254, 255);
-    width: 100%;
-    height: 40px;
-    text-align: right;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    max-width: 80%;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 8px;
+    position: relative;
+    font-size: 1.3rem;
+    line-height: 1.4;
 }
 
-.rabinho-contato {
-    height: 40px;
-    width: 30px;
-    background-color: rgb(218, 238, 255);
-    border-bottom-left-radius: 100%;
+.recebido {
+    background-color: #f1f0f0;
+    color: #333;
+    align-self: flex-start;
+    border-radius: 8px 8px 8px 0;
 }
 
-.rabinho {
-    height: 40px;
-    width: 30px;
-    background-color: rgb(216, 254, 255);
-    border-bottom-right-radius: 100%;
+.recebido::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #f1f0f0;
+    border-bottom: 10px solid transparent;
+}
+
+.enviado {
+    background-color: #dcf8c6;
+    color: #333;
+    align-self: flex-end;
+    margin-left: auto;
+    border-radius: 8px 8px 0 8px;
+}
+
+.enviado::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 10px solid #dcf8c6;
+    border-bottom: 10px solid transparent;
 }
