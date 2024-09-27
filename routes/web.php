@@ -50,6 +50,10 @@ Route::get('/ong/dashboard', function () {
     return view('/ong/dashboard');
 });
 
+Route::get('/empresa/mensagens', function () {
+    return view('/empresa/chat');
+});
+
 Route::get('/admin/dashboard', [AdminController::class, 'getData']);
 
 Route::get('/admin/users', [AdminController::class, 'getUsers']);
@@ -72,9 +76,9 @@ Route::get('/empresa/perfil', [EmpresaController::class, 'index'])->name('empres
 
 Route::put('/inativar-empresa/{usuario}', [UsuarioController::class, 'desativarConta']);
 
-/*Route::get('/admin/users', function () {
+Route::get('/admin/users', function () {
     return view('admin/users/index');
-});*/
+});
 
 Route::post('/login-usuario', [LoginController::class, 'login']);
 
@@ -85,11 +89,10 @@ Route::get('/cep/{cep}', [CepController::class, 'consultarCep']);
 /* ADMIN PAINEL */
 Route::post('/admin/change', [AdminController::class, 'changeStatusUser']);
 
-
 Route::get('/admin/config', [AdminController::class, 'configData']);
-
 
 /* Alterar Usuario Dados */
 
 Route::post('/usuario/atualizar-dados', [UsuarioController::class,'updateDadosUsuario']);
+
 Route::post('/usuario/atualizar-senha', [UsuarioController::class,'updateSenhaUsuario']);

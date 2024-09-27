@@ -44,7 +44,7 @@
 
 .list-notificacao span {
     color: rgba(0, 0, 0, 0.4);
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     display: block;
     padding-top: 2px;
 }
@@ -83,10 +83,6 @@
 
 .list-group-item {
     font-size: 1.5rem;
-}
-
-.list-group-item span {
-    font-size: 1.2rem;
 }
 
 .page-subtitle {
@@ -149,4 +145,76 @@
 
 .card-post-body :last-child {
     margin-bottom: 0;
+}
+
+.list-contato {
+    padding-inline: 8px;
+    padding-block: 20px;
+}
+
+.list-contato img {
+    width: 40px;
+    padding-right: 5px;
+    border-radius: 100%;
+}
+
+.list-contato span {
+    font-size: 1.5rem;
+    padding-left: 10px;
+}
+
+.list-contato .list-group-item {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    padding: 15px;
+}
+
+.nome-contato {
+    font-size: 1.8rem;
+    margin: 20px;
+    padding: 8px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.list-message-contato img {
+    width: 60px;
+}
+
+.list-message img {
+    width: 60px;
+}
+
+.message-box-contato {
+    background-color: rgb(218, 238, 255);
+    width: 100%;
+    height: 40px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.message-box {
+    background-color: rgb(216, 254, 255);
+    width: 100%;
+    height: 40px;
+    text-align: right;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.rabinho-contato {
+    height: 40px;
+    width: 30px;
+    background-color: rgb(218, 238, 255);
+    border-bottom-left-radius: 100%;
+}
+
+.rabinho {
+    height: 40px;
+    width: 30px;
+    background-color: rgb(216, 254, 255);
+    border-bottom-right-radius: 100%;
 }
