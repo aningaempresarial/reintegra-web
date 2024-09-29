@@ -26,9 +26,7 @@ class EmpresaController extends Controller
 
             if (request()->routeIs('empresa-dashboard')) {
                 return view('empresa.dashboard', ['data' => $data, 'API_URL' => env('EXTERNAL_API_URL')]);
-            }
-
-            else if (request()->routeIs('empresa-config')) {
+            } else if (request()->routeIs('empresa-config')) {
                 $resposta_areas = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/empresa/area-atuacao/get');
 
                 if ($resposta_areas->successful()) {
@@ -38,11 +36,33 @@ class EmpresaController extends Controller
                 } else {
                     return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
                 }
-            }
-            else if (request()->routeIs('empresa-perfil')) {
+            } else if (request()->routeIs('empresa-perfil')) {
                 return view('empresa.perfil', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL')]);
             } else if (request()->routeIs('empresa-post')) {
                 return view('empresa.post', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'publicacoes' => []]);
+            } else if (request()->routeIs('empresa-mensagens')) {
+                $token = session('token');
+
+                if (!$token) {
+                    return back()->with('error', 'Token de autenticação não encontrado.');
+                }
+
+                try {
+                    $response = Http::get(env('EXTERNAL_API_URL') . '/mensagem/mensagens', [
+                        'token' => $token
+                    ]);
+
+                    if ($response->successful()) {
+                        $mensagensAgrupadas = $response->json();
+                        return view('empresa.chat', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'mensagensAgrupadas' => $mensagensAgrupadas]);
+                    } else {
+                        \Log::error('Erro ao obter mensagens: ' . $response->body());
+                        return back()->with('error', 'Erro ao obter as mensagens.');
+                    }
+                } catch (\Exception $e) {
+                    \Log::error('Erro ao conectar à API: ' . $e->getMessage());
+                    return back()->with('error', 'Erro ao conectar à API.');
+                }
             }
         } else {
             Log::error('Erro na API externa:', [

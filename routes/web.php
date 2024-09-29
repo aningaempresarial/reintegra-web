@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\MensagemController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
@@ -65,6 +66,10 @@ Route::get('/empresa/dashboard', [EmpresaController::class, 'index'])->name('emp
 Route::get('/empresa/config', [EmpresaController::class, 'index'])->name('empresa-config');
 
 Route::get('/empresa/posts', [EmpresaController::class, 'index'])->name('empresa-post');
+
+Route::get('/empresa/mensagens', [EmpresaController::class, 'index'])->name('empresa-mensagens');
+
+Route::get('/mensagens/{idUsuario}', [MensagemController::class, 'getMensagens']);
 
 Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);
 

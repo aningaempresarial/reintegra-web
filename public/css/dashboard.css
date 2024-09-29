@@ -141,6 +141,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin-inline: -30px;
+    padding-block: 10px;
 }
 
 .search-input {

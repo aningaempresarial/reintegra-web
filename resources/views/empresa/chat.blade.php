@@ -10,15 +10,15 @@
         <div class="col-4">
             <div class="panel panel-contato">
                 <ul class="list-group list-chat list-contato">
-                    <li class="list-group-item list-group-item-action">
-                        <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}"><span>Fulano</span>
-                    </li>
-                    <li class="list-group-item list-group-item-action">
-                        <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}"><span>Fulano</span>
-                    </li>
-                    <li class="list-group-item list-group-item-action">
-                        <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}"><span>Fulano</span>
-                    </li>
+                    @forelse ($mensagensAgrupadas as $contato)
+                        <li class="list-group-item list-group-item-action" data-id="{{ $contato['usuario'] }}"
+                            onclick="carregarMensagens(this)">
+                            <img style="border-radius: 100%"
+                                src="{{ asset('images/image-icon.png') }}"><span class="nomeContatoLista">{{ $contato['nomeUsuario'] }}</span>
+                        </li>
+                    @empty
+                        <p>Nada para mostrar</p>
+                    @endforelse
                 </ul>
             </div>
         </div>
@@ -29,12 +29,12 @@
                     <li class="list-group-item">
                         <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}">
                         <div class="message-box recebido">
-                        abcde
+                            abcde
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="message-box enviado">
-                        a
+                            a
                         </div>
                         <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}">
                     </li>
@@ -44,3 +44,5 @@
     </div>
 </div>
 @endsection
+
+<script src="{{ asset('js/mensagens.js') }}"></script>
