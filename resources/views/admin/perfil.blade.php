@@ -1,4 +1,4 @@
-@extends('layouts.layout-empresa')
+@extends('layouts.layout-admin')
 @section('titulo', 'Perfil | Reintegra')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard-empresa.css') }}">
@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}">
 <link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">
 @endsection
+
 
 @include('partials.profilebar')
 @section('conteudo')
@@ -18,58 +19,48 @@
         <div class="profile">
             <div class="topProfile">
                 <div class="image-wrapper">
-                    <img class="bannerPerfil" id="bannerImage" src="{{ $API_URL . $usuario['bannerPerfil'] }}">
+                    <img class="bannerPerfil" id="bannerImage" src="{{ $API_URL . $data['bannerPerfil'] }}">
                     <div class="hover-overlay" data-bs-toggle="modal" data-bs-target="#imageCropperModalBanner">
                         <img src="{{ asset('icons/cam.png') }}">
                     </div>
                 </div>
 
                 <div class="image-wrapper-absolute">
-                    <img class="fotoPerfil" id="perfilImage" src="{{ $API_URL . $usuario['fotoPerfil'] }}">
+                    <img class="fotoPerfil" id="perfilImage" src="{{ $API_URL . $data['fotoPerfil'] }}">
                     <div class="hover-overlay-perfil" data-bs-toggle="modal" data-bs-target="#imageCropperFotoPerfil">
                         <img src="{{ asset('icons/cam.png') }}">
                     </div>
                 </div>
             </div>
-            <h2>{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</h2>
-            <h6 class="endereco-perfil">{{ $data['enderecos'][0]['cidadeEnderecoEmpresa'] }} - {{ $data['enderecos'][0]['bairroEnderecoEmpresa'] }}</h6>
+            <h2>{{ $data['nomeAdmin'] ?? $nome ?? 'Martha' }}</h2>
 
-            <ul>
-                <li>
-                    <p>{{ $usuario['nomeAreaAtuacao'] }}</p>
-                </li>
-            </ul>
 
             <p class="descricaoPerfil">
                     <span class="short-text">
-                        {!! nl2br(e(Str::limit($usuario['descricaoPerfil'], 180))) !!}
+                        {!! nl2br(e(Str::limit($data['descricaoPerfil'], 180))) !!}
                     </span>
                     <span class="full-text" style="display: none;">
-                        {!! nl2br(e($usuario['descricaoPerfil'])) !!}
+                        {!! nl2br(e($data['descricaoPerfil'])) !!}
                     </span>
-                    @if (strlen($usuario['descricaoPerfil']) > 100)
+                    @if (strlen($data['descricaoPerfil']) > 100)
                         <a href="javascript:void(0);" class="ver-tudo">Ver tudo</a>
                     @endif
 
-                @if (isset($usuario['descricaoPerfil']))
+                @if (isset($data['descricaoPerfil']))
                     <img class="img-editar" src="{{ asset('icons/edit.png') }}" data-bs-toggle="modal" data-bs-target="#editDescriptionModal">
                 @else
-                    <div class="desc-empresa" id="desc-empresa" data-bs-toggle="modal" data-bs-target="#editDescriptionModal">Adicionar descrição da empresa.</div>
+                    <div class="desc-empresa" id="desc-empresa" data-bs-toggle="modal" data-bs-target="#editDescriptionModal">Adicionar descrição do perfil.</div>
                 @endif
 
 
             </p>
-
-
-            <h4>Encontre "{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha'  }}":</h4>
-
-            <div class="map" id="map"></div>
 
             <div id="saveChangesAlert" class="save-changes-alert" style="display: none;">
                 <p>Você têm alterações pendentes. Deseja salvar as mudanças?</p>
                 <button id="saveChangesButton" class="btn btn-success">Salvar</button>
                 <button id="discardChangesButton" class="btn btn-danger">Descartar</button>
             </div>
+
         </div>
 
         <div class="publicacoes">
@@ -88,7 +79,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <textarea id="editDescricao" rows="15" maxlength="1000" class="form-control">{{ $usuario['descricaoPerfil'] }}</textarea>
+                    <textarea id="editDescricao" rows="15" maxlength="1000" class="form-control">{{ $data['descricaoPerfil'] }}</textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -168,7 +159,7 @@
             formData.append('banner', bannerBlob, 'banner.jpg');
             formData.append('foto', fotoBlob, 'foto.jpg');
 
-            const response = await fetch('{{ $API_URL }}/perfil/usuario/{{ $usuario['usuario'] }}', {
+            const response = await fetch('{{ $API_URL }}/perfil/usuario/{{ $data['usuario'] }}', {
                 method: 'PUT',
                 body: formData
             });
@@ -254,7 +245,7 @@
             try {
                 formData.append('descricao', desc);
 
-                const response = await fetch('{{ $API_URL }}/perfil/usuario/desc/{{ $usuario['usuario'] }}', {
+                const response = await fetch('{{ $API_URL }}/perfil/usuario/desc/{{ $data['usuario'] }}', {
                     method: 'PUT',
                     body: formData
                 });
@@ -286,35 +277,6 @@
         })
     })
 </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-        const enderecos = {!! json_encode($usuario['enderecos']) !!};
-
-        var map = L.map('map').setView([enderecos[0].latitudeEnderecoEmpresa, enderecos[0].longitudeEnderecoEmpresa], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        function adicionarMarcadores(enderecos) {
-            enderecos.forEach((endereco) => {
-                console.log(endereco)
-                L.marker([endereco.latitudeEnderecoEmpresa, endereco.longitudeEnderecoEmpresa])
-                    .addTo(map)
-                    .bindPopup(
-                        `<b>${endereco.logradouroEnderecoEmpresa}, ${endereco.numEnderecoEmpresa}</b><br>` +
-                        `${endereco.bairroEnderecoEmpresa}, ${endereco.cidadeEnderecoEmpresa} - ${endereco.estadoEnderecoEmpresa}`
-                    );
-            });
-        }
-
-
-        adicionarMarcadores(enderecos);
-    })
-</script>
-
 
 @if ($errors->any())
     <div class="alert alert-warning alert-dismissible fade show" role="alert">

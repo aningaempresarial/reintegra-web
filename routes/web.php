@@ -58,9 +58,13 @@ Route::get('/admin/dashboard', [AdminController::class, 'getData']);
 
 Route::get('/admin/users', [AdminController::class, 'getUsers']);
 
+Route::get('/admin/perfil', [AdminController::class, 'indexPerfil']);
+
 Route::get('/empresa/dashboard', [EmpresaController::class, 'index'])->name('empresa-dashboard');
 
 Route::get('/empresa/config', [EmpresaController::class, 'index'])->name('empresa-config');
+
+Route::get('/empresa/posts', [EmpresaController::class, 'index'])->name('empresa-post');
 
 Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);
 
@@ -76,9 +80,6 @@ Route::get('/empresa/perfil', [EmpresaController::class, 'index'])->name('empres
 
 Route::put('/inativar-empresa/{usuario}', [UsuarioController::class, 'desativarConta']);
 
-Route::get('/admin/users', function () {
-    return view('admin/users/index');
-});
 
 Route::post('/login-usuario', [LoginController::class, 'login']);
 

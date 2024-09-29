@@ -3,8 +3,9 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
 @endsection
+
+@include('partials.profilebar')
 @section('conteudo')
-@include('partials.searchbar')
 <h1 class="page-title">Usuários cadastrados</h1>
 <button type="button" class="btn btn-light btn-add-admin" data-bs-toggle="modal"
     data-bs-target="#addAdminModal">Adicionar administrador</button>

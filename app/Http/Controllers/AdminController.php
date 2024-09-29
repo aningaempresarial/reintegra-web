@@ -21,7 +21,7 @@ class AdminController extends Controller
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
 
         if ($resposta->successful()) {
-            return view('admin/dashboard', ['nome' => $resposta['nomeAdmin']]);
+            return view('admin/dashboard', ['nome' => $resposta['nomeAdmin'], 'data' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL')]);
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
@@ -47,8 +47,10 @@ class AdminController extends Controller
 
         if ($resposta->successful()) {
             return view('admin/users/index', [
+                'data' => $resposta->json(),
+                'API_URL' => env('EXTERNAL_API_URL'),
                 'nome' => $resposta['nomeAdmin'],
-                'usuarios' => $dados_users->json()
+                'usuarios' => $dados_users->json(),
             ]);
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
@@ -110,11 +112,41 @@ class AdminController extends Controller
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
 
         if ($resposta->successful()) {
-            return view('admin/config', ['nome' => $resposta['nomeAdmin'], 'usuario' => $resposta['usuario'], 'email' => $resposta['emailUsuario']]);
+            return view('admin/config', [
+                'data' => $resposta->json(),
+                'API_URL' => env('EXTERNAL_API_URL'),
+                'nome' => $resposta['nomeAdmin'],
+                'usuario' => $resposta['usuario'],
+                'email' => $resposta['emailUsuario']]);
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
         }
 
     }
+
+    public function indexPerfil() {
+        $dados = [
+            'token' => session('token'),
+        ];
+
+        if (!$dados['token']) {
+            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+        }
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
+
+        if ($resposta->successful()) {
+            return view('admin/perfil', [
+                'data' => $resposta->json(),
+                'API_URL' => env('EXTERNAL_API_URL'),
+                'nome' => $resposta['nomeAdmin'],
+                'usuario' => $resposta['usuario'],
+                'email' => $resposta['emailUsuario']]);
+        } else {
+            $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
+
 }

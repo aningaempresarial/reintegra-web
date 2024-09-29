@@ -52,6 +52,8 @@ class LoginController extends Controller
             if ($entidade == 'empresa') {
                 $controller = new EmpresaController();
                 return redirect('/empresa/dashboard');
+            } else if ($entidade == 'ong') {
+                return redirect('/ong/dashboard');
             } else if ($entidade == 'ex-detento') {
                 $errorMessages = $resposta->json('errors', ['error' => 'Por enquanto, você só pode logar pelo App Reintegra! Baixe nas lojas de aplicativos!']);
                 return redirect()->back()->withErrors($errorMessages)->withInput();

@@ -5,8 +5,10 @@
 @endsection
 
 @include('modals.alerta')
+
+
+@include('partials.profilebar')
 @section('conteudo')
-    @include('partials.searchbar')
     <h1 class="page-title">Opções de configuração</h1>
     <div class="panel">
         <ul class="list-group list-group-flush">

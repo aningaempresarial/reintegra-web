@@ -25,37 +25,24 @@ class EmpresaController extends Controller
             $data = $resposta->json();
 
             if (request()->routeIs('empresa-dashboard')) {
-                return view('empresa.dashboard', compact('data'));
+                return view('empresa.dashboard', ['data' => $data, 'API_URL' => env('EXTERNAL_API_URL')]);
             }
 
             else if (request()->routeIs('empresa-config')) {
+                $resposta_areas = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/empresa/area-atuacao/get');
 
-                $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
+                if ($resposta_areas->successful()) {
+                    $areas = $resposta_areas->json();
 
-                if ($resposta->successful()) {
-
-                    $resposta_areas = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/empresa/area-atuacao/get');
-
-                    if ($resposta_areas->successful()) {
-                        $areas = $resposta_areas->json();
-
-                        return view('empresa.config', ['data' => $data, 'usuario' => $resposta->json(), 'email' => $resposta->json()['emailUsuario'], 'API_URL' => env('EXTERNAL_API_URL'), 'areas' => $areas]);
-                    } else {
-                        return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
-                    }
+                    return view('empresa.config', ['data' => $data, 'usuario' => $data, 'email' => $resposta->json()['emailUsuario'], 'API_URL' => env('EXTERNAL_API_URL'), 'areas' => $areas]);
                 } else {
                     return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
                 }
             }
             else if (request()->routeIs('empresa-perfil')) {
-
-                $resposta = Http::get(env('EXTERNAL_API_URL') . '/empresa/' . $user);
-
-                if ($resposta->successful()) {
-                    return view('empresa.perfil', ['data' => $data, 'usuario' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL')]);
-                } else {
-                    return redirect()->back()->with('error', 'Algo deu errado...')->withInput();
-                }
+                return view('empresa.perfil', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL')]);
+            } else if (request()->routeIs('empresa-post')) {
+                return view('empresa.post', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'publicacoes' => []]);
             }
         } else {
             Log::error('Erro na API externa:', [

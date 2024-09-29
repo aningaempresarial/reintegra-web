@@ -1,0 +1,69 @@
+
+.div-banner {
+    background-color: #cae7f8;
+    display: flex;
+    height: 35vh;
+    border-radius: 5px;
+}
+
+.div-pesquisa {
+    flex: 2;
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.div-image {
+    flex: 1;
+}
+
+.div-image img {
+    width: auto;
+    height: 100%;
+}
+
+.div-pesquisa input {
+    width: 100%;
+    background-color: #aebffa;
+    font-size: larger;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.div-pesquisa input:focus-visible {
+    outline: #6556ff auto 1px;;
+}
+
+.div-pesquisa input::placeholder {
+    color: #545454;
+    opacity: 1;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.div-add-post {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.div-add-post img {
+    margin-left: 10px;
+    width: 50px;
+}
+
+.div-add-post:hover .txt-post {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.div-add-post h4:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
