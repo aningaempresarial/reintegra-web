@@ -70,6 +70,7 @@ class UsuarioController extends Controller
         $resposta = Http::asMultipart()->put(env('EXTERNAL_API_URL') . '/user/update', $dados);
 
         if ($resposta->successful()) {
+            session(['usuario' => $new_usuario]);
             return redirect()->back()->with('success', 'Dados atualizados com êxito!');
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Erro ao atualizar dados do usuário.']);
