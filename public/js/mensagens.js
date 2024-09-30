@@ -9,24 +9,31 @@ function carregarMensagens(contato) {
 
             data.mensagens.forEach((mensagem) => {
                 const tipoMensagem =
-                    mensagem.idRemetente == idContato ? "enviado" : "recebido";
+                    mensagem.idRemetente == idContato ? "recebido" : "enviado";
 
                 const li = document.createElement("li");
                 li.classList.add("list-group-item");
 
                 const img = document.createElement("img");
-                img.classList.add("profile-photo");
-                img.src = `{{! asset(images/profile-photo.png) !}}`;
+                img.src = `http://127.0.0.1:8000/images/image-icon.png`;
                 img.style.borderRadius = "100%";
 
                 const messageBox = document.createElement("div");
                 messageBox.classList.add("message-box", tipoMensagem);
+                
                 messageBox.textContent = mensagem.conteudoMensagem;
 
-                li.appendChild(img);
-                li.appendChild(messageBox);
+                if (tipoMensagem == 'recebido') {
+                    li.appendChild(img);
+                    li.appendChild(messageBox);
+                } else {
+                    li.appendChild(messageBox);
+                    li.appendChild(img);
+                }
 
                 mensagensContainer.appendChild(li);
+                mensagensContainer.scrollTop = mensagensContainer.scrollHeight;
+
             });
 
             const nomeContato =
@@ -34,6 +41,9 @@ function carregarMensagens(contato) {
             document.querySelector(
                 ".nome-contato"
             ).innerText = `Conversa com ${nomeContato}`;
+
+            const inputDestinatario = document.querySelector('.destinario');
+            inputDestinatario.value = nomeContato;
         })
         .catch((error) => {
             console.error("Erro ao carregar as mensagens:", error);

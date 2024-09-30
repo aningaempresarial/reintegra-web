@@ -8,13 +8,13 @@
 <div class="panel main-panel panel-empresa">
     <div class="row">
         <div class="col-4">
-            <div class="panel panel-contato">
+            <div class="panel panel-contato" style="height: 86vh">
                 <ul class="list-group list-chat list-contato">
                     @forelse ($mensagensAgrupadas as $contato)
-                        <li class="list-group-item list-group-item-action" data-id="{{ $contato['usuario'] }}"
-                            onclick="carregarMensagens(this)">
-                            <img style="border-radius: 100%"
-                                src="{{ asset('images/image-icon.png') }}"><span class="nomeContatoLista">{{ $contato['nomeUsuario'] }}</span>
+                        <li class="list-group-item list-group-item-action list-item-contato"
+                            data-id="{{ $contato['usuario'] }}" onclick="carregarMensagens(this)">
+                            <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}"><span
+                                class="nomeContatoLista">{{ $contato['nomeUsuario'] }}</span>
                         </li>
                     @empty
                         <p>Nada para mostrar</p>
@@ -24,25 +24,36 @@
         </div>
         <div class="col">
             <div class="panel panel-contato">
-                <h1 class="nome-contato">Conversa com Fulano</h1>
-                <ul class="list-group list-chat list-messages">
-                    <li class="list-group-item">
-                        <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}">
-                        <div class="message-box recebido">
-                            abcde
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="message-box enviado">
-                            a
-                        </div>
-                        <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}">
-                    </li>
-                </ul>
+                <h1 class="nome-contato">Inicie uma conversa!</h1>
+                <ul class="list-group list-chat list-messages"></ul>
             </div>
+            <form method="POST" action="{{ url('empresa/enviar-mensagem') }}">
+                @csrf
+                <div class="input-group mb-5">
+                    <input name="conteudoMensagem" class="form-control chat-input form-control-lg" type="text"
+                        placeholder="Digite uma mensagem" autocomplete="off">
+                    <input type="hidden" name="destinatario" class="destinario">
+                    <button class="btn btn-light btn-chat" type="submit">➤</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 @endsection
 
+@php
+    $contatoAtivo = session('contato');
+@endphp
+
 <script src="{{ asset('js/mensagens.js') }}"></script>
+
+@if($contatoAtivo)
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const contato = document.querySelector(`[data-id='{{ $contatoAtivo }}']`);
+        if (contato) {
+            carregarMensagens(contato);
+        }
+    });
+</script>
+@endif
