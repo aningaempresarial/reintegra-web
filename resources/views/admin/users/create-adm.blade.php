@@ -24,6 +24,14 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" aria-label="Text input with dropdown button">
                     </div>
+                    <label class="form-label">Senha</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" aria-label="Text input with dropdown button">
+                    </div>
+                    <label class="form-label">Confirme a senha</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" aria-label="Text input with dropdown button">
+                    </div>
                     <button type="submit" class="btn btn-light">Cadastrar</button>
                 </form>
             </div>
