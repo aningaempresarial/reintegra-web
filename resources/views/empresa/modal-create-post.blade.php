@@ -92,7 +92,7 @@
                             <div class="card-top">
                                 <div class="image-wrapper">
                                     <img class="foto-imagem" src="{{ asset('images/default/emprego.png') }}" alt="" srcset="">
-                                    <div class="hover-overlay-imagem" data-bs-toggle="modal" data-bs-target="#imageCropperFotoImagem">
+                                    <div class="hover-overlay-imagem" id="overlay-imagem">
                                         <img src="{{ asset('icons/cam.png') }}">
                                     </div>
                                 </div>
@@ -104,6 +104,30 @@
 
                         </div>
 
+                    </div>
+
+                    <div class="button-div">
+                        <button type="button" class="btn btn-danger btn-form" id="btnCancelar">Cancelar</button>
+                        <button type="button" class="btn-form" id="btnCadastrar">Cadastrar Vaga</button>
+                    </div>
+
+                </div>
+
+                <div class="step" id="">
+                    <div class="div-title-icon">
+                        <div class="voltar-icon-div"><img class="voltar-icon" id="voltar" src="{{ asset('icons/voltar.png') }}"></div>
+                        <h2 class="title">Adicionar Imagem para Vaga</h2>
+                        <div class="voltar-icon-div"></div>
+                    </div>
+
+                    <input type="file" id="input" accept="image/*" />
+
+                    <div class="cropper-wrapper">
+                        <img id="preview" src="{{ asset('images/default/emprego.png') }}" alt="Preview" style="max-width: 100%;" />
+                    </div>
+
+                    <div class="button-div">
+                        <button type="button" class="btn-form" id="btnConcluir">Continuar</button>
                     </div>
                 </div>
 
@@ -195,7 +219,6 @@
                     $('.textoPost').html(textoCompleto);
                 });
             } else {
-                // Se o texto for curto, exibe normalmente
                 $('.tituloPost').text(tituloPosicao);
                 $('.textoPost').html(descricaoComQuebras);
             }
@@ -206,6 +229,135 @@
         $('.btn-close').on('click', () => {
             showStep(0);
         })
+
+        $('#overlay-imagem').on('click', () => {
+            showStep(3);
+        })
+
+        const cropperConfig = {
+            foto: { aspectRatio: 1.82 / 1, canvasWidth: 600, canvasHeight: 330 },
+        };
+
+        function setupCropper(inputId, previewId, cropButtonId, imageId, configKey) {
+            let cropper;
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            const cropButton = document.getElementById(cropButtonId);
+            const images = document.querySelectorAll(imageId);
+
+            cropper = new Cropper(preview, {
+                aspectRatio: cropperConfig[configKey].aspectRatio,
+                viewMode: 1,
+                ready() {
+
+                }
+            });
+
+            input.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    if (cropper) {
+                        cropper.destroy();
+                    }
+                    cropper = new Cropper(preview, {
+                        aspectRatio: cropperConfig[configKey].aspectRatio,
+                        viewMode: 1,
+                    });
+                };
+                reader.readAsDataURL(file);
+            });
+
+            cropButton.addEventListener('click', () => {
+                const canvas = cropper.getCroppedCanvas({
+                    width: cropperConfig[configKey].canvasWidth,
+                    height: cropperConfig[configKey].canvasHeight,
+                });
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    images.forEach(image => {
+                        image.src = url;
+                    });
+                    showStep(2);
+                });
+            });
+        }
+
+        setupCropper('input', 'preview', 'btnConcluir', '.foto-imagem', 'foto');
+
+        function imageToBlob(imageElement) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = "Anonymous";
+                img.src = imageElement;
+
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            resolve(blob);
+                        } else {
+                            reject(new Error('Conversion to Blob failed'));
+                        }
+                    }, 'image/jpg');
+                };
+
+                img.onerror = () => {
+                    reject(new Error('Image load error'));
+                };
+            });
+        }
+
+        $('#btnCancelar').click(() => {
+            $('#modalPost').modal('hide');
+            showStep(0);
+        })
+
+
+        $('#btnCadastrar').click(async () => {
+            const formData = new FormData();
+            formData.append('tituloPosicao', $('#tituloPosicao').val());
+            formData.append('descricaoVaga', $('#descricaoVaga').val());
+            formData.append('dtFim', $('#dtFim').val());
+            formData.append('token', "{{ session('token') }}")
+
+            const fotoBlob = await imageToBlob(document.querySelector('.foto-imagem').src);
+            formData.append('foto', fotoBlob, 'foto.jpg');
+
+            $.ajax({
+                url: "/api/cadastrar-vaga",
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: (response) => {
+                    console.log(response);
+                    $('#modalPost').modal('hide');
+                    showStep(0);
+                    setTimeout(() => {
+                        showAlert('Aviso', 'Vaga cadastrada com sucesso!');
+                    }, 500);
+                },
+                error: (error) => {
+                    console.log(error);
+                    $('#modalPost').modal('hide');
+                    showStep(0);
+
+                    setTimeout(() => {
+                        showAlert('Aviso', 'Ocorreu um erro ao cadastrar a vaga.');
+                    }, 500)
+                }
+            });
+        });
+
+
     });
 
 

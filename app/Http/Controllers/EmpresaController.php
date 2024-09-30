@@ -39,7 +39,14 @@ class EmpresaController extends Controller
             } else if (request()->routeIs('empresa-perfil')) {
                 return view('empresa.perfil', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL')]);
             } else if (request()->routeIs('empresa-post')) {
-                return view('empresa.post', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'publicacoes' => []]);
+
+
+                $resPubli = Http::get(env('EXTERNAL_API_URL') . '/post/all/' . $user);
+
+                if ($resPubli->successful()) {
+                    return view('empresa.post', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'publicacoes' => $resPubli->json()]);
+                }
+
             } else if (request()->routeIs('empresa-mensagens')) {
                 $token = session('token');
 

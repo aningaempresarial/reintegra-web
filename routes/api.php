@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,7 @@ Route::get('/user/verificar/email/{email}', [UsuarioController::class, 'verifica
 
 Route::post('/empresa/criar', [LoginController::class, 'createEmpresa']);
 Route::post('/ong/criar', [LoginController::class, 'createOng']);
+
+
+
+Route::post('/cadastrar-vaga', [PostController::class, 'saveVaga']);

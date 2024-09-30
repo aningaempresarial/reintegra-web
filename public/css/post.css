@@ -232,10 +232,22 @@
     font-size: 1.1rem;
 }
 
+
 .btn-form:hover {
     background-color: #2e8b57;
     color: white;
     border: #1e5a38 1px solid;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+
+.btn-danger:hover {
+    background-color: #dc3545;
+    color: white;
+    border: #dc3545 1px solid;
 }
 
 .card {
@@ -367,4 +379,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cropper-wrapper {
+    width: 100%;
+    min-height: 40vh !important;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.cropper-wrapper .cropper-container {
+    width: 100% !important;
+}
+
+.cropper-canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+#preview {
+    display: block;
+    max-width: 100%;
+    width: 100%;
 }
