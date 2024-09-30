@@ -9,6 +9,7 @@
     <div class="row">
         <div class="col-4">
             <div class="panel panel-contato" style="height: 86vh">
+                <h1 class="title-chat">Chats</h1>
                 <ul class="list-group list-chat list-contato">
                     @forelse ($mensagensAgrupadas as $contato)
                         <li class="list-group-item list-group-item-action list-item-contato"
@@ -29,10 +30,11 @@
             </div>
             <form method="POST" action="{{ url('empresa/enviar-mensagem') }}">
                 @csrf
-                <div class="input-group mb-5">
+                <div class="input-group">
                     <input name="conteudoMensagem" class="form-control chat-input form-control-lg" type="text"
                         placeholder="Digite uma mensagem" autocomplete="off">
-                    <input type="hidden" name="destinatario" class="destinario">
+                    <input type="hidden" name="destinatario" class="destinatario">
+                    <input type="hidden" name="idDestinatario" class="idDestinatario">
                     <button class="btn btn-light btn-chat" type="submit">➤</button>
                 </div>
             </form>
@@ -41,13 +43,14 @@
 </div>
 @endsection
 
-@php
-    $contatoAtivo = session('contato');
-@endphp
-
 <script src="{{ asset('js/mensagens.js') }}"></script>
 
+@php
+    $contatoAtivo = session('idDestinatario');
+@endphp
+
 @if($contatoAtivo)
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const contato = document.querySelector(`[data-id='{{ $contatoAtivo }}']`);
@@ -56,4 +59,5 @@
         }
     });
 </script>
+
 @endif

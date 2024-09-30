@@ -38,9 +38,12 @@ class MensagemController extends Controller
     public function enviarMensagem(Request $request)
     {
         $validacao = $request->validate([
+            'idDestinatario' => 'required|integer',
             'destinatario' => 'required|string',
             'conteudoMensagem' => 'required|string',
         ]);
+
+        $idDestinatario = $validacao['idDestinatario'];
 
         $dados = [
             'token' => session('token'),
@@ -53,7 +56,8 @@ class MensagemController extends Controller
             $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/mensagem/send', $dados);
 
             if ($resposta->successful()) {
-                session(['contato' => $validacao['destinatario']]);
+                session(['idDestinatario' => $idDestinatario]);
+                echo session('idDestinatario');
                 return redirect()->route('mensagens-contato')
                     ->with('success', 'Mensagem enviada com sucesso!');
             } else {

@@ -118,6 +118,12 @@
     margin-top: 10px;
 }
 
+.list-item-contato:hover {
+    cursor: pointer;
+    background-color: #cff1ff !important;
+    margin-top: 10px;
+}
+
 .list-chat {
     padding-left: 10px;
     padding-block: 20px;
@@ -144,7 +150,7 @@
     padding: 15px;
 }
 
-.nome-contato {
+.nome-contato, .title-chat {
     font-size: 1.8rem;
     padding: 28px;
     display: block;

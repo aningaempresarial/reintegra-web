@@ -1,6 +1,14 @@
 function carregarMensagens(contato) {
     const idContato = contato.getAttribute("data-id");
 
+    const elementosLista = document.querySelectorAll('.list-item-contato');
+    elementosLista.forEach(elemento => {
+        elemento.style.backgroundColor = '#e8f4ffa2';
+    });
+
+    const contatoLista = document.querySelector(`[data-id="${idContato}"]`);
+    contatoLista.style.backgroundColor = "b6e9ff";
+
     fetch(`/mensagens/${idContato}`)
         .then((response) => response.json())
         .then((data) => {
@@ -20,10 +28,10 @@ function carregarMensagens(contato) {
 
                 const messageBox = document.createElement("div");
                 messageBox.classList.add("message-box", tipoMensagem);
-                
+
                 messageBox.textContent = mensagem.conteudoMensagem;
 
-                if (tipoMensagem == 'recebido') {
+                if (tipoMensagem == "recebido") {
                     li.appendChild(img);
                     li.appendChild(messageBox);
                 } else {
@@ -33,7 +41,6 @@ function carregarMensagens(contato) {
 
                 mensagensContainer.appendChild(li);
                 mensagensContainer.scrollTop = mensagensContainer.scrollHeight;
-
             });
 
             const nomeContato =
@@ -42,8 +49,12 @@ function carregarMensagens(contato) {
                 ".nome-contato"
             ).innerText = `Conversa com ${nomeContato}`;
 
-            const inputDestinatario = document.querySelector('.destinario');
+            const inputDestinatario = document.querySelector(".destinatario");
             inputDestinatario.value = nomeContato;
+
+            const inputIdDestinatario =
+                document.querySelector(".idDestinatario");
+            inputIdDestinatario.value = idContato;
         })
         .catch((error) => {
             console.error("Erro ao carregar as mensagens:", error);
