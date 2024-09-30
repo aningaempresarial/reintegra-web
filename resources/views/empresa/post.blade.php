@@ -41,12 +41,12 @@
         </div>
     </div>
 
-    <table id="publicacoes-table">
+    <table id="publicacoes-table" class="table table-hover">
         <thead>
             <tr>
+                <th>Tipo</th>
                 <th>Título</th>
-                <th>Descrição</th>
-                <th>Data</th>
+                <th>Data Final</th>
                 <th>Status</th>
                 <th>Ações</th>
             </tr>
@@ -54,13 +54,13 @@
         <tbody>
             @forelse ($publicacoes as $publicacao)
                 <tr>
-                    <td>{{ $publicacao->titulo }}</td>
-                    <td>{{ $publicacao->descricao }}</td>
-                    <td>{{ $publicacao->data }}</td>
-                    <td>{{ $publicacao->status }}</td>
+                    <td>{{ $publicacao['categoriaPostagem'] }}</td>
+                    <td>{{ $publicacao['tituloPostagem'] }}</td>
+                    <td>{{ $publicacao['dataFim'] }}</td>
+                    <td>{{ $publicacao['statusPostagem'] }}</td>
                     <td>
-                        <button class="btn btn-edit">Editar</button>
-                        <button class="btn btn-delete">Excluir</button>
+                        <button class="btn btn-warning">Editar</button>
+                        <button class="btn btn-info">Visualizar</button>
                     </td>
                 </tr>
             @empty
@@ -78,7 +78,8 @@
 
 @section('footer')
 <script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.min.js') }}"></script>
+<script src="{{ asset('js/cropper.min.js') }}"></script>
 
 @include('empresa.modal-create-post')
 
@@ -86,39 +87,39 @@
 
 <script>
 
-$(document).ready(() => {
-    var tabelaVazia = $('#publicacoes-table tbody tr').length === 0;
+    $(document).ready(() => {
+        var tabelaVazia = $('#publicacoes-table tbody tr').length === 0;
 
-    if (tabelaVazia) {
-        $('#nenhuma-publicacao').show();
-        $('#publicacoes-table').hide();
-    }
+        if (tabelaVazia) {
+            $('#nenhuma-publicacao').show();
+            $('#publicacoes-table').hide();
+        }
 
-    $('#searchbar-input').on('keyup', () => {
-        var value = $(this).val().toLowerCase();
-        var hasResults = false;
+        $('#searchbar-input').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            var hasResults = false;
 
-        $('#publicacoes-table tbody tr').filter(() => {
-            var match = $(this).text().toLowerCase().indexOf(value) > -1;
-            $(this).toggle(match);
-            if (match) hasResults = true;
+            $('#publicacoes-table tbody tr').filter(function() {
+                var match = $(this).text().toLowerCase().indexOf(value) > -1;
+                $(this).toggle(match);
+                if (match) hasResults = true;
+            });
+
+            if (!hasResults) {
+                $('#nenhuma-publicacao').show();
+            } else {
+                $('#nenhuma-publicacao').hide();
+            }
         });
 
-        if (!hasResults) {
-            $('#nenhuma-publicacao').show();
-        } else {
-            $('#nenhuma-publicacao').hide();
-        }
+        $('.div-add-post').on('click', () => {
+            var modalPost = new bootstrap.Modal($('#modalPost'));
+            modalPost.show();
+        });
     });
 
-    $('.div-add-post').on('click', () => {
-        var modalPost = new bootstrap.Modal($('#modalPost'));
-        modalPost.show();
-    })
-
-    var modalPost = new bootstrap.Modal($('#modalPost'));
-    modalPost.show();
-});
+    /*var modalPost = new bootstrap.Modal($('#modalPost'));
+    modalPost.show();*/
 
 </script>
 @endsection
