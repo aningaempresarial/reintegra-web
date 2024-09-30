@@ -12,8 +12,6 @@
 @include('partials.profilebar')
 @section('conteudo')
 
-    @include('modals.alerta')
-
     <div class="h2 title mt-4">Minhas Publicações</div>
 
     <div class="div-banner">
@@ -37,7 +35,7 @@
         <div class="col-md-8"></div>
         <div class="col-md">
             <div class="div-add-post">
-                <h4 class="txt-post">Adicionar Publicação</h4>
+                <h4 class="txt-post">Nova Publicação</h4>
                 <img class="img-post" src="{{ asset('icons/add.png') }}" alt="">
             </div>
         </div>
@@ -75,31 +73,16 @@
         Nenhuma publicação encontrada.
     </div>
 
-    <div class="modal fade" id="modalPost" tabindex="-1" aria-labelledby="modalPostLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalPostLabel">Criar Publicação</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modalPostBody">
-                <h2>aa</h2>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
-            </div>
-            </div>
-        </div>
-    </div>
-
-
 @endsection
 
 
 @section('footer')
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+
+@include('empresa.modal-create-post')
+
+@include('modals.alerta')
 
 <script>
 
@@ -132,6 +115,9 @@ $(document).ready(() => {
         var modalPost = new bootstrap.Modal($('#modalPost'));
         modalPost.show();
     })
+
+    var modalPost = new bootstrap.Modal($('#modalPost'));
+    modalPost.show();
 });
 
 </script>
