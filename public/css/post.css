@@ -67,3 +67,304 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.obrigatorio {
+    color: rgb(204, 52, 52);
+}
+
+.error-message {
+    color:rgb(204, 52, 52)
+}
+
+.input-field {
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    border-radius: 2px;
+    padding: 15px 20px;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    width: 100%;
+}
+
+
+.input-field select {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    width: 100%;
+}
+
+.input-field:focus-visible {
+    outline: none !important;
+}
+
+
+.input-field select::placeholder {
+    color: #aaa;
+    font-weight: 500;
+}
+
+.input-field input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+}
+
+
+#modalPost .modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 70vh;
+    max-height: 80vh;
+}
+
+.step {
+    width: 0%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 1s ease;
+    overflow: scroll;
+}
+
+.step.active {
+    width: 100%;
+    max-height: 800px;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+}
+
+.opcoes {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.opcoes img {
+    width: 200px;
+}
+
+
+.div-publicacoes {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.publicacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.3s;
+    flex: 1;
+}
+
+.publicacao p {
+    text-align: center;
+}
+
+.publicacao img {
+    width: 150px;
+}
+
+.publicacao-emprego:hover {
+    cursor: pointer;
+    color: #3949ab;
+}
+
+.publicacao-divulgacao:hover {
+    cursor: pointer;
+    color: #2e8b57;
+}
+
+.publicacao-informativo:hover {
+    cursor: pointer;
+    color: #70b9ff;
+}
+
+.tooltip-informacao {
+    background-color: transparent;
+    margin-left: 5px;
+}
+
+.tooltip-informacao img {
+    width: 25px;
+}
+
+.button-div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-form {
+    padding: 12px 16px;
+    background: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    border: #ffffff 1px solid;
+    font-size: 1.1rem;
+}
+
+.btn-form:hover {
+    background-color: #2e8b57;
+    color: white;
+    border: #1e5a38 1px solid;
+}
+
+.card {
+    width: 330px;
+    background-color: rgb(241, 241, 241);
+    overflow: hidden;
+}
+
+.card-top {
+    display: block;
+
+}
+
+.card-top img {
+    width: 100%;
+}
+
+
+.hover-overlay-imagem {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hover-overlay-imagem img {
+    width: 60px;
+    height: auto;
+    object-fit: cover;
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-wrapper:hover .hover-overlay-imagem {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.tituloPost {
+    width: 100%;
+    text-align: left;
+    font-size: larger;
+}
+
+.textoPost {
+    width: 100%;
+    font-size: medium;
+    text-align: left;
+}
+
+.info-usuario {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.foto-perfil {
+    width: 50px;
+    border-radius: 100%;
+    background-color: white;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.nome-perfil {
+    font-size: large;
+}
+
+.card-info {
+    min-height: 5vh;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.btn-about {
+    flex: 1;
+    background-color: #c4c4c4;
+}
+
+.btn-about:hover {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+
+.voltar-icon-div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.voltar-icon {
+    width: 40px;
+}
+
+.voltar-icon:hover {
+    cursor: pointer;
+}
+
+
+.div-title-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-title-icon h2 {
+    flex: 3;
+}
+
+.centered-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
