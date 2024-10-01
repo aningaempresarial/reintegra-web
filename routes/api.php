@@ -32,3 +32,4 @@ Route::post('/ong/criar', [LoginController::class, 'createOng']);
 
 
 Route::post('/cadastrar-vaga', [PostController::class, 'saveVaga']);
+Route::post('/cadastrar-post', [PostController::class, 'savePost']);
