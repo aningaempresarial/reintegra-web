@@ -27,7 +27,7 @@
     @endif
 </script>
 
-@include('admin.users.create')
+@include('admin.users.create-adm')
 
 
 @if ($errors->any())
