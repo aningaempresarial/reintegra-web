@@ -39,13 +39,52 @@ class PostController extends Controller
             return response()->json(['error' => 'Nenhuma imagem enviada.'], 400);
         }
 
-        // Verificar a resposta da requisição
         if ($resposta->successful()) {
             $postResponse = $resposta->json();
             $postId = $postResponse['idPost'];
             $vagaId = $postResponse['idVaga'];
 
             return response()->json(['postId' => $postId, 'vagaId' => $vagaId]);
+        } else {
+            return response()->json(['error' => 'Erro ao cadastrar a vaga: ' . $resposta->body()], 500);
+        }
+    }
+
+    public function savePost(Request $request) {
+        $dados = [
+            'titulo' => $request->input('tituloPosicao'),
+            'descricao' => $request->input('descricaoVaga'),
+            'token' => $request->input('token'),
+            'tipo' => $request->input('tipo')
+        ];
+
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+
+            $multipartData = [];
+            foreach ($dados as $key => $value) {
+                $multipartData[] = [
+                    'name' => $key,
+                    'contents' => $value
+                ];
+            }
+
+            $multipartData[] = [
+                'name' => 'imagem',
+                'contents' => fopen($foto->getRealPath(), 'r'),
+                'filename' => $foto->getClientOriginalName()
+            ];
+
+            $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/post/', $multipartData);
+        } else {
+            return response()->json(['error' => 'Nenhuma imagem enviada.'], 400);
+        }
+
+        if ($resposta->successful()) {
+            $postResponse = $resposta->json();
+            $postId = $postResponse['idPost'];
+
+            return response()->json(['postId' => $postId]);
         } else {
             return response()->json(['error' => 'Erro ao cadastrar a vaga: ' . $resposta->body()], 500);
         }

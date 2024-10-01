@@ -53,16 +53,66 @@
         </thead>
         <tbody>
             @forelse ($publicacoes as $publicacao)
-                <tr>
-                    <td>{{ $publicacao['categoriaPostagem'] }}</td>
-                    <td>{{ $publicacao['tituloPostagem'] }}</td>
-                    <td>{{ $publicacao['dataFim'] }}</td>
-                    <td>{{ $publicacao['statusPostagem'] }}</td>
-                    <td>
-                        <button class="btn btn-warning">Editar</button>
-                        <button class="btn btn-info">Visualizar</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ $publicacao['categoriaPostagem'] }}</td>
+                <td>{{ $publicacao['tituloPostagem'] }}</td>
+                <td>{{ $publicacao['dataFim'] }}</td>
+                <td>{{ $publicacao['statusPostagem'] }}</td>
+                <td>
+                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}">Visualizar</button>
+                </td>
+            </tr>
+
+            <div class="modal fade" id="modalVisualizar{{ $publicacao['idPostagem'] }}" tabindex="-1" aria-labelledby="modalVisualizar{{ $publicacao['idPostagem'] }}Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalVisualizar{{ $publicacao['idPostagem'] }}Label">Veja sua publicação</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="centered-item">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <div class="info-usuario">
+                                            <img class="foto-perfil" src="{{ $API_URL . $data['fotoPerfil'] }}" alt="" srcset="">
+                                            <p class="nome-perfil">{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</p>
+                                        </div>
+                                        <h3 class="tituloPost">{{ $publicacao['tituloPostagem'] }}</h3>
+                                        <div class="textoPost">{!! nl2br(e($publicacao['conteudoPostagem'])) !!}</div>
+                                    </div>
+
+                                    <div class="card-top">
+                                        <div class="image-wrapper">
+                                            @if($publicacao['imagemPostagem'])
+                                                <img class="foto-imagem" src="{{ $API_URL . $publicacao['imagemPostagem'] }}" alt="" srcset="">
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="card-info p-1">
+                                        <button class="btn btn-about">Saiba Mais</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            @if (isset($publicacao['candidatos'][0]))
+                                <h2 class="title">Candidatos</h2>
+                                @foreach($publicacao['candidatos'] as $candidato)
+                                    <p>{{ $candidato['nome'] }}</p>
+                                @endforeach
+                            @endif
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @empty
 
             @endforelse

@@ -48,7 +48,3 @@
 </script>
 
 @endsection
-
-
-
-@include('admin.users.create')

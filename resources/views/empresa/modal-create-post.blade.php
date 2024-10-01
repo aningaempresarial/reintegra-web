@@ -40,7 +40,7 @@
                     <div class="form-input">
 
                         <div class="input-div">
-                            <label for="tituloPosicao">Título da Posição<span class="obrigatorio">*</span></label>
+                            <label for="tituloPosicao">Título<span class="obrigatorio">*</span></label>
                             <div class="input-field">
                                 <input type="text" name="tituloPosicao" id="tituloPosicao" placeholder="Título chamativo" required autocomplete="off"/>
                             </div>
@@ -48,12 +48,12 @@
                         </div>
 
                         <div class="input-div">
-                            <label for="descricaoVaga">Descrição da Vaga<span class="obrigatorio">*</span></label>
+                            <label for="descricaoVaga">Descrição<span class="obrigatorio">*</span></label>
                             <textarea id="descricaoVaga" class="input-field" rows="10" placeholder="Fale sobre o processo seletivo, requisitos, etc."></textarea>
                             <span class="error-message" id="error-message-descricao-vaga"></span>
                         </div>
 
-                        <div class="input-div">
+                        <div class="input-div" id="divDtFim">
                             <label for="dtFim">Data Fim<span class="obrigatorio">*</span><button class="tooltip-informacao" type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Data final de inscrições para o processo seletivo."><img src="{{ asset('icons/pergunta.png') }}"></button></label>
                             <div class="input-field">
                                 <input type="date" name="dtFim" id="dtFim" required autocomplete="off"/>
@@ -73,7 +73,7 @@
                 <div class="step">
                     <div class="div-title-icon">
                         <div class="voltar-icon-div"><img class="voltar-icon" id="voltar" src="{{ asset('icons/voltar.png') }}"></div>
-                        <h2 class="title">Pré-visualizar Vaga</h2>
+                        <h2 class="title">Pré-visualizar Publicação</h2>
                         <div class="voltar-icon-div"></div>
                     </div>
 
@@ -108,7 +108,7 @@
 
                     <div class="button-div">
                         <button type="button" class="btn btn-danger btn-form" id="btnCancelar">Cancelar</button>
-                        <button type="button" class="btn-form" id="btnCadastrar">Cadastrar Vaga</button>
+                        <button type="button" class="btn-form" id="btnCadastrar">Publicar</button>
                     </div>
 
                 </div>
@@ -155,9 +155,20 @@
     $('#btn-next-emprego').on('click', () => {
         tipo_post = 'emprego';
         showStep(1);
-    })
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        $('#divDtFim').show();
+    });
+
+    $('#btn-next-divulgacao').on('click', () => {
+        tipo_post = 'divulgacao';
+        showStep(1);
+        $('#divDtFim').hide();
+    });
+
+    $('#btn-next-informativo').on('click', () => {
+        tipo_post = 'informativo';
+        showStep(1);
+        $('#divDtFim').hide();
+    });
 
     const voltar = document.querySelectorAll('#voltar')
     voltar.forEach(e => {
@@ -170,8 +181,7 @@
 
 
 <script>
-    // Validação Form Emprego
-    $(document).ready(() => {
+   $(document).ready(() => {
         $('#btnContinuar').click(() => {
             $('.error-message').text('');
 
@@ -182,25 +192,26 @@
             let erro = false;
 
             if (!tituloPosicao) {
-                $('#error-message-titulo-posicao').text('Título da Posição é obrigatório.');
+                $('#error-message-titulo-posicao').text('Título é obrigatório.');
                 erro = true;
             }
 
             if (!descricaoVaga) {
-                $('#error-message-descricao-vaga').text('Descrição da Vaga é obrigatório.');
+                $('#error-message-descricao-vaga').text('Descrição é obrigatória.');
                 erro = true;
             }
 
-            if (!dtFim) {
-                $('#error-message-data-fim').text('Data Final é obrigatória.');
-                erro = true;
-            } else if (dtFim < dataHoje) {
-                $('#error-message-data-fim').text('A Data Final deve ser igual ou maior que a data de hoje.');
-                erro = true;
+            if (tipo_post === 'emprego') {
+                if (!dtFim) {
+                    $('#error-message-data-fim').text('Data Final é obrigatória.');
+                    erro = true;
+                } else if (dtFim < dataHoje) {
+                    $('#error-message-data-fim').text('A Data Final deve ser igual ou maior que a data de hoje.');
+                    erro = true;
+                }
             }
 
             if (erro) return;
-
 
             var descricaoComQuebras = descricaoVaga.replace(/\n/g, '<br>');
 
@@ -225,6 +236,120 @@
 
             showStep(2);
         });
+
+        $('#overlay-imagem').on('click', () => {
+            showStep(3);
+        });
+
+        $('#btnCancelar').click(() => {
+            $('#modalPost').modal('hide');
+            showStep(0);
+        });
+
+        $('#btnCadastrar').click(async () => {
+            const formData = new FormData();
+            formData.append('tituloPosicao', $('#tituloPosicao').val());
+            formData.append('descricaoVaga', $('#descricaoVaga').val());
+
+            if (tipo_post === 'emprego') {
+                formData.append('dtFim', $('#dtFim').val());
+            }
+
+            formData.append('tipo', tipo_post);
+            formData.append('token', "{{ session('token') }}");
+
+            const fotoBlob = await imageToBlob(document.querySelector('.foto-imagem').src);
+            formData.append('foto', fotoBlob);
+
+            if (tipo_post === 'emprego') {
+                $.ajax({
+                    url: '/api/cadastrar-vaga',
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: (response) => {
+                        $('#modalPost').modal('hide');
+                        showStep(0);
+
+
+                        showAlert('Aviso', 'Vaga cadastrada com sucesso!');
+
+                        setTimeout(() => {
+                            location.reload();
+                        }, 3000);
+                    },
+                    error: (error) => {
+                        $('#modalPost').modal('hide');
+                        showStep(0);
+
+                        showAlert('Aviso', 'Erro ao cadastrar vaga.');
+
+                        console.error(error);
+                        setTimeout(() => {
+                            location.reload();
+                        }, 3000);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '/api/cadastrar-post',
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: (response) => {
+                        $('#modalPost').modal('hide');
+                        showStep(0);
+
+
+                        showAlert('Aviso', 'Publicação realizada com sucesso!');
+                        setTimeout(() => {
+                            location.reload();
+                        }, 3000);
+                    },
+                    error: (error) => {
+                        console.error(error);
+                        $('#modalPost').modal('hide');
+                        showStep(0);
+
+                        showAlert('Aviso', 'Erro ao publicar.');
+                        /*setTimeout(() => {
+                            location.reload();
+                        }, 3000);*/
+                    }
+                });
+            }
+        });
+
+    function imageToBlob(imageElement) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.src = imageElement;
+
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        resolve(blob);
+                    } else {
+                        reject(new Error('Conversion to Blob failed'));
+                    }
+                }, 'image/jpg');
+            };
+
+            img.onerror = () => {
+                reject(new Error('Image load error'));
+            };
+        });
+    }
 
         $('.btn-close').on('click', () => {
             showStep(0);
@@ -286,77 +411,11 @@
 
         setupCropper('input', 'preview', 'btnConcluir', '.foto-imagem', 'foto');
 
-        function imageToBlob(imageElement) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.crossOrigin = "Anonymous";
-                img.src = imageElement;
-
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-
-                    canvas.toBlob((blob) => {
-                        if (blob) {
-                            resolve(blob);
-                        } else {
-                            reject(new Error('Conversion to Blob failed'));
-                        }
-                    }, 'image/jpg');
-                };
-
-                img.onerror = () => {
-                    reject(new Error('Image load error'));
-                };
-            });
-        }
 
         $('#btnCancelar').click(() => {
             $('#modalPost').modal('hide');
             showStep(0);
         })
-
-
-        $('#btnCadastrar').click(async () => {
-            const formData = new FormData();
-            formData.append('tituloPosicao', $('#tituloPosicao').val());
-            formData.append('descricaoVaga', $('#descricaoVaga').val());
-            formData.append('dtFim', $('#dtFim').val());
-            formData.append('token', "{{ session('token') }}")
-
-            const fotoBlob = await imageToBlob(document.querySelector('.foto-imagem').src);
-            formData.append('foto', fotoBlob, 'foto.jpg');
-
-            $.ajax({
-                url: "/api/cadastrar-vaga",
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: (response) => {
-                    console.log(response);
-                    $('#modalPost').modal('hide');
-                    showStep(0);
-                    setTimeout(() => {
-                        showAlert('Aviso', 'Vaga cadastrada com sucesso!');
-                    }, 500);
-                },
-                error: (error) => {
-                    console.log(error);
-                    $('#modalPost').modal('hide');
-                    showStep(0);
-
-                    setTimeout(() => {
-                        showAlert('Aviso', 'Ocorreu um erro ao cadastrar a vaga.');
-                    }, 500)
-                }
-            });
-        });
-
 
     });
 
