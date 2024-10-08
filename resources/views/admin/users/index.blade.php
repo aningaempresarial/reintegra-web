@@ -50,7 +50,7 @@
                         <td>{{ $usuario['usuario'] }}</td>
                         <td>{{ $usuario['tipoEntidade'] }}</td>
                         <td>{{ $usuario['statusEntidade'] }}</td>
-                        <td><a href="admin/users/edit"><img src="{{ asset('images/edit-icon.png') }}" class="icon"></a></td>
+                        <td><a href="admin/users/edit"><img src="{{ asset('images/edit-icon.png') }}" class="icon edit-icon"></a></td>
 
                         <td>
                             <form action="/admin/change" method="POST"
@@ -60,7 +60,7 @@
                                 <input type="hidden" name="usuario" value="{{ $usuario['usuario'] }}">
                                 <input type="hidden" name="status" value="bloqueado">
                                 <button type="submit" style="border: none; background: none;">
-                                    <img src="{{ asset('images/block-icon.png') }}" class="icon" alt="Excluir">
+                                    <img src="{{ asset('images/block-icon.png') }}" class="icon block-icon" alt="Excluir">
                                 </button>
                             </form>
                         </td>
@@ -72,7 +72,7 @@
                                 <input type="hidden" name="usuario" value="{{ $usuario['usuario'] }}">
                                 <input type="hidden" name="status" value="excluido">
                                 <button type="submit" style="border: none; background: none;">
-                                    <img src="{{ asset('images/delete-icon.png') }}" class="icon" alt="Excluir">
+                                    <img src="{{ asset('images/delete-icon.png') }}" class="icon delete-icon" alt="Excluir">
                                 </button>
                             </form>
                         </td>

@@ -14,7 +14,19 @@ body {
 
 .icon {
     width: 50px;
-    opacity: 0.5;
+    border-radius: 100%;
+}
+
+.edit-icon {
+    background-color: rgb(108, 162, 255);
+}
+
+.block-icon {
+    background-color: rgb(255, 191, 108);
+}
+
+.delete-icon {
+    background-color: rgb(255, 108, 108);
 }
 
 .icon:hover {
