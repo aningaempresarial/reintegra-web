@@ -29,7 +29,7 @@
 
 <button type="button" class="btn btn-light btn-add-admin" data-bs-toggle="modal"
     data-bs-target="#addAdminModal">Adicionar administrador</button>
-<div class="panel">
+<div class="panel main-panel">
     <div class="table-responsive">
         <table class="table table-hover align-middle text-center" id="publicacoes-table">
             <thead class="style-thead">
