@@ -29,14 +29,6 @@ body {
     background: #fff;
 }
 
-.button-config {
-    cursor: pointer;
-}
-
-.button-config:hover {
-    background-color: rgba(244, 244, 244, 0.6);
-}
-
 #my-chart {
     width: 100%;
     max-width: 650px;
@@ -136,4 +128,8 @@ body {
 #barchart_values {
     width: 900px;
     height: 500px;
+}
+
+.list-group-item {
+    font-size: 1.5rem;
 }

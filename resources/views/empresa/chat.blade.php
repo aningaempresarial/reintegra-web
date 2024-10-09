@@ -2,6 +2,7 @@
 @section('titulo', 'Reintegra | Mensagens')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard-empresa.css') }}">
+<link rel="stylesheet" href="{{ asset('css/chat.css') }}">
 @endsection
 @include('partials.profilebar')
 @section('conteudo')

@@ -1,0 +1,120 @@
+.panel-contato {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-contato {
+    padding-block: 0 !important;
+}
+
+.list-item-contato {
+    cursor: pointer;
+    background-color: #e8f4ffa2;
+    margin-top: 10px;
+}
+
+.list-item-contato:hover {
+    cursor: pointer;
+    background-color: #cff1ff !important;
+    margin-top: 10px;
+}
+
+.list-chat {
+    padding-left: 10px;
+    padding-block: 20px;
+    overflow-y: scroll;
+}
+
+.list-chat img {
+    width: 40px;
+    padding-inline: 5px;
+    border-radius: 100%;
+}
+
+.list-chat span {
+    font-size: 1.5rem;
+    padding-left: 10px;
+}
+
+.list-chat .list-group-item {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    padding: 15px;
+}
+
+.nome-contato, .title-chat {
+    font-size: 1.8rem;
+    padding: 28px;
+    display: block;
+    width: 100% !important;
+    border-radius: 5px;
+    width: fit-content;
+    border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
+}
+
+.list-chat img {
+    width: 60px;
+}
+
+.message-box {
+    max-width: 80%;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 8px;
+    position: relative;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.recebido {
+    background-color: #f1f0f0;
+    color: #333;
+    align-self: flex-start;
+    border-radius: 8px 8px 8px 0;
+}
+
+.recebido::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #f1f0f0;
+    border-bottom: 10px solid transparent;
+}
+
+.enviado {
+    background-color: #cbf5ff;
+    color: #333;
+    align-self: flex-end;
+    margin-left: auto;
+    border-radius: 8px 8px 0 8px;
+}
+
+.enviado::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 10px solid #cbf5ff;
+    border-bottom: 10px solid transparent;
+}
+
+.chat-input {
+    height: 6vh;
+}
+
+.btn-chat {
+    display: flex;
+    align-items: center;
+    z-index: 0 !important;
+}

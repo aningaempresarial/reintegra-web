@@ -2,6 +2,7 @@
 @section('titulo', 'Reintegra | Configurações')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/config.css') }}">
 @endsection
 @include('partials.profilebar')
 @section('conteudo')
