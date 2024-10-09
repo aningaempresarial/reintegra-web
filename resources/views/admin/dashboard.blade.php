@@ -35,6 +35,11 @@
 <div class="panel main-panel panel-admin">
     <div class="row">
         <div class="panel">
+            <div class="chart-container">
+                <div id="barchart_values"></div>
+            </div>
+        </div>
+        <!-- <div class="panel">
             <h1 class="page-subtitle">Taxa de emprego por mês em 2024</h1>
             <div id="my-chart">
                 <table class="charts-css column show-labels">
@@ -94,7 +99,7 @@
 
                 </table>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="row">
         <div class="col-8" style="padding-left: 0">
@@ -145,3 +150,6 @@
     </div>
 </div>
 @endsection
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="{{ asset('js/admin-barchart.js') }}"></script>
