@@ -9,7 +9,7 @@
 <div class="panel main-panel panel-empresa">
     <div class="row">
         <div class="col-4">
-            <div class="panel panel-contato" style="height: 86vh">
+            <div class="panel panel-contato">
                 <h1 class="title-chat">Chats</h1>
                 <ul class="list-group list-chat list-contato">
                     @forelse ($mensagensAgrupadas as $contato)
@@ -22,6 +22,10 @@
                         <p>Nada para mostrar</p>
                     @endforelse
                 </ul>
+            </div>
+            <div class="btn-novo-chat">
+                <a class="btn btn-light btn-lg" data-bs-toggle="modal"
+                data-bs-target="#chatModal">Novo contato</a>
             </div>
         </div>
         <div class="col">
@@ -44,6 +48,7 @@
 </div>
 @endsection
 
+@include('empresa.modal-chat')
 <script src="{{ asset('js/mensagens.js') }}"></script>
 
 @php
@@ -52,13 +57,13 @@
 
 @if($contatoAtivo)
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const contato = document.querySelector(`[data-id='{{ $contatoAtivo }}']`);
-        if (contato) {
-            carregarMensagens(contato);
-        }
-    });
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const contato = document.querySelector(`[data-id='{{ $contatoAtivo }}']`);
+            if (contato) {
+                carregarMensagens(contato);
+            }
+        });
+    </script>
 
 @endif
