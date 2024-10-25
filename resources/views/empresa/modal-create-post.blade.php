@@ -2,31 +2,31 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalPostLabel">Nova Publicação</h5>
+                <h5 class="modal-title" id="modalPostLabel">Nova publicação</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="modalPostBody">
 
                 <div class="step active">
-                    <h2 class="title">Selecione uma opção</h2>
+                    <h2 class="title" style="padding-bottom: 50px">Selecione uma opção</h2>
 
                     <div class="div-publicacoes">
 
                         <div id="btn-next-emprego" class="publicacao publicacao-emprego">
-                            <img src="{{ asset('icons/emprego.png') }}" alt="">
-                            <h2>Emprego</h2>
+                            <img src="{{ asset('icons/emprego1.png') }}" alt="">
+                            <h2 class="subtitle">Emprego</h2>
                             <p>Publique uma vaga de emprego</p>
                         </div>
 
                         <div id="btn-next-divulgacao" class="publicacao publicacao-divulgacao">
-                            <img src="{{ asset('icons/divulgacao.png') }}" alt="">
-                            <h2>Divulgação</h2>
+                            <img src="{{ asset('icons/divulgacao1.png') }}" alt="">
+                            <h2 class="subtitle">Divulgação</h2>
                             <p>Divulgue um evento, palestra, processo seletivo, etc.</p>
                         </div>
 
                         <div id="btn-next-informativo" class="publicacao publicacao-informativo">
-                            <img src="{{ asset('icons/informativo.png') }}" alt="">
-                            <h2>Informativo</h2>
+                            <img src="{{ asset('icons/informativo1.png') }}" alt="">
+                            <h2 class="subtitle">Informativo</h2>
                             <p>Publique um informativo</p>
                         </div>
 
@@ -49,12 +49,18 @@
 
                         <div class="input-div">
                             <label for="descricaoVaga">Descrição<span class="obrigatorio">*</span></label>
-                            <textarea id="descricaoVaga" class="input-field" rows="10" placeholder="Fale sobre o processo seletivo, requisitos, etc."></textarea>
+                            <textarea id="descricaoVaga" class="input-field" rows="10" placeholder="Fale sobre o processo seletivo, benefícios, etc."></textarea>
+                            <span class="error-message" id="error-message-descricao-vaga"></span>
+                        </div>
+
+                        <div class="input-div">
+                            <label for="requisitosVaga">Requisitos<span class="obrigatorio">*</span></label>
+                            <textarea id="requisitosVaga" class="input-field" rows="10" placeholder="Enumere os requisitos da função."></textarea>
                             <span class="error-message" id="error-message-descricao-vaga"></span>
                         </div>
 
                         <div class="input-div" id="divDtFim">
-                            <label for="dtFim">Data Fim<span class="obrigatorio">*</span><button class="tooltip-informacao" type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Data final de inscrições para o processo seletivo."><img src="{{ asset('icons/pergunta.png') }}"></button></label>
+                            <label for="dtFim">Data final<span class="obrigatorio">*</span><button class="tooltip-informacao" type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Data final de inscrições para o processo seletivo."><img src="{{ asset('icons/pergunta.png') }}"></button></label>
                             <div class="input-field">
                                 <input type="date" name="dtFim" id="dtFim" required autocomplete="off"/>
                             </div>

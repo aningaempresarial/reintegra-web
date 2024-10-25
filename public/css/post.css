@@ -1,6 +1,6 @@
 
 .div-banner {
-    background-color: #cae7f8;
+    background-color: #cee7ff;
     display: flex;
     height: 35vh;
     border-radius: 5px;
@@ -16,17 +16,19 @@
 }
 
 .div-image {
+    align-items: end;
+    justify-content: center;
+    display: flex;
     flex: 1;
 }
 
 .div-image img {
     width: auto;
-    height: 100%;
+    height: 93%;
 }
 
 .div-pesquisa input {
     width: 100%;
-    background-color: #aebffa;
     font-size: larger;
     padding: 10px;
     border-radius: 5px;
@@ -56,6 +58,7 @@
 .div-add-post img {
     margin-left: 10px;
     width: 50px;
+    cursor: pointer;
 }
 
 .div-add-post:hover .txt-post {
@@ -113,17 +116,15 @@
     outline: none !important;
 }
 
-
-.input-field select::placeholder {
+.input-field input::placeholder, .input-field select::placeholder, .input-field::placeholder {
     color: #aaa;
     font-weight: 500;
+    font-size: 1rem;
 }
 
-.input-field input::placeholder {
-    color: #aaa;
-    font-weight: 500;
+.modal-title {
+    font-size: 1.5rem;
 }
-
 
 #modalPost .modal-body {
     display: flex;
@@ -153,6 +154,7 @@
 .title {
     width: 100%;
     text-align: center;
+    margin-block: 24px;
 }
 
 .opcoes {
@@ -171,7 +173,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
 }
 
 .publicacao {
@@ -185,6 +187,7 @@
 
 .publicacao p {
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .publicacao img {
@@ -193,17 +196,17 @@
 
 .publicacao-emprego:hover {
     cursor: pointer;
-    color: #3949ab;
+    color: #4df0ff;
 }
 
 .publicacao-divulgacao:hover {
     cursor: pointer;
-    color: #2e8b57;
+    color: #79baff;
 }
 
 .publicacao-informativo:hover {
     cursor: pointer;
-    color: #70b9ff;
+    color: #7e7cff;
 }
 
 .tooltip-informacao {
@@ -401,4 +404,8 @@
     display: block;
     max-width: 100%;
     width: 100%;
+}
+
+.subtitle {
+    padding: 20px;
 }

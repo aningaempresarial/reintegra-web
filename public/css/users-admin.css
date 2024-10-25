@@ -1,5 +1,6 @@
 .title {
     text-align: center;
+    margin: 24px;
 }
 
 .subtitle {
@@ -117,6 +118,11 @@
 
 .table td, .table th {
     font-size: 1.3rem;
+    white-space: nowrap;
+}
+
+.table {
+    margin: 0;
 }
 
 .icon {

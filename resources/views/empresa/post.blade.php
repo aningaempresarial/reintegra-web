@@ -19,8 +19,8 @@
         <div class="div-pesquisa">
 
             <div class="flex-1">
-                <h2>Navegue pelas Publicações</h2>
-                <input type="text" name="" id="searchbar-input" placeholder="Vaga para Estágio">
+                <h2>Navegue pelas publicações</h2>
+                <input type="text" name="" id="searchbar-input" placeholder="Ex.: Vaga para Estágio">
             </div>
 
         </div>
