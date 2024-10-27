@@ -1,4 +1,5 @@
-<div class="modal fade" id="modalPost" tabindex="-1" aria-labelledby="modalPostLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal fade" id="modalPost" tabindex="-1" aria-labelledby="modalPostLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -39,36 +40,79 @@
 
                     <div class="form-input">
 
-                        <div class="input-div">
-                            <label for="tituloPosicao">Título<span class="obrigatorio">*</span></label>
-                            <div class="input-field">
-                                <input type="text" name="tituloPosicao" id="tituloPosicao" placeholder="Título chamativo" required autocomplete="off"/>
+                        <div class="mb-3">
+                            <label for="tituloPosicao" class="form-label">Título<span
+                                    class="obrigatorio">*</span></label>
+                            <div class="mb-3">
+                                <input type="text" name="tituloPosicao" id="tituloPosicao"
+                                    class="form-control form-control-lg" placeholder="Título chamativo" required
+                                    autocomplete="off" />
                             </div>
                             <span class="error-message" id="error-message-titulo-posicao"></span>
                         </div>
 
-                        <div class="input-div">
-                            <label for="descricaoVaga">Descrição<span class="obrigatorio">*</span></label>
-                            <textarea id="descricaoVaga" class="input-field" rows="10" placeholder="Fale sobre o processo seletivo, benefícios, etc."></textarea>
+                        <div class="mb-3">
+                            <label for="descricaoVaga" class="form-label">Descrição<span
+                                    class="obrigatorio">*</span></label>
+                            <textarea id="descricaoVaga" class="form-control form-control-lg" rows="10"
+                                placeholder="Fale sobre o processo seletivo, benefícios, etc."></textarea>
                             <span class="error-message" id="error-message-descricao-vaga"></span>
                         </div>
 
-                        <div class="input-div">
-                            <label for="requisitosVaga">Requisitos<span class="obrigatorio">*</span></label>
-                            <textarea id="requisitosVaga" class="input-field" rows="10" placeholder="Enumere os requisitos da função."></textarea>
+                        <div class="mb-3">
+                            <label for="requisitosVaga" class="form-label">Requisitos<span
+                                    class="obrigatorio">*</span></label>
+                            <textarea id="requisitosVaga" class="form-control form-control-lg" rows="10"
+                                placeholder="Enumere os requisitos da função."></textarea>
                             <span class="error-message" id="error-message-descricao-vaga"></span>
                         </div>
 
-                        <div class="input-div" id="divDtFim">
-                            <label for="dtFim">Data final<span class="obrigatorio">*</span><button class="tooltip-informacao" type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Data final de inscrições para o processo seletivo."><img src="{{ asset('icons/pergunta.png') }}"></button></label>
-                            <div class="input-field">
-                                <input type="date" name="dtFim" id="dtFim" required autocomplete="off"/>
+                        <div class="mb-3">
+                            <label for="salarioVaga" class="form-label">Salário<span
+                                    class="obrigatorio">*</span></label>
+                            <div>
+                                <input type="number" step="0.01" name="salarioVaga" id="salarioVaga"
+                                    placeholder="Digite o salário ofertado." required autocomplete="off"
+                                    class="form-control form-control-lg" />
+                            </div>
+                            <span class="error-message" id="error-message-titulo-posicao"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="check-form">
+                                <input type="checkbox" value="" id="checkSalario">
+                                <label for="checkSalario">
+                                    a combinar
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cargaHoraria" class="form-label">Carga horária<span
+                                    class="obrigatorio">*</span></label>
+                            <div>
+                                <input type="number" name="cargaHoraria" id="cargaHoraria"
+                                    placeholder="Digite as horas diárias de trabalho." required autocomplete="off"
+                                    class="form-control form-control-lg" />
+                            </div>
+                            <span class="error-message" id="error-message-titulo-posicao"></span>
+                        </div>
+
+                        <div class="mb-3" id="divDtFim">
+                            <label for="dtFim" class="form-label">Data final<span class="obrigatorio">*</span><button
+                                    class="tooltip-informacao" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    data-bs-title="Data final de inscrições para o processo seletivo."><img
+                                        src="{{ asset('icons/pergunta.png') }}"></button></label>
+                            <div>
+                                <input type="date" name="dtFim" id="dtFim" class="form-control form-control-lg" required
+                                    autocomplete="off" />
                             </div>
                             <span class="error-message" id="error-message-data-fim"></span>
                         </div>
 
                         <div class="button-div">
-                            <button type="button" class="btn-form" id="btnContinuar">Continuar</button>
+                            <button type="button" class="btn-form btn btn-light" id="btnContinuar">Continuar</button>
                         </div>
 
                     </div>
@@ -78,7 +122,8 @@
 
                 <div class="step">
                     <div class="div-title-icon">
-                        <div class="voltar-icon-div"><img class="voltar-icon" id="voltar" src="{{ asset('icons/voltar.png') }}"></div>
+                        <div class="voltar-icon-div"><img class="voltar-icon" id="voltar"
+                                src="{{ asset('icons/voltar.png') }}"></div>
                         <h2 class="title">Pré-visualizar Publicação</h2>
                         <div class="voltar-icon-div"></div>
                     </div>
@@ -88,16 +133,21 @@
 
                             <div class="card-body">
                                 <div class="info-usuario">
-                                    <img class="foto-perfil" src="{{ $API_URL . $data['fotoPerfil'] }}" alt="" srcset="">
+                                    <img class="foto-perfil" src="{{ $API_URL . $data['fotoPerfil'] }}" alt=""
+                                        srcset="">
                                     <p class="nome-perfil">{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</p>
                                 </div>
                                 <h3 class="tituloPost">Titulo</h3>
-                                <div class="textoPost">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic illo magnam voluptates ad magni nulla laborum placeat expedita repellat est, consectetur praesentium vel labore laudantium nisi minus numquam perferendis doloribus!</div>
+                                <div class="textoPost">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
+                                    illo magnam voluptates ad magni nulla laborum placeat expedita repellat est,
+                                    consectetur praesentium vel labore laudantium nisi minus numquam perferendis
+                                    doloribus!</div>
                             </div>
 
                             <div class="card-top">
                                 <div class="image-wrapper">
-                                    <img class="foto-imagem" src="{{ asset('images/default/emprego.png') }}" alt="" srcset="">
+                                    <img class="foto-imagem" src="{{ asset('images/default/emprego.png') }}" alt=""
+                                        srcset="">
                                     <div class="hover-overlay-imagem" id="overlay-imagem">
                                         <img src="{{ asset('icons/cam.png') }}">
                                     </div>
@@ -121,7 +171,8 @@
 
                 <div class="step" id="">
                     <div class="div-title-icon">
-                        <div class="voltar-icon-div"><img class="voltar-icon" id="voltar" src="{{ asset('icons/voltar.png') }}"></div>
+                        <div class="voltar-icon-div"><img class="voltar-icon" id="voltar"
+                                src="{{ asset('icons/voltar.png') }}"></div>
                         <h2 class="title">Adicionar Imagem para Vaga</h2>
                         <div class="voltar-icon-div"></div>
                     </div>
@@ -129,7 +180,8 @@
                     <input type="file" id="input" accept="image/*" />
 
                     <div class="cropper-wrapper">
-                        <img id="preview" src="{{ asset('images/default/emprego.png') }}" alt="Preview" style="max-width: 100%;" />
+                        <img id="preview" src="{{ asset('images/default/emprego.png') }}" alt="Preview"
+                            style="max-width: 100%;" />
                     </div>
 
                     <div class="button-div">
@@ -187,7 +239,7 @@
 
 
 <script>
-   $(document).ready(() => {
+    $(document).ready(() => {
         $('#btnContinuar').click(() => {
             $('.error-message').text('');
 
@@ -328,34 +380,34 @@
             }
         });
 
-    function imageToBlob(imageElement) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = "Anonymous";
-            img.src = imageElement;
+        function imageToBlob(imageElement) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = "Anonymous";
+                img.src = imageElement;
 
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
 
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
 
-                canvas.toBlob((blob) => {
-                    if (blob) {
-                        resolve(blob);
-                    } else {
-                        reject(new Error('Conversion to Blob failed'));
-                    }
-                }, 'image/jpg');
-            };
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            resolve(blob);
+                        } else {
+                            reject(new Error('Conversion to Blob failed'));
+                        }
+                    }, 'image/jpg');
+                };
 
-            img.onerror = () => {
-                reject(new Error('Image load error'));
-            };
-        });
-    }
+                img.onerror = () => {
+                    reject(new Error('Image load error'));
+                };
+            });
+        }
 
         $('.btn-close').on('click', () => {
             showStep(0);
@@ -426,4 +478,18 @@
     });
 
 
+</script>
+
+<script>
+    document.getElementById("checkSalario").addEventListener("change", function() {
+        const salarioField = document.getElementById("salarioVaga");
+        if (this.checked) {
+            salarioField.disabled = true;
+            salarioField.value = '';
+            salarioField.placeholder = 'A combinar.';
+        } else {
+            salarioField.disabled = false;
+            salarioField.placeholder = 'Digite o salário ofertado.'
+        }
+    });
 </script>
