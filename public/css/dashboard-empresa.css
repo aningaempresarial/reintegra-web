@@ -134,3 +134,20 @@
 .card-post-body :last-child {
     margin-bottom: 0;
 }
+
+.modal-title {
+    font-size: 1.5rem !important;
+}
+
+.btn {
+    padding: 10px 12px;
+    font-size: 1.2rem !important;
+}
+
+.form-label {
+    font-size: 1.3rem;
+}
+
+input::placeholder, select::placeholder, textarea::placeholder, input, select, textarea {
+    font-size: 1.2rem !important;
+}
