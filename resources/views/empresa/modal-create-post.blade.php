@@ -40,18 +40,16 @@
 
                     <div class="form-input">
 
-                        <div class="mb-3">
+                        <div class="mb-3" id="divTituloPosicao">
                             <label for="tituloPosicao" class="form-label">Título<span
                                     class="obrigatorio">*</span></label>
-                            <div class="mb-3">
-                                <input type="text" name="tituloPosicao" id="tituloPosicao"
-                                    class="form-control form-control-lg" placeholder="Título chamativo" required
-                                    autocomplete="off" />
-                            </div>
+                            <input type="text" name="tituloPosicao" id="tituloPosicao"
+                                class="form-control form-control-lg" placeholder="Título chamativo" required
+                                autocomplete="off" />
                             <span class="error-message" id="error-message-titulo-posicao"></span>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" id="divDescricaoVaga">
                             <label for="descricaoVaga" class="form-label">Descrição<span
                                     class="obrigatorio">*</span></label>
                             <textarea id="descricaoVaga" class="form-control form-control-lg" rows="10"
@@ -59,35 +57,65 @@
                             <span class="error-message" id="error-message-descricao-vaga"></span>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" id="divRequisitosVaga">
                             <label for="requisitosVaga" class="form-label">Requisitos<span
                                     class="obrigatorio">*</span></label>
                             <textarea id="requisitosVaga" class="form-control form-control-lg" rows="10"
                                 placeholder="Enumere os requisitos da função."></textarea>
-                            <span class="error-message" id="error-message-descricao-vaga"></span>
+                            <span class="error-message" id="error-message-requisitos"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="salarioVaga" class="form-label">Salário<span
-                                    class="obrigatorio">*</span></label>
+                        <div class="mb-3" id="divSalarioVaga">
+                            <label for="salarioVaga" class="form-label">Salário</label>
                             <div>
                                 <input type="number" step="0.01" name="salarioVaga" id="salarioVaga"
                                     placeholder="Digite o salário ofertado." required autocomplete="off"
                                     class="form-control form-control-lg" />
                             </div>
-                            <span class="error-message" id="error-message-titulo-posicao"></span>
+                            <span class="error-message" id="error-message-salario"></span>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" id="divCheckSalario">
                             <div class="check-form">
                                 <input type="checkbox" value="" id="checkSalario">
-                                <label for="checkSalario">
-                                    a combinar
-                                </label>
+                                <label for="checkSalario">A combinar</label>
                             </div>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" id="divTipoContrato">
+                            <label for="tipoContrato" class="form-label">Tipo de contrato<span
+                                    class="obrigatorio">*</span></label>
+                            <select class="form-select" id="tipoContrato" name="tipoContrato" required>
+                                <option value="" selected>Escolha uma opção</option>
+                                <option value="CLT">CLT</option>
+                                <option value="PJ">PJ</option>
+                                <option value="Estágio">Estágio</option>
+                                <option value="Aprendiz">Aprendiz</option>
+                                <option value="Temporário">Temporário</option>
+                            </select>
+                            <span class="error-message" id="error-message-tipo-contrato"></span>
+                        </div>
+
+                        <div class="mb-3" id="divEscolaridadeVaga">
+                            <label for="escolaridadeVaga" class="form-label">Escolaridade mínima<span
+                                    class="obrigatorio">*</span></label>
+                            <select class="form-select" id="escolaridadeVaga" name="escolaridadeVaga" required>
+                                <option selected>Escolha uma opção</option>
+                                <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
+                                <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+                                <option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
+                                <option value="Ensino Médio Completo">Ensino Médio Completo</option>
+                                <option value="Técnico">Técnico</option>
+                                <option value="Superior Incompleto">Superior Incompleto</option>
+                                <option value="Superior Completo">Superior Completo</option>
+                                <option value="Pós-Graduação">Pós-Graduação</option>
+                                <option value="Mestrado">Mestrado</option>
+                                <option value="Doutorado">Doutorado</option>
+                            </select>
+                            <span class="error-message" id="error-message-escolaridade"></span>
+                        </div>
+
+                        <div class="mb-3" id="divCargaHoraria">
                             <label for="cargaHoraria" class="form-label">Carga horária<span
                                     class="obrigatorio">*</span></label>
                             <div>
@@ -95,15 +123,35 @@
                                     placeholder="Digite as horas diárias de trabalho." required autocomplete="off"
                                     class="form-control form-control-lg" />
                             </div>
-                            <span class="error-message" id="error-message-titulo-posicao"></span>
+                            <span class="error-message" id="error-message-carga-horaria"></span>
+                        </div>
+
+                        <div class="mb-3" id="divHorarioInicio">
+                            <label for="horarioInicio" class="form-label">Horário de início<span
+                                    class="obrigatorio">*</span></label>
+                            <input type="time" name="horarioInicio" id="horarioInicio"
+                                class="form-control form-control-lg" placeholder="Horário de início do trabalho"
+                                required autocomplete="off" />
+                            <span class="error-message" id="error-message-horario-inicio"></span>
+                        </div>
+
+                        <div class="mb-3" id="divHorarioTermino">
+                            <label for="horarioTermino" class="form-label">Horário de término<span
+                                    class="obrigatorio">*</span></label>
+                            <input type="time" name="horarioTermino" id="horarioTermino"
+                                class="form-control form-control-lg" placeholder="Horário de término do trabalho"
+                                required autocomplete="off" />
+                            <span class="error-message" id="error-message-horario-termino"></span>
                         </div>
 
                         <div class="mb-3" id="divDtFim">
-                            <label for="dtFim" class="form-label">Data final<span class="obrigatorio">*</span><button
-                                    class="tooltip-informacao" type="button" data-bs-toggle="tooltip"
+                            <label for="dtFim" class="form-label">Data final<span class="obrigatorio">*</span>
+                                <button class="tooltip-informacao" type="button" data-bs-toggle="tooltip"
                                     data-bs-placement="top"
-                                    data-bs-title="Data final de inscrições para o processo seletivo."><img
-                                        src="{{ asset('icons/pergunta.png') }}"></button></label>
+                                    data-bs-title="Data final de inscrições para o processo seletivo.">
+                                    <img src="{{ asset('icons/pergunta.png') }}">
+                                </button>
+                            </label>
                             <div>
                                 <input type="date" name="dtFim" id="dtFim" class="form-control form-control-lg" required
                                     autocomplete="off" />
@@ -124,7 +172,7 @@
                     <div class="div-title-icon">
                         <div class="voltar-icon-div"><img class="voltar-icon" id="voltar"
                                 src="{{ asset('icons/voltar.png') }}"></div>
-                        <h2 class="title">Pré-visualizar Publicação</h2>
+                        <h2 class="title">Pré-visualizar publicação</h2>
                         <div class="voltar-icon-div"></div>
                     </div>
 
@@ -173,7 +221,7 @@
                     <div class="div-title-icon">
                         <div class="voltar-icon-div"><img class="voltar-icon" id="voltar"
                                 src="{{ asset('icons/voltar.png') }}"></div>
-                        <h2 class="title">Adicionar Imagem para Vaga</h2>
+                        <h2 class="title">Adicionar imagem para vaga</h2>
                         <div class="voltar-icon-div"></div>
                     </div>
 
@@ -219,6 +267,14 @@
     $('#btn-next-divulgacao').on('click', () => {
         tipo_post = 'divulgacao';
         showStep(1);
+        $('#divRequisitosVaga').hide();
+        $('#divSalarioVaga').hide();
+        $('#divCheckSalario').hide();
+        $('#divTipoContrato').hide();
+        $('#divEscolaridadeVaga').hide();
+        $('#divCargaHoraria').hide();
+        $('#divHorarioInicio').hide();
+        $('#divHorarioTermino').hide();
         $('#divDtFim').hide();
     });
 
@@ -245,6 +301,13 @@
 
             let tituloPosicao = $('#tituloPosicao').val();
             let descricaoVaga = $('#descricaoVaga').val();
+            let requisitosVaga = $('#requisitosVaga').val();
+            let salarioVaga = $('#salarioVaga').val();
+            let tipoContrato = $('#tipoContrato').val();
+            let escolaridadeVaga = $('#escolaridadeVaga').val();
+            let horarioInicio = $('#horarioInicio').val();
+            let horarioTermino = $('#horarioTermino').val();
+            let cargaHoraria = $('#cargaHoraria').val();
             let dtFim = $('#dtFim').val();
             let dataHoje = new Date().toISOString().split('T')[0];
             let erro = false;
@@ -259,12 +322,47 @@
                 erro = true;
             }
 
+            if (!requisitosVaga) {
+                $('#error-message-requisitos').text('Requisitos são obrigatórios.');
+                erro = true;
+            }
+
+            if (!salarioVaga && !$('#checkSalario').is(':checked')) {
+                $('#error-message-salario').text('Selecione a opção "a combinar" se não for definir o salário agora.');
+                erro = true;
+            }
+
+            if (!tipoContrato) {
+                $('#error-message-tipo-contrato').text('Tipo de contrato é obrigatório.');
+                erro = true;
+            }
+
+            if (escolaridadeVaga === 'Escolha uma opção') {
+                $('#error-message-escolaridade').text('Escolaridade é obrigatória.');
+                erro = true;
+            }
+
+            if (!horarioInicio) {
+                $('#error-message-horario-inicio').text('Horário de início é obrigatório.');
+                erro = true;
+            }
+
+            if (!horarioTermino) {
+                $('#error-message-horario-termino').text('Horário de término é obrigatório.');
+                erro = true;
+            }
+
+            if (!cargaHoraria) {
+                $('#error-message-carga-horaria').text('Carga horária é obrigatória.');
+                erro = true;
+            }
+
             if (tipo_post === 'emprego') {
                 if (!dtFim) {
-                    $('#error-message-data-fim').text('Data Final é obrigatória.');
+                    $('#error-message-data-fim').text('Data final é obrigatória.');
                     erro = true;
                 } else if (dtFim < dataHoje) {
-                    $('#error-message-data-fim').text('A Data Final deve ser igual ou maior que a data de hoje.');
+                    $('#error-message-data-fim').text('A data final deve ser igual ou maior que a data de hoje.');
                     erro = true;
                 }
             }
@@ -481,15 +579,21 @@
 </script>
 
 <script>
-    document.getElementById("checkSalario").addEventListener("change", function() {
+    document.getElementById("checkSalario").addEventListener("change", function () {
         const salarioField = document.getElementById("salarioVaga");
         if (this.checked) {
             salarioField.disabled = true;
             salarioField.value = '';
-            salarioField.placeholder = 'A combinar.';
+            salarioField.placeholder = 'Esse campo ficará vazio.';
         } else {
             salarioField.disabled = false;
             salarioField.placeholder = 'Digite o salário ofertado.'
         }
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
     });
 </script>
