@@ -312,6 +312,13 @@
             let dataHoje = new Date().toISOString().split('T')[0];
             let erro = false;
 
+            let [horasInicio, minutosInicio] = horarioInicio.split(':').map(Number);
+            let [horasTermino, minutosTermino] = horarioTermino.split(':').map(Number);
+            minutosInicio += horasInicio * 60;
+            minutosTermino += horasTermino * 60;
+            tempoTrabalhado = (minutosTermino - minutosInicio);
+            horasTrabalhadas = tempoTrabalhado / 60;
+
             if (!tituloPosicao) {
                 $('#error-message-titulo-posicao').text('Título é obrigatório.');
                 erro = true;
@@ -354,6 +361,11 @@
 
             if (!cargaHoraria) {
                 $('#error-message-carga-horaria').text('Carga horária é obrigatória.');
+                erro = true;
+            }
+
+            if (parseInt(cargaHoraria, 10) + 1 < horasTrabalhadas) {
+                $('#error-message-carga-horaria').text('A carga horária não condiz com o horário de trabalho.');
                 erro = true;
             }
 
@@ -406,6 +418,13 @@
             const formData = new FormData();
             formData.append('tituloPosicao', $('#tituloPosicao').val());
             formData.append('descricaoVaga', $('#descricaoVaga').val());
+            formData.append('requisitosVaga', $('#requisitosVaga').val());
+            formData.append('salarioVaga', $('#salarioVaga').val());
+            formData.append('tipoContrato', $('#tipoContrato').val());
+            formData.append('escolaridadeVaga', $('#escolaridadeVaga').val());
+            formData.append('cargaHoraria', $('#cargaHoraria').val());
+            formData.append('horarioInicio', $('#horarioInicio').val());
+            formData.append('horarioTermino', $('#horarioTermino').val());
 
             if (tipo_post === 'emprego') {
                 formData.append('dtFim', $('#dtFim').val());
@@ -435,17 +454,17 @@
                             location.reload();
                         }, 3000);
                     },
-                    error: (error) => {
-                        $('#modalPost').modal('hide');
-                        showStep(0);
+                    // error: (error) => {
+                    //     $('#modalPost').modal('hide');
+                    //     showStep(0);
 
-                        showAlert('Aviso', 'Erro ao cadastrar vaga.');
+                    //     showAlert('Aviso', 'Erro ao cadastrar vaga.');
 
-                        console.error(error);
-                        setTimeout(() => {
-                            location.reload();
-                        }, 3000);
-                    }
+                    //     console.error(error);
+                    //     setTimeout(() => {
+                    //         location.reload();
+                    //     }, 3000);
+                    // }
                 });
             } else {
                 $.ajax({
@@ -470,9 +489,9 @@
                         showStep(0);
 
                         showAlert('Aviso', 'Erro ao publicar.');
-                        /*setTimeout(() => {
+                        setTimeout(() => {
                             location.reload();
-                        }, 3000);*/
+                        }, 3000);
                     }
                 });
             }
