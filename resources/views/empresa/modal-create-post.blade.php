@@ -364,7 +364,7 @@
                 erro = true;
             }
 
-            if (parseInt(cargaHoraria, 10) + 1 < horasTrabalhadas) {
+            if (parseInt(cargaHoraria, 10) + 1 < horasTrabalhadas || parseInt(cargaHoraria, 10) > horasTrabalhadas) {
                 $('#error-message-carga-horaria').text('A carga horária não condiz com o horário de trabalho.');
                 erro = true;
             }
