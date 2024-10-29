@@ -117,7 +117,12 @@
 
                         <div class="mb-3" id="divCargaHoraria">
                             <label for="cargaHoraria" class="form-label">Carga horária<span
-                                    class="obrigatorio">*</span></label>
+                                    class="obrigatorio">*</span><button class="tooltip-informacao" type="button" data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    data-bs-title="O horário de trabalho deve corresponder à carga horária, com uma tolerância de até 1 hora extra, caso haja intervalo.">
+                                    <img src="{{ asset('icons/pergunta.png') }}">
+                                </button></label>
+                                    
                             <div>
                                 <input type="number" name="cargaHoraria" id="cargaHoraria"
                                     placeholder="Digite as horas diárias de trabalho." required autocomplete="off"
