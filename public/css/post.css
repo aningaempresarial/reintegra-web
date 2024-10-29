@@ -35,7 +35,7 @@
 }
 
 .div-pesquisa input:focus-visible {
-    outline: #6556ff auto 1px;;
+    outline: #007bff auto 1px;;
 }
 
 .div-pesquisa input::placeholder {
@@ -425,4 +425,19 @@
     align-items: center;
     width: fit-content;
     gap: 10px;
+}
+
+#publicacoes-table {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.btn-icon {
+    padding: 0;
+    border-radius: 100%;
+    border: 0;
+}
+
+.btn-icon:active {
+    opacity: 0.7;
 }
