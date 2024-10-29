@@ -10,9 +10,16 @@ use GuzzleHttp\Client;
 class PostController extends Controller
 {
     public function saveVaga(Request $request) {
+        $horario = $request->input('horarioInicio') . ' - ' . $request->input('horarioTermino');
         $dados = [
             'titulo' => $request->input('tituloPosicao'),
             'descricao' => $request->input('descricaoVaga'),
+            'requisitos' => $request->input('requisitosVaga'),
+            'salario' => $request->input('checkSalario') ? null : $request->input('salarioVaga'),
+            'tipoContrato' => $request->input('tipoContrato'),
+            'escolaridade' => $request->input('escolaridadeVaga'),
+            'cargaHoraria' => $request->input('cargaHoraria'),
+            'horario' => $horario,
             'dtFim' => $request->input('dtFim'),
             'token' => $request->input('token'),
         ];
