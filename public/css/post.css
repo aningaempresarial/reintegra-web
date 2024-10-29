@@ -259,14 +259,12 @@
 }
 
 .card {
-    width: 330px;
-    background-color: rgb(241, 241, 241);
+    width: 100%;
     overflow: hidden;
 }
 
 .card-top {
     display: block;
-
 }
 
 .card-top img {

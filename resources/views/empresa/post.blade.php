@@ -12,72 +12,77 @@
 @include('partials.profilebar')
 @section('conteudo')
 
-    <div class="panel main-panel" style="padding-top: 0">
-        <div class="h2 title mt-4">Minhas Publicações</div>
+<div class="panel main-panel" style="padding-top: 0">
+    <div class="h2 title mt-4">Minhas Publicações</div>
 
-        <div class="div-banner">
+    <div class="div-banner">
 
-            <div class="div-pesquisa">
+        <div class="div-pesquisa">
 
-                <div class="flex-1">
-                    <h2>Navegue pelas publicações</h2>
-                    <input type="text" name="" id="searchbar-input" placeholder="Ex.: Vaga para Estágio">
-                </div>
-
-            </div>
-
-            <div class="div-image">
-                <img src="{{ asset('images/pessoa-search.png') }}" alt="">
+            <div class="flex-1">
+                <h2>Navegue pelas publicações</h2>
+                <input type="text" name="" id="searchbar-input" placeholder="Ex.: Vaga para Estágio">
             </div>
 
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-8"></div>
-            <div class="col-md">
-                <div class="div-add-post">
-                    <h4 class="txt-post">Nova Publicação</h4>
-                    <img class="img-post" src="{{ asset('icons/add.png') }}" alt="">
-                </div>
-            </div>
+        <div class="div-image">
+            <img src="{{ asset('images/pessoa-search.png') }}" alt="">
         </div>
 
-        <table id="publicacoes-table" class="table table-hover align-middle table-lg">
-            <thead>
-                <tr>
-                    <th>Tipo</th>
-                    <th>Título</th>
-                    <th>Data Final</th>
-                    <th>Status</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($publicacoes as $publicacao)
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-8"></div>
+        <div class="col-md">
+            <div class="div-add-post">
+                <h4 class="txt-post">Nova Publicação</h4>
+                <img class="img-post" src="{{ asset('icons/add.png') }}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <table id="publicacoes-table" class="table table-hover align-middle table-lg">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Título</th>
+                <th>Data Final</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($publicacoes as $publicacao)
                 <tr>
                     <td>{{ $publicacao['categoriaPostagem'] }}</td>
                     <td>{{ $publicacao['tituloPostagem'] }}</td>
                     <td>{{ $publicacao['dataFim'] }}</td>
                     <td>{{ $publicacao['statusPostagem'] }}</td>
                     <td>
-                        <button class="btn btn-icon" data-bs-toggle="modal" data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}"><img src="{{ asset('images/view-icon.png') }}"></button>
+                        <button class="btn btn-icon" data-bs-toggle="modal"
+                            data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}"><img
+                                src="{{ asset('images/view-icon.png') }}"></button>
                     </td>
                 </tr>
 
-                <div class="modal fade" id="modalVisualizar{{ $publicacao['idPostagem'] }}" tabindex="-1" aria-labelledby="modalVisualizar{{ $publicacao['idPostagem'] }}Label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal fade" id="modalVisualizar{{ $publicacao['idPostagem'] }}" tabindex="-1"
+                    aria-labelledby="modalVisualizar{{ $publicacao['idPostagem'] }}Label" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalVisualizar{{ $publicacao['idPostagem'] }}Label">Veja sua publicação</h5>
+                                <h5 class="modal-title" id="modalVisualizar{{ $publicacao['idPostagem'] }}Label">Veja sua
+                                    publicação</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" style="padding: 30px">
                                 <div class="centered-item">
                                     <div class="card">
 
                                         <div class="card-body">
                                             <div class="info-usuario">
-                                                <img class="foto-perfil" src="{{ $API_URL . $data['fotoPerfil'] }}" alt="" srcset="">
+                                                <img class="foto-perfil" src="{{ $API_URL . $data['fotoPerfil'] }}" alt=""
+                                                    srcset="">
                                                 <p class="nome-perfil">{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</p>
                                             </div>
                                             <h3 class="tituloPost">{{ $publicacao['tituloPostagem'] }}</h3>
@@ -87,19 +92,45 @@
                                         <div class="card-top">
                                             <div class="image-wrapper">
                                                 @if($publicacao['imagemPostagem'])
-                                                    <img class="foto-imagem" src="{{ $API_URL . $publicacao['imagemPostagem'] }}" alt="" srcset="">
+                                                    <img class="foto-imagem"
+                                                        src="{{ $API_URL . $publicacao['imagemPostagem'] }}" alt="" srcset="">
                                                 @endif
                                             </div>
                                         </div>
 
-                                        <div class="card-info p-1">
-                                            <button class="btn btn-about">Saiba Mais</button>
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                        aria-expanded="false" aria-controls="collapseTwo">
+                                                        Mais informações
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body" style="padding-bottom: 0">
+                                                        <p>Requisitos: </p>
+                                                        <p>Salário:</p>
+                                                        <p>Tipo de contrato:</p>
+                                                        <p>Escolaridade mínima:</p>
+                                                        <p>Carga horária:</p>
+                                                        <p>Horário:</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
 
                                 </div>
 
+                                <hr>
+
+                                <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
+                                <p>Clodoaldo</p>
+                                <p>Júnior</p>
+                                <p>Ricardo</p>
                                 @if (isset($publicacao['candidatos'][0]))
                                     <h2 class="title">Candidatos</h2>
                                     @foreach($publicacao['candidatos'] as $candidato)
@@ -114,16 +145,16 @@
                         </div>
                     </div>
                 </div>
-                @empty
+            @empty
 
-                @endforelse
-            </tbody>
-        </table>
+            @endforelse
+        </tbody>
+    </table>
 
-        <div id="nenhuma-publicacao" style="display: none; text-align: center; margin-top: 20px;">
-            Nenhuma publicação encontrada.
-        </div>
+    <div id="nenhuma-publicacao" style="display: none; text-align: center; margin-top: 20px;">
+        Nenhuma publicação encontrada.
     </div>
+</div>
 
 @endsection
 
@@ -147,11 +178,11 @@
             $('#publicacoes-table').hide();
         }
 
-        $('#searchbar-input').on('keyup', function() {
+        $('#searchbar-input').on('keyup', function () {
             var value = $(this).val().toLowerCase();
             var hasResults = false;
 
-            $('#publicacoes-table tbody tr').filter(function() {
+            $('#publicacoes-table tbody tr').filter(function () {
                 var match = $(this).text().toLowerCase().indexOf(value) > -1;
                 $(this).toggle(match);
                 if (match) hasResults = true;
