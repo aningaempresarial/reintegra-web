@@ -26,13 +26,14 @@
 .div-image {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
 }
 
 .div-image img {
     width: auto;
-    height: 100%;
+    height: 93%;
+    
 }
 
 .div-pesquisa input {
@@ -132,4 +133,7 @@
 .btn-add-admin {
     align-self: flex-end;
     font-size: 1.3rem;
+    margin: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
 }
