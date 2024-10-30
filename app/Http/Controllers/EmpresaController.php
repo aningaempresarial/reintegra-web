@@ -42,9 +42,10 @@ class EmpresaController extends Controller
 
 
                 $resPubli = Http::get(env('EXTERNAL_API_URL') . '/post/all/' . $user);
+                $resVagas = Http::get(env('EXTERNAL_API_URL') . '/post/vagas/' . $user);
 
                 if ($resPubli->successful()) {
-                    return view('empresa.post', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'publicacoes' => $resPubli->json()]);
+                    return view('empresa.post', ['data' => $data, 'usuario' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'publicacoes' => $resPubli->json(), 'vagas' => $resVagas->json()]);
                 }
 
             } else if (request()->routeIs('empresa-mensagens')) {
