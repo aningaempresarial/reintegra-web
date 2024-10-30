@@ -110,12 +110,21 @@
                                                 <div id="collapseTwo" class="accordion-collapse collapse"
                                                     data-bs-parent="#accordionExample">
                                                     <div class="accordion-body" style="padding-bottom: 0">
-                                                        <p>Requisitos: </p>
-                                                        <p>Salário:</p>
-                                                        <p>Tipo de contrato:</p>
-                                                        <p>Escolaridade mínima:</p>
-                                                        <p>Carga horária:</p>
-                                                        <p>Horário:</p>
+                                                        @php
+                                                        $vaga = null;
+                                                        foreach ($vagas as $vagaItem) {
+                                                            if ($vagaItem['idPostagem'] === $publicacao['idPostagem']) {
+                                                                $vaga = $vagaItem;
+                                                                break; 
+                                                            }
+                                                        }
+                                                        @endphp
+                                                        <p>Requisitos: {{ $vaga['requisitosVaga'] }}</p>
+                                                        <p>Salário: R$ {{ $vaga['salarioVaga'] }}</p>
+                                                        <p>Tipo de contrato: {{ $vaga['tipoContrato'] }}</p>
+                                                        <p>Escolaridade mínima: {{ $vaga['tipoEscolaridade'] }}</p>
+                                                        <p>Carga horária: {{ $vaga['cargaHoraria'] }} h</p>
+                                                        <p>Horário: {{ $vaga['horarioVaga'] }}</p>
                                                     </div>
                                                 </div>
                                             </div>
