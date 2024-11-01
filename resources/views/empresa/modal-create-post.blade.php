@@ -65,7 +65,7 @@
                             <span class="error-message" id="error-message-requisitos"></span>
                         </div>
 
-                        <div class="mb-3" id="divSalarioVaga">
+                        <div class="mb-2" id="divSalarioVaga">
                             <label for="salarioVaga" class="form-label">Salário</label>
                             <div>
                                 <input type="number" step="0.01" name="salarioVaga" id="salarioVaga"
@@ -266,6 +266,14 @@
     $('#btn-next-emprego').on('click', () => {
         tipo_post = 'emprego';
         showStep(1);
+        $('#divRequisitosVaga').show();
+        $('#divSalarioVaga').show();
+        $('#divCheckSalario').show();
+        $('#divTipoContrato').show();
+        $('#divEscolaridadeVaga').show();
+        $('#divCargaHoraria').show();
+        $('#divHorarioInicio').show();
+        $('#divHorarioTermino').show();
         $('#divDtFim').show();
     });
 

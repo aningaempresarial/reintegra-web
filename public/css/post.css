@@ -265,6 +265,7 @@
 
 .card-top {
     display: block;
+    padding: 16px;
 }
 
 .card-top img {
@@ -354,14 +355,13 @@
 
 
 .voltar-icon-div {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .voltar-icon {
-    width: 40px;
+    width: 30px;
 }
 
 .voltar-icon:hover {
@@ -377,7 +377,7 @@
 }
 
 .div-title-icon h2 {
-    flex: 3;
+    font-size: 1.8rem;
 }
 
 .centered-item {
@@ -385,6 +385,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 16px 128px;
+}
+
+.centered-item .card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    background-color: #f7f7f7;
 }
 
 .cropper-wrapper {
@@ -438,4 +445,8 @@
 
 .btn-icon:active {
     opacity: 0.7;
+}
+
+.mb-3 {
+    margin-bottom: 40px !important;
 }

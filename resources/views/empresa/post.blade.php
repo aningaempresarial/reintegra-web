@@ -21,7 +21,7 @@
 
             <div class="flex-1">
                 <h2>Navegue pelas publicações</h2>
-                <input type="text" name="" id="searchbar-input" placeholder="Ex.: Vaga para Estágio">
+                <input type="text" name="" id="searchbar-input" placeholder="Ex.: Vaga para estágio">
             </div>
 
         </div>
