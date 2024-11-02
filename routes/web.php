@@ -71,7 +71,7 @@ Route::get('/empresa/mensagens', [EmpresaController::class, 'index'])->name('emp
 
 Route::get('/mensagens/{idUsuario}', [MensagemController::class, 'getMensagens'])->name('mensagens-contato');
 
-Route::post('empresa/enviar-mensagem', [MensagemController::class, 'enviarMensagem']);
+Route::post('empresa/enviar-mensagem', [MensagemController::class, 'enviarMensagem'])->name('enviar.mensagem');
 
 Route::post('/cadastrar-empresa', [EmpresaController::class, 'store']);
 

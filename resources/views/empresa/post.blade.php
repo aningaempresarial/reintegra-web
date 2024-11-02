@@ -37,7 +37,7 @@
         <div class="col-md">
             <div class="div-add-post">
                 <h4 class="txt-post">Nova Publicação</h4>
-                <img class="img-post" src="{{ asset('icons/add.png') }}" alt="">
+                <img class="img-post" src="{{ asset('icons/add.png') }}">
             </div>
         </div>
     </div>
@@ -54,106 +54,119 @@
         </thead>
         <tbody>
             @forelse ($publicacoes as $publicacao)
-                <tr>
-                    <td>{{ $publicacao['categoriaPostagem'] }}</td>
-                    <td>{{ $publicacao['tituloPostagem'] }}</td>
-                    <td>{{ $publicacao['dataFim'] }}</td>
-                    <td>{{ $publicacao['statusPostagem'] }}</td>
-                    <td>
-                        <button class="btn btn-icon" data-bs-toggle="modal"
-                            data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}"><img
-                                src="{{ asset('images/view-icon.png') }}"></button>
-                    </td>
-                </tr>
+                        <tr>
+                            <td>{{ $publicacao['categoriaPostagem'] }}</td>
+                            <td>{{ $publicacao['tituloPostagem'] }}</td>
+                            <td>{{ $publicacao['dataFim'] }}</td>
+                            <td>{{ $publicacao['statusPostagem'] }}</td>
+                            <td>
+                                <button class="btn btn-icon" data-bs-toggle="modal"
+                                    data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}"><img
+                                        src="{{ asset('images/view-icon.png') }}"></button>
+                            </td>
+                        </tr>
 
-                <div class="modal fade" id="modalVisualizar{{ $publicacao['idPostagem'] }}" tabindex="-1"
-                    aria-labelledby="modalVisualizar{{ $publicacao['idPostagem'] }}Label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalVisualizar{{ $publicacao['idPostagem'] }}Label">Veja sua
-                                    publicação</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body" style="padding: 30px">
-                                <div class="centered-item">
-                                    <div class="card">
+                        <div class="modal fade" id="modalVisualizar{{ $publicacao['idPostagem'] }}" tabindex="-1"
+                            aria-labelledby="modalVisualizar{{ $publicacao['idPostagem'] }}Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalVisualizar{{ $publicacao['idPostagem'] }}Label">Veja sua
+                                            publicação</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" style="padding: 30px">
+                                        <div class="centered-item">
+                                            <div class="card">
 
-                                        <div class="card-body">
-                                            <div class="info-usuario">
-                                                <img class="foto-perfil" src="{{ $API_URL . $data['fotoPerfil'] }}" alt=""
-                                                    srcset="">
-                                                <p class="nome-perfil">{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</p>
-                                            </div>
-                                            <h3 class="tituloPost">{{ $publicacao['tituloPostagem'] }}</h3>
-                                            <div class="textoPost">{!! nl2br(e($publicacao['conteudoPostagem'])) !!}</div>
-                                        </div>
-
-                                        <div class="card-top">
-                                            <div class="image-wrapper">
-                                                @if($publicacao['imagemPostagem'])
-                                                    <img class="foto-imagem"
-                                                        src="{{ $API_URL . $publicacao['imagemPostagem'] }}" alt="" srcset="">
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion" id="accordionExample">
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                        aria-expanded="false" aria-controls="collapseTwo">
-                                                        Mais informações
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                                    data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body" style="padding-bottom: 0">
+                                                <div class="card-body">
+                                                    <div class="info-usuario">
+                                                        <img class="foto-perfil" src="{{ $API_URL . $data['fotoPerfil'] }}" alt=""
+                                                            srcset="">
+                                                        <p class="nome-perfil">{{ $data['nomeEmpresa'] ?? $nome ?? 'Martha' }}</p>
+                                                    </div>
+                                                    <h3 class="tituloPost">{{ $publicacao['tituloPostagem'] }}</h3>
+                                                    <div class="textoPost">
                                                         @php
-                                                        $vaga = null;
-                                                        foreach ($vagas as $vagaItem) {
-                                                            if ($vagaItem['idPostagem'] === $publicacao['idPostagem']) {
-                                                                $vaga = $vagaItem;
-                                                                break; 
-                                                            }
-                                                        }
+                                                            $conteudo = $publicacao['conteudoPostagem'];
+                                                            $conteudoCurto = strlen($conteudo) > 200 ? substr($conteudo, 0, 200) . '...' : $conteudo;
                                                         @endphp
-                                                        <p>Requisitos: {{ $vaga['requisitosVaga'] }}</p>
-                                                        <p>Salário: R$ {{ $vaga['salarioVaga'] }}</p>
-                                                        <p>Tipo de contrato: {{ $vaga['tipoContrato'] }}</p>
-                                                        <p>Escolaridade mínima: {{ $vaga['tipoEscolaridade'] }}</p>
-                                                        <p>Carga horária: {{ $vaga['cargaHoraria'] }} h</p>
-                                                        <p>Horário: {{ $vaga['horarioVaga'] }}</p>
+
+                                                        <span class="conteudo-curto">{!! nl2br(e($conteudoCurto)) !!}</span>
+                                                        @if (strlen($conteudo) > 200)
+                                                            <span class="conteudo-completo d-none">{!! nl2br(e($conteudo)) !!}</span>
+                                                            <a href="javascript:void(0);" class="ver-mais">Ver mais</a>
+                                                        @endif
                                                     </div>
                                                 </div>
+
+                                                <div class="card-top">
+                                                    <div class="image-wrapper">
+                                                        @if($publicacao['imagemPostagem'])
+                                                            <img class="foto-imagem"
+                                                                src="{{ $API_URL . $publicacao['imagemPostagem'] }}" alt="" srcset="">
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="accordion" id="accordionExample">
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header">
+                                                            <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                                aria-expanded="false" aria-controls="collapseTwo">
+                                                                Mais informações
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseTwo" class="accordion-collapse collapse"
+                                                            data-bs-parent="#accordionExample">
+                                                            <div class="accordion-body" style="padding-bottom: 0">
+                                                                @php
+                                                                    $vaga = null;
+                                                                    foreach ($vagas as $vagaItem) {
+                                                                        if ($vagaItem['idPostagem'] === $publicacao['idPostagem']) {
+                                                                            $vaga = $vagaItem;
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                @endphp
+                                                                <p>Requisitos: {{ $vaga['requisitosVaga'] }}</p>
+                                                                <p>Salário: R$ {{ $vaga['salarioVaga'] }}</p>
+                                                                <p>Tipo de contrato: {{ $vaga['tipoContrato'] }}</p>
+                                                                <p>Escolaridade mínima: {{ $vaga['tipoEscolaridade'] }}</p>
+                                                                <p>Carga horária: {{ $vaga['cargaHoraria'] }} h</p>
+                                                                <p>Horário: {{ $vaga['horarioVaga'] }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
+
                                         </div>
 
+                                        <hr>
+
+                                        @if (isset($publicacao['candidatos'][0]))
+                                            <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
+                                            @foreach($publicacao['candidatos'] as $candidato)
+                                                <div class="candidato-div">
+                                                    <img class="foto-perfil" src="{{ $candidato['foto'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">
+                                                    <p class="nome-perfil">{{ $candidato['nome'] }}</p>
+                                                    <a href="#"><img class="message-icon" src="{{ asset('images/message-icon.png') }}"></a>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <p class="candidatos-text">Sem candidatos para essa vaga.</p>
+                                        @endif
+
                                     </div>
-
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fechar</button>
+                                    </div>
                                 </div>
-
-                                <hr>
-
-                                <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
-                                <p>Clodoaldo</p>
-                                <p>Júnior</p>
-                                <p>Ricardo</p>
-                                @if (isset($publicacao['candidatos'][0]))
-                                    <h2 class="title">Candidatos</h2>
-                                    @foreach($publicacao['candidatos'] as $candidato)
-                                        <p>{{ $candidato['nome'] }}</p>
-                                    @endforeach
-                                @endif
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fechar</button>
                             </div>
                         </div>
-                    </div>
-                </div>
             @empty
 
             @endforelse
@@ -167,6 +180,7 @@
 
 @endsection
 
+@include('empresa/modal-novo-contato');
 
 @section('footer')
 <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -213,5 +227,70 @@
     /*var modalPost = new bootstrap.Modal($('#modalPost'));
     modalPost.show();*/
 
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const verMaisLinks = document.querySelectorAll('.ver-mais');
+
+        verMaisLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                const conteudoCompleto = this.previousElementSibling;
+                const conteudoCurto = conteudoCompleto.previousElementSibling;
+
+                if (conteudoCompleto.classList.contains('d-none')) {
+                    conteudoCompleto.classList.remove('d-none');
+                    conteudoCurto.classList.add('d-none');
+                    this.textContent = 'Ver menos';
+                } else {
+                    conteudoCompleto.classList.add('d-none');
+                    conteudoCurto.classList.remove('d-none');
+                    this.textContent = 'Ver mais';
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.message-icon').addEventListener('click', function(event) {
+            event.preventDefault();
+            var modalMessage = new bootstrap.Modal(document.getElementById('modalMessage'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            modalMessage.show();
+        });
+    });
+</script>
+
+<script>
+    const formularioMessage = document.getElementById('modalMessageContato');
+
+    formularioMessage.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(formularioMessage);
+
+        fetch('{{ route("enviar.mensagem") }}', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Mensagem enviada com sucesso!');
+            } else {
+                alert('Erro ao enviar a mensagem.');
+            }
+        })
+        .catch(error => {
+            alert('Erro na conexão.');
+            console.error('Erro:', error);
+        });
+    });
 </script>
 @endsection

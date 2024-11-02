@@ -450,3 +450,32 @@
 .mb-3 {
     margin-bottom: 40px !important;
 }
+
+.d-none {
+    display: none;
+}
+
+.candidato-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+}
+
+.candidato-div p {
+    margin: 0;
+}
+
+.candidato-div img {
+    margin: 0;
+}
+
+.candidatos-text {
+    margin: 0; 
+    padding-top: 14px; 
+    text-align: center
+}
+
+.message-icon {
+    width: 30px;
+}
