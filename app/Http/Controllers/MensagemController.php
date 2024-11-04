@@ -57,7 +57,7 @@ class MensagemController extends Controller
 
             if ($resposta->successful()) {
                 session(['idDestinatario' => $idDestinatario]);
-                echo session('idDestinatario');
+                
                 return redirect()->route('mensagens-contato')
                     ->with('success', 'Mensagem enviada com sucesso!');
             } else {

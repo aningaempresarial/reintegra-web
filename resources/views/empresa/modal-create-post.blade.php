@@ -217,7 +217,7 @@
 
                     <div class="button-div">
                         <button type="button" class="btn btn-danger btn-form" id="btnCancelar">Cancelar</button>
-                        <button type="button" class="btn-form" id="btnCadastrar">Publicar</button>
+                        <button type="button" class="btn btn-light btn-form" id="btnCadastrar">Publicar</button>
                     </div>
 
                 </div>

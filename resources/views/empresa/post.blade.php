@@ -151,11 +151,17 @@
                                             <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
                                             @foreach($publicacao['candidatos'] as $candidato)
                                                 <div class="candidato-div">
-                                                    <img class="foto-perfil" src="{{ $candidato['foto'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">
-                                                    <p class="nome-perfil">{{ $candidato['nome'] }}</p>
-                                                    <a href="#"><img class="message-icon" src="{{ asset('images/message-icon.png') }}"></a>
+                                                    <img class="foto-perfil" src="{{ $candidato['foto'] }}"
+                                                        onerror="this.src='{{ asset('images/profile-photo.png') }}'">
+                                                    <a href="#" class="nome-perfil" data-id-usuario="{{ $candidato['idUsuario'] }}">
+                                                        <p>
+                                                            {{ $candidato['nome'] }}</p>
+                                                    </a>
+                                                    <a href="#"><img class="message-icon" data-id-usuario="{{ $candidato['idUsuario'] }}"
+                                                            src="{{ asset('images/message-icon.png') }}"></a>
                                                 </div>
                                                 @include('empresa/modal-novo-contato')
+                                                @include('empresa/modal-candidato')
                                             @endforeach
                                         @else
                                             <p class="candidatos-text">Sem candidatos para essa vaga.</p>
@@ -253,42 +259,63 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        document.querySelector('.message-icon').addEventListener('click', function(event) {
-            event.preventDefault();
-            var modalMessage = new bootstrap.Modal(document.getElementById('modalMessage'), {
-                backdrop: 'static',
-                keyboard: false
+        document.querySelectorAll('.message-icon').forEach(function (icon) {
+            icon.addEventListener('click', function (event) {
+                event.preventDefault();
+                const idUsuario = this.getAttribute('data-id-usuario'); // Assumindo que você tem um atributo `data-id-usuario`
+                const modalId = 'modalMessage' + idUsuario;
+                const modalMessage = new bootstrap.Modal(document.getElementById(modalId), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                modalMessage.show();
             });
-            modalMessage.show();
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.nome-perfil').forEach(function (icon) {
+            icon.addEventListener('click', function (event) {
+                event.preventDefault();
+                const idUsuario = this.getAttribute('data-id-usuario');
+                const modalId = 'modalCandidato' + idUsuario;
+                const modalCandidato = new bootstrap.Modal(document.getElementById(modalId), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                modalCandidato.show();
+            });
         });
     });
 </script>
 
 <script>
-    const formularioMessage = document.getElementById('modalMessageContato');
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[id^="modalMessageContato"]').forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
 
-    formularioMessage.addEventListener('submit', function(event) {
-        event.preventDefault();
+                const formData = new FormData(this);
 
-        const formData = new FormData(formularioMessage);
-
-        fetch('{{ route("enviar.mensagem") }}', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Mensagem enviada com sucesso!');
-            } else {
-                alert('Erro ao enviar a mensagem.');
-            }
-        })
-        .catch(error => {
-            alert('Erro na conexão.');
-            console.error('Erro:', error);
+                fetch('{{ route("enviar.mensagem") }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Mensagem enviada com sucesso!');
+                        } else {
+                            alert('Erro ao enviar a mensagem.');
+                        }
+                    })
+                    .catch(error => {
+                        alert('Erro na conexão.');
+                        console.error('Erro:', error);
+                    });
+            });
         });
     });
 </script>

@@ -239,25 +239,6 @@
     font-size: 1.1rem;
 } */
 
-/*
-.btn-form:hover {
-    background-color: #2e8b57;
-    color: white;
-    border: #1e5a38 1px solid;
-} 
-*/
-
-.btn-danger {
-    background: #dc3545;
-}
-
-
-.btn-danger:hover {
-    background-color: #dc3545;
-    color: white;
-    border: #dc3545 1px solid;
-}
-
 .card {
     width: 100%;
     overflow: hidden;
@@ -330,6 +311,10 @@
 }
 
 .nome-perfil {
+    text-decoration: none;
+}
+
+.nome-perfil p {
     font-size: large;
 }
 
