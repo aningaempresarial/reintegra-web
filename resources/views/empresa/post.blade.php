@@ -155,6 +155,7 @@
                                                     <p class="nome-perfil">{{ $candidato['nome'] }}</p>
                                                     <a href="#"><img class="message-icon" src="{{ asset('images/message-icon.png') }}"></a>
                                                 </div>
+                                                @include('empresa/modal-novo-contato')
                                             @endforeach
                                         @else
                                             <p class="candidatos-text">Sem candidatos para essa vaga.</p>
@@ -179,8 +180,6 @@
 </div>
 
 @endsection
-
-@include('empresa/modal-novo-contato');
 
 @section('footer')
 <script src="{{ asset('js/jquery.min.js') }}"></script>
