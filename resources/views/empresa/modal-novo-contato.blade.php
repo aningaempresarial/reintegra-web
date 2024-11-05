@@ -14,7 +14,7 @@
                     <div class="input-group mb-3">
                         <textarea style="padding: 8px" class="form-control form-control-lg"
                             placeholder="Olá, {{ $candidato['nome'] }}!" name="conteudoMensagem" required></textarea>
-                        <input type="hidden" name="destinatario" class="destinatario" value="{{ $candidato['nome'] }}">
+                        <input type="hidden" name="destinatario" class="destinatario" value="{{ $candidato['usuario'] }}">
                         <input type="hidden" name="idDestinatario" class="idDestinatario"
                             value="{{ $candidato['idUsuario'] }}">
                     </div>

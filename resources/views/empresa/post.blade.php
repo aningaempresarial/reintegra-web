@@ -148,10 +148,12 @@
                                         <hr>
 
                                         @if (isset($publicacao['candidatos']))
+
                                             <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
+
                                             @foreach($publicacao['candidatos'] as $candidato)
                                                 <div class="candidato-div">
-                                                    <img class="foto-perfil" src="{{ $candidato['foto'] }}"
+                                                    <img class="foto-perfil" src="{{ $API_URL . $candidato['foto'] }}"
                                                         onerror="this.src='{{ asset('images/profile-photo.png') }}'">
                                                     <a href="#" class="nome-perfil" data-id-usuario="{{ $candidato['idUsuario'] }}">
                                                         <p>
@@ -296,6 +298,10 @@
                 event.preventDefault();
 
                 const formData = new FormData(this);
+                for (let [key, value] of formData.entries()) {
+                    console.log(key, value);
+                }
+
 
                 fetch('{{ route("enviar.mensagem") }}', {
                     method: 'POST',
@@ -305,15 +311,16 @@
                     body: formData
                 })
                     .then(response => {
+                        console.log(response)
                         if (response.ok) {
-                            alert('Mensagem enviada com sucesso!');
+                            window.location.href = '/empresa/mensagens'
                         } else {
-                            alert('Erro ao enviar a mensagem.');
+                            window.location.href = '/empresa/mensagens'
                         }
                     })
                     .catch(error => {
                         alert('Erro na conexão.');
-                        console.error('Erro:', error);
+                        window.location.href = '/empresa/mensagens'
                     });
             });
         });
