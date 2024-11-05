@@ -64,23 +64,12 @@ $idade = calcularIdade($dataNasc);
                     </div>
                     <hr>
                     <h1 class="modal-title fs-5 mb-3">Educação</h1>
-                    @if (count($candidato['educacao']) > 0)
-                        @foreach ($candidato['educacao'] as $educacao)
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <textarea rows="1" class="form-control form-control-lg"
-                                        disabled>{{ $educacao['escola'] }} - {{ $educacao['curso'] }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                <div class="mb-3">
-                                        <textarea rows="1" class="form-control form-control-lg"
-                                        disabled>Período: {{ \Carbon\Carbon::parse($educacao['dataInicioCurso'])->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($educacao['dataFimCurso'])->format('d/m/Y') }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                    @if (isset($candidato['escolaridade']))
+                        <div class="mb-3">
+                            <label class="form-label">Escolaridade</label>
+                            <textarea rows="1" class="form-control form-control-lg"
+                        disabled>{{ $candidato['escolaridade'] }}</textarea>
+                        </div>
                     @else
                         <p class="candidatos-text" style="padding: 0">Nada para mostrar.</p>
                     @endif
