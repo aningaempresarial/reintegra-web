@@ -147,7 +147,7 @@
 
                                         <hr>
 
-                                        @if (isset($publicacao['candidatos'][0]))
+                                        @if (isset($publicacao['candidatos']))
                                             <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
                                             @foreach($publicacao['candidatos'] as $candidato)
                                                 <div class="candidato-div">

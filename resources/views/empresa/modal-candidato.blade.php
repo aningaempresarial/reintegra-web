@@ -86,13 +86,13 @@ $idade = calcularIdade($dataNasc);
                     @endif
                     <hr>
                     <h1 class="modal-title fs-5 mb-3">Experiência profissional</h1>
-                    @if (count($candidato['experiencia']) > 0)
+                    @if (isset($candidato['experiencia']) && count($candidato['experiencia']) > 0)
                         @foreach ($candidato['experiencia'] as $experiencia)
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
                                         <textarea rows="1" class="form-control form-control-lg"
-                                        disabled>{{ $experiencia['empresa'] }} - {{ $educacao['cargo'] }}</textarea>
+                                        disabled>{{ $experiencia['empresa'] }} - {{ $experiencia['cargo'] }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col">

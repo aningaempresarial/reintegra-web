@@ -464,3 +464,7 @@
 .message-icon {
     width: 30px;
 }
+
+.form-control:disabled {
+    background-color: #f7f7f7;
+}

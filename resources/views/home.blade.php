@@ -2,6 +2,7 @@
 @section('titulo', 'Início | Reintegra')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('css/carrossel.css') }}">
 <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
 <link rel="stylesheet" type="text/css"
@@ -9,138 +10,164 @@
 
 <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
 @endsection
-@section('style')
-<!-- Não deu para colocar a imagem de fundo pelo css, por isso está aqui -->
-<style>
-    .home-doacao {
-        background-image: url("{{ asset('images/fundo.svg') }}");
-        background-attachment: fixed;
-    }
-</style>
-@endsection
-
-<!-- Esquecendo sessão -->
-{{session()->flush();}}
-
 @section('conteudo')
-
-
 <!-- Seção de doação -->
 <section id="doacao" class="home-doacao">
-    <div>
-        <img class="img-doacao" src="{{ asset('images/img-doacao.png') }}">
-    </div>
-    <div>
-        <h1>Pix Reintegra</h1>
-        <p>Fortaleça organizações que quebram o ciclo da criminalidade.</p>
-        <a href="{{ url('/doacao') }}">Doar</a>
-    </div>
+    <div class="carousel-container">
+
+        <div class="carousel-container">
+            <div class="slides">
+                <div class="slide">
+                    <img src="{{ asset('images/foto1.jpg') }}">
+                    <div class="carousel-text">
+                        <h1>Por que <span class="highlight">Doar?</span></h1>
+                        <p>Por que Doar? Doar para a reintegração de ex-presidiários é investir na recuperação de indivíduos
+                            que buscam
+                            uma segunda chance. O apoio financeiro é essencial para programas que oferecem educação,
+                            qualificação
+                            profissional e suporte emocional, ajudando a romper o ciclo de criminalidade.
+                        </p>
+                        <a href="#" class="button">Doe Aqui</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="{{ asset('images/somos.jpg') }}">
+                    <div class="carousel-text">
+                        <h1>Quem somos <span class="highlight">nós?</span></h1>
+                        <p>Somos um grupo dedicado a promover a reintegração social de ex-presidiários, acreditando que
+                            todos merecem
+                            uma segunda chance para reconstruir suas vidas. Nosso trabalho foca em quebrar as barreiras do
+                            preconceito
+                            e oferecer apoio através de programas educacionais.</p>
+                        <a href="#" class="button">Sobre nós</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="{{ asset('images/foto3.jpg') }}">
+                    <div class="carousel-text">
+                        <h1>Baixe nosso <span class="highlight"> aplicativo</span></h1>
+                        <p> Baixe nosso aplicativo
+                            Nosso aplicativo foi desenvolvido para facilitar a reintegração de ex-presidiários à sociedade,
+                            conectando-os a oportunidades de emprego, capacitação profissional e serviços de apoio. Com uma
+                            interface simples e intuitiva.</p>
+                        <a href="#" class="button">Baixe aqui</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="{{ asset('images/noticias.jpg') }}">
+                    <div class="carousel-text">
+                        <h1> Últimas <span class="highlight">notícias</span></h1>
+                        <p> Fique por dentro das novidades sobre iniciativas de reintegração social, programas
+                            de apoio e histórias inspiradoras de ex-presidiários que estão transformando suas vidas. Aqui,
+                            você encontra atualizações sobre eventos, parcerias com empresas e projetos sociais, além de
+                            reportagens
+                            sobre a importância da reinserção no mercado de trabalho e os impactos positivos dessa mudança
+                            na sociedade
+                        </p>
+                        <a href="#" class="button">Veja aqui</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+        </div>
 </section>
 
-
-<section class="destaques container mt-3" id="porque">
-    <h1 class="destaques-title">Por que Reintegra?</h1>
-
-    <p>A Reintegra nasceu com o propósito de <b>oferecer uma segunda chance</b> para aqueles que cumpriram sua pena e desejam reconstruir suas vidas. Acreditamos que a tecnologia pode ser uma poderosa ferramenta para facilitar a reinserção social, profissional e emocional de ex-presidiários, ajudando-os a <b>quebrar o ciclo de reincidência</b>.</p>
-    <p>Nosso compromisso é criar oportunidades através de capacitação, suporte psicológico, e conexão com empresas e ONGs. <b>Saiba mais</b> sobre nossa jornada e como estamos impactando a sociedade.</p>
-    <p><a class="more-destaque link" href="/sobre">Conhecer mais sobre Reintegra!</a></p>
-
-</section>
 
 <!-- Seção de divulgação do app -->
 
 <section id="app">
-    <div class="container py-3">
-        <h1 class='title-app'>Conheça o App Reintegra!</h1>
-        <div class="home-app py-5">
-            <div class="img-app">
-                <img src="{{ asset('images/img-app.png') }}">
-            </div>
-            <div class="img-install">
-                <h1>Disponível para baixar em:</h1>
-                <a href=""><img src="{{ asset('images/img-googleplay.png') }}"></a>
-                <a href=""><img src="{{ asset('images/img-appstore.png') }}"></a>
-            </div>
+    <!-- <div class="container py-3"> -->
+    <h1 class='title-app'>Conheça o App Reintegra!</h1>
+    <div class="home-app py-5">
+        <div class="img-app2">
+            <img src="{{ asset('images/img-app2.png') }}">
+        </div>
+        <div class="img-install">
+            <h1>Disponível para baixar em:</h1>
+            <a href=""><img src="{{ asset('images/img-googleplay.png') }}"></a>
+            <a href=""><img src="{{ asset('images/img-appstore.png') }}"></a>
         </div>
     </div>
+    <!-- </div>  -->
 </section>
 
 
 
-<section class="destaques py-5" id="porque">
-    <div class="container">
-        <h1 class="info-title">Acesso à Informação</h1>
+<section class="" id="">
+    <div class="containerCard">
+        <h1>Acesso a <strong style="color: #ff914d;">Informações</strong></h1>
     </div>
-
-    <div class="row">
-        <div class="col-md-7">
-            <div class="container color-1 py-4">
-                <h3 class="informacao-title">Brasil no Topo da Criminalidade Mundial</h3>
-                <p>Com uma população prisional de mais de 839 mil detentos, o Brasil se destaca entre os países com maiores índices de criminalidade no mundo. A reincidência criminal, que atinge 40% dos presos, reflete os desafios da reintegração social e a necessidade de políticas mais eficazes para reduzir esse ciclo.</p>
-                <img src="{{ asset('images/grafico-ranking.png') }}" alt="" srcset="">
-            </div>
-
-        </div>
-        <div class="col-md">
-            <div class="img-info-1"></div>
+    <div class="containerInfos">
+        <img src="{{ asset('images/eja.jpg') }}">
+        <div class="text">
+            <h1>Falta de <strong style="color: #ff914d;">Educação Básica</strong></h1>
+            <p>Cerca de 45.5% da população total carcerária não completou o ensino fundamental, tendo isso em vista
+                vemos que o ensino básico não se aplica da forma forma que devia, Nos ajude a mudar esse cenário,
+                junte-se á nós com o Reintegra</p>
         </div>
     </div>
-
-    <div class="row mt-3">
-
-        <div class="col-md">
-            <div class="img-info-2"></div>
+    <div class="containerInfos">
+        <img src="{{ asset('images/etnia.jpg') }}">
+        <div class="text">
+            <h1>Etnia da População <strong style="color: #ff914d;">Carcerária</strong></h1>
+            <p>Quase 50% da população carcerária brasileira é composta por pessoas pretas e pardas, refletindo
+                desigualdades raciais profundas no sistema de justiça. Esse dado destaca a urgência de políticas
+                públicas que promovam a equidade social e abordem as causas estruturais que levam à marginalização
+                dessas comunidades.</p>
         </div>
-
-        <div class="col-md-7">
-            <div class="container color-2 py-4">
-                <h3 class="informacao-title">Desigualdade Racial nas Prisões</h3>
-                <p>Pretos e pardos compõem 48,2% da população carcerária no Brasil, evidenciando a desigualdade racial no sistema prisional.</p>
-                <img src="{{ asset('images/grafico-populacao.png') }}" alt="" srcset="">
-            </div>
-
-        </div>
+    </div>
     </div>
 
 </section>
 
 <section class="home-info py-5">
-    <div class="container">
-        <h1 class="info-title">Quem pode ajudar?</h1>
-        <div class="card-group py-2">
-            <div class="card">
-                <img class="img-ajudar" src="{{ asset('images/ong-icon.png') }}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">ONGs</h5>
-                    <a href="#" class="btn btn-infos btn-ong">
-                        <p>Saiba mais</p>
-                    </a>
+    <div class="containerCard">
+        <h1>Quem Pode <strong style="color: #ff914d;">Ajudar?</strong></h1>
+        <div class="card__container">
+            <article class="card__article">
+                <img class="imgCard" src="{{ asset('images/pessoas.png') }}">
+
+                <div class="card__data">
+                    <h2 class="card__title"><strong style="color: #ff914d; font-weight: bold;">Pessoas</strong></h2>
+                    <span class="card__description">Saiba como você pessoa, pode contribuir para o projeto Reintegra,
+                        clique no botão abaixo para mais informações</span>
+                    <a href="#" class="card__button">Clique Aqui</a>
                 </div>
-            </div>
-            <div class="card">
-                <img class="img-ajudar" src="{{ asset('images/empresa-icon.png') }}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Empresas</h5>
-                    <a href="/info-empresa" class="btn btn-infos btn-empresa">
-                        <p>Saiba mais</p>
-                    </a>
+            </article>
+
+            <article class="card__article">
+                <img class="imgCard" src="{{ asset('images/empresa.jpg') }}">
+
+                <div class="card__data">
+                    <h2 class="card__title"><strong style="color: #ff914d; font-weight: bold;">Empresas</strong></h2>
+                    <span class="card__description">Saiba como você empresa, pode contribuir para o projeto Reintegra,
+                        clique no botão abaixo para mais informações</span>
+                    <a href="#" class="card__button">Clique Aqui</a>
                 </div>
-            </div>
-            <div class="card">
-                <img class="img-ajudar" src="{{ asset('images/pessoa-icon.png') }}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Pessoas</h5>
-                    <a class="btn btn-infos btn-pessoa" href="">
-                        <p>Saiba mais</p>
-                    </a>
+            </article>
+
+            <article class="card__article">
+                <img class="imgCard" src="{{ asset('images/ong.png') }}">
+
+                <div class="card__data">
+                    <h2 class="card__title"><strong style="color: #ff914d; font-weight: bold;">ONG's</strong></h2>
+                    <span class="card__description">Saiba como você ong, pode contribuir para o projeto Reintegra,
+                        clique no botão abaixo para mais informações</span>
+                    <a href="#" class="card__button">Clique Aqui</a>
                 </div>
-            </div>
+            </article>
         </div>
     </div>
 </section>
 
 <!-- Seção de destaques -->
-<section class="destaques container" id="destaques">
+<!-- <section class="destaques container" id="destaques">
 
     <div class="destaques-header">
         <div class="title">
@@ -157,12 +184,12 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="card">
-                    <div class="card-img-div">
-                        <div class="card-img" style="background-image: url('{{ asset('images/d1.jpg') }}');"></div>
+                <div class="card-img-div">
+                        <div class="card-imgD" style="background-image: url('{{ asset('images/d1.jpg') }}');"></div>
                     </div>
-                    <div class="card-body">
-                        <h1 class="card-title">Dunder Mifflin</h1>
-                        <p class="card-text">Fornecendo soluções de papel personalizadas e de alta qualidade.</p>
+                    <div class="card-bodyD">
+                        <h1 class="card-titleD">Dunder Mifflin</h1>
+                        <p class="card-textD">Fornecendo soluções de papel personalizadas e de alta qualidade.</p>
                         <a class="btn btn-alt" href="">
                             <p>Conhecer</p>
                         </a>
@@ -172,11 +199,11 @@
             <div class="swiper-slide">
                 <div class="card">
                     <div class="card-img-div">
-                        <div class="card-img" style="background-image: url('{{ asset('images/d2.jpg') }}');"></div>
+                        <div class="card-imgD" style="background-image: url('{{ asset('images/d2.jpg') }}');"></div>
                     </div>
-                    <div class="card-body">
-                        <h1 class="card-title">Inclusão Já</h1>
-                        <p class="card-text">Promovendo a igualdade e a integração social através de ações transformadoras.</p>
+                    <div class="card-bodyD">
+                        <h1 class="card-titleD">Inclusão Já</h1>
+                        <p class="card-textD">Promovendo a igualdade e a integração social através de ações transformadoras.</p>
                         <a class="btn btn-alt" href="">
                             <p>Conhecer</p>
                         </a>
@@ -186,11 +213,11 @@
             <div class="swiper-slide">
                 <div class="card">
                     <div class="card-img-div">
-                        <div class="card-img" style="background-image: url('{{ asset('images/d3.jpg') }}');"></div>
+                        <div class="card-imgD" style="background-image: url('{{ asset('images/d3.jpg') }}');"></div>
                     </div>
-                    <div class="card-body">
-                        <h1 class="card-title">Escola de Todos</h1>
-                        <p class="card-text">Transformando vidas através da educação inclusiva e de qualidade.</p>
+                    <div class="card-bodyD">
+                        <h1 class="card-titleD">Escola de Todos</h1>
+                        <p class="card-textD">Transformando vidas através da educação inclusiva e de qualidade.</p>
                         <a class="btn btn-alt" href="">
                             <p>Conhecer</p>
                         </a>
@@ -200,11 +227,11 @@
             <div class="swiper-slide">
                 <div class="card">
                     <div class="card-img-div">
-                        <div class="card-img" style="background-image: url('{{ asset('images/d4.jpg') }}');"></div>
+                        <div class="card-imgD" style="background-image: url('{{ asset('images/d4.jpg') }}');"></div>
                     </div>
-                    <div class="card-body">
-                        <h1 class="card-title">Vozes da liberdade</h1>
-                        <p class="card-text">Defendendo a liberdade de expressão em todas as suas formas.</p>
+                    <div class="card-bodyD">
+                        <h1 class="card-titleD">Vozes da liberdade</h1>
+                        <p class="card-textD">Defendendo a liberdade de expressão em todas as suas formas.</p>
                         <a class="btn btn-alt" href="">
                             <p>Conhecer</p>
                         </a>
@@ -213,7 +240,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 
@@ -222,7 +249,7 @@
 
 <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('js/home.js') }}"></script>
+<script src="{{ asset('js/carrossel.js') }}"></script>
 
 @include('partials.footer')
 @endsection
-
