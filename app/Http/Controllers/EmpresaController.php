@@ -25,7 +25,9 @@ class EmpresaController extends Controller
             $data = $resposta->json();
 
             if (request()->routeIs('empresa-dashboard')) {
-                return view('empresa.dashboard', ['data' => $data, 'API_URL' => env('EXTERNAL_API_URL')]);
+                $last_post = Http::get(env('EXTERNAL_API_URL') . '/post/last/' . $user)->json();
+
+                return view('empresa.dashboard', ['data' => $data, 'API_URL' => env('EXTERNAL_API_URL'), 'post' => $last_post]);
             } else if (request()->routeIs('empresa-config')) {
                 $resposta_areas = Http::asMultipart()->get(env('EXTERNAL_API_URL') . '/empresa/area-atuacao/get');
 

@@ -151,3 +151,34 @@
 input::placeholder, select::placeholder, textarea::placeholder, input, select, textarea {
     font-size: 1.2rem !important;
 }
+
+.last-post {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.last-post img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-last-post-body {
+    padding: 20px;
+}
+
+.card-last-post-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.card-last-post-text {
+    font-size: 1.3rem;
+}
+
+.card-last-post-text small {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 1.2rem;
+    display: block;
+    padding-top: 2px;
+}

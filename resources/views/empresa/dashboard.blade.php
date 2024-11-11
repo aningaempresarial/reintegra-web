@@ -4,6 +4,11 @@
 <link rel="stylesheet" href="{{ asset('css/dashboard-empresa.css') }}">
 @endsection
 @include('partials.profilebar')
+<?php 
+    use Carbon\Carbon;
+    Carbon::setLocale('pt_BR');
+    $post['dtPostagem'] = Carbon::parse($post['dtPostagem'])->diffForHumans();
+?>
 @section('conteudo')
 @if (!empty($data) && is_array($data))
     <h1 class="page-title">É um prazer recebê-la, empresa <b class="name-deco">{{ $data['nomeEmpresa'] }}</b>!</h1>
@@ -39,50 +44,20 @@
                 <div class="row">
                     <div class="panel">
                         <h1 class="page-subtitle">Engajamento da última publicação</h1>
-                        <div class="container-tables">
-                            <table class="table table-publicacoes">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" colspan='2' class="table-header">Publicação: Vaga de atendente</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="table-text">Visualizações:</td>
-                                        <td class="table-text">5</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-text">Curtidas:</td>
-                                        <td class="table-text">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-text">Inscrições:</td>
-                                        <td class="table-text">1</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-publicacoes">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" colspan='2' class="table-header">Detalhes da vaga</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="table-text">Quantidade de vagas:</td>
-                                        <td class="table-text">6</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-text">Nível:</td>
-                                        <td class="table-text">Médio</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-text">Habilidades desejadas:</td>
-                                        <td class="table-text">Comunicação</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        @if (isset($post['tituloPostagem']))
+                            <div class="card last-post">
+                                <img src="{{ $API_URL . $post['imagemPostagem'] }}" class="card-last-post-img-top">
+                                <div class="card-last-post-body">
+                                    <h5 class="card-last-post-title">{{ $post['tituloPostagem'] }}</h5>
+                                    <p class="card-last-post-text">{{ $post['conteudoPostagem'] }}</p>
+                                    <p class="card-last-post-text"><small class="text-body-secondary">Postado {{ $post['dtPostagem'] }}</small></p>
+                                    <h4><span class="badge text-bg-primary">{{ $post['candidatos'] }} candidatos</span></h4>
+                                </div>
+                            </div>
+                        @else
+                            <p style="margin: 20px; padding: 8px; margin-top: 0; font-size: 1.3rem">Nenhuma postagem publicada.
+                            </p>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
