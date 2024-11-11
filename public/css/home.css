@@ -18,19 +18,6 @@ body {
   }
 }
 
-#app {
-    background-color: #f2f2f2;
-}
-
-.title-app {
-    font-size: 2rem;
-    text-align: center;
-    padding-top: 70px;
-    letter-spacing: 1px;
-    color: #071234;
-    font-weight: bold;
-}
-
 .home-app {
     padding-inline: 80px;
     display: flex;
@@ -62,7 +49,7 @@ body {
 }
 
 .img-install img {
-    width: 200px;
+    width: 250px;
 }
 
 
@@ -79,7 +66,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 0;
+    margin-bottom: 20px;
+    gap: 20px;
 }
 
 .containerInfos:nth-child(even) {
@@ -89,7 +77,6 @@ body {
 .containerInfos img {
     width: 900px;
     height: auto;
-    margin: 0 20px;
     border-radius: 30px;
 }
 
@@ -121,8 +108,7 @@ body {
   .containerCard {
     display: grid;
     place-items: center;
-    margin-inline: 1.5rem;
-    padding-block: 5rem;
+    margin-inline: 3rem;
   }
   
   .card__container {
@@ -693,4 +679,20 @@ body {
 
 .carousel-text h1, .carousel-text p, .carousel-text a {
     text-shadow: none;
+}
+
+.infos2 {
+    text-align: right;
+}
+
+.title-section {
+    text-align: center;
+    padding: 48px;
+    color: #071234;
+    margin: 0;
+}
+
+#infos {
+    background-color: rgb(251, 251, 255);
+    border-block: 1px solid rgba(0, 0, 255, 0.1);
 }

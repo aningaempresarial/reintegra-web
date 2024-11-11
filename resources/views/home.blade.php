@@ -83,7 +83,7 @@
 
 <section id="app">
     <!-- <div class="container py-3"> -->
-    <h1 class='title-app'>Conheça o App Reintegra!</h1>
+    <h1 class='title-section'>Conheça o app <strong style="color: #ff914d">Reintegra!</strong></h1>
     <div class="home-app py-5">
         <div class="img-app2">
             <img src="{{ asset('images/img-app2.png') }}">
@@ -99,14 +99,14 @@
 
 
 
-<section class="" id="">
+<section class="pb-5" id="infos">
     <div class="containerCard">
-        <h1>Acesso a <strong style="color: #ff914d;">Informações</strong></h1>
+        <h1 class="title-section">Acesso a <strong style="color: #ff914d;">informações</strong></h1>
     </div>
     <div class="containerInfos">
         <img src="{{ asset('images/eja.jpg') }}">
         <div class="text">
-            <h1>Falta de <strong style="color: #ff914d;">Educação Básica</strong></h1>
+            <h1>Falta de <strong style="color: #ff914d;">educação básica</strong></h1>
             <p>Cerca de 45.5% da população total carcerária não completou o ensino fundamental, tendo isso em vista
                 vemos que o ensino básico não se aplica da forma forma que devia, Nos ajude a mudar esse cenário,
                 junte-se á nós com o Reintegra</p>
@@ -114,8 +114,8 @@
     </div>
     <div class="containerInfos">
         <img src="{{ asset('images/etnia.jpg') }}">
-        <div class="text">
-            <h1>Etnia da População <strong style="color: #ff914d;">Carcerária</strong></h1>
+        <div class="text infos2">
+            <h1>Etnia da população <strong style="color: #ff914d;">carcerária</strong></h1>
             <p>Quase 50% da população carcerária brasileira é composta por pessoas pretas e pardas, refletindo
                 desigualdades raciais profundas no sistema de justiça. Esse dado destaca a urgência de políticas
                 públicas que promovam a equidade social e abordem as causas estruturais que levam à marginalização
@@ -126,9 +126,9 @@
 
 </section>
 
-<section class="home-info py-5">
+<section class="home-info pb-5">
     <div class="containerCard">
-        <h1>Quem Pode <strong style="color: #ff914d;">Ajudar?</strong></h1>
+        <h1 class="title-section">Quem pode <strong style="color: #ff914d;">ajudar?</strong></h1>
         <div class="card__container">
             <article class="card__article">
                 <img class="imgCard" src="{{ asset('images/pessoas.png') }}">
