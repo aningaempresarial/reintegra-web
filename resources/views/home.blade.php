@@ -20,8 +20,8 @@
                 <div class="slide">
                     <img src="{{ asset('images/foto1.jpg') }}">
                     <div class="carousel-text">
-                        <h1>Por que <span class="highlight">Doar?</span></h1>
-                        <p>Por que Doar? Doar para a reintegração de ex-presidiários é investir na recuperação de indivíduos
+                        <h1>Por que <span class="highlight">doar?</span></h1>
+                        <p>Por que doar? Doar para a reintegração de ex-presidiários é investir na recuperação de indivíduos
                             que buscam
                             uma segunda chance. O apoio financeiro é essencial para programas que oferecem educação,
                             qualificação
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="{{ asset('images/somos.jpg') }}">
+                    <img src="{{ asset('images/somos.png') }}">
                     <div class="carousel-text">
                         <h1>Quem somos <span class="highlight">nós?</span></h1>
                         <p>Somos um grupo dedicado a promover a reintegração social de ex-presidiários, acreditando que
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="{{ asset('images/noticias.jpg') }}">
+                    <img src="{{ asset('images/noticias.png') }}">
                     <div class="carousel-text">
                         <h1> Últimas <span class="highlight">notícias</span></h1>
                         <p> Fique por dentro das novidades sobre iniciativas de reintegração social, programas

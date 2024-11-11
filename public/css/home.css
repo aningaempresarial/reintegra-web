@@ -690,3 +690,7 @@ body {
 .setas img {
     width: 50px;
 }
+
+.carousel-text h1, .carousel-text p, .carousel-text a {
+    text-shadow: none;
+}
