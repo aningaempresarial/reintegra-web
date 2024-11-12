@@ -57,7 +57,13 @@
                         <tr>
                             <td>{{ $publicacao['categoriaPostagem'] }}</td>
                             <td>{{ $publicacao['tituloPostagem'] }}</td>
-                            <td>{{ $publicacao['dataFim'] }}</td>
+                            <td>
+                                @if (isset($publicacao['dataFim']))
+                                {{ $publicacao['dataFim'] }}
+                                @else
+                                Sem data
+                                @endif
+                            </td>
                             <td>{{ $publicacao['statusPostagem'] }}</td>
                             <td>
                                 <button class="btn btn-icon" data-bs-toggle="modal"

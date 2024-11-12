@@ -17,26 +17,26 @@ if (isset($post['dtPostagem'])) {
     <div class="panel cards-panel">
         <div class="card c1">
             <div class="card-body">
-                <div class="card-data">10</div>
-                <div class="card-text">Visualizações</div>
+                <div class="card-data">{{ $dados['totalCandidatos'] }}</div>
+                <div class="card-text">Candidatos</div>
             </div>
         </div>
         <div class="card c2">
             <div class="card-body">
-                <div class="card-data">2</div>
-                <div class="card-text">Conexões</div>
+                <div class="card-data">{{ $dados['totalVagas'] }}</div>
+                <div class="card-text">Vagas</div>
             </div>
         </div>
         <div class="card c3">
             <div class="card-body">
-                <div class="card-data">6</div>
-                <div class="card-text">Publicações</div>
+                <div class="card-data">{{ $dados['totalDivulgacoes'] }}</div>
+                <div class="card-text">Divulgações</div>
             </div>
         </div>
         <div class="card c4">
             <div class="card-body">
-                <div class="card-data">13</div>
-                <div class="card-text">Inscritos</div>
+                <div class="card-data">{{ $dados['totalInformativos'] }}</div>
+                <div class="card-text">Informativos</div>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@ if (isset($post['dtPostagem'])) {
                                     <p class="card-last-post-text">{{ $post['conteudoPostagem'] }}</p>
                                     <p class="card-last-post-text"><small class="text-body-secondary">Postado
                                             {{ $post['dtPostagem'] }}</small></p>
-                                    <h4><span class="badge text-bg-primary">{{ $post['candidatos'] }} candidatos</span></h4>
+                                    <h4><span class="badge text-bg-primary">{{ $post['candidatos'] }} candidato(s)</span></h4>
                                 </div>
                             </div>
                         @else
@@ -120,24 +120,19 @@ if (isset($post['dtPostagem'])) {
                     <div class="panel">
                         <div class="title-notificacao">
                             <h1 class="page-subtitle">Candidatações</h1>
-                            <a href="#" class="button-viewmore">Ver mais</a>
+                            <a href="{{ url('/empresa/posts') }}" class="button-viewmore">Ver mais</a>
                         </div>
                         <ul class="list-group list-notificacao">
+                            @if (isset($candidatacoes[0]))
+                            @foreach ($candidatacoes as $candidato)
                             <li class="list-group-item list-group-item-action"><img
-                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
+                                    src="{{ $API_URL . $candidato['fotoPerfil'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">{{ $candidato['nomeExDetento'] }}
+                                    <p style="margin: 5px; font-size: 1.3rem">Candidatou-se a {{ $candidato['nomeVaga'] }}</p><span>Há 1 minuto</span>
                             </li>
-                            <li class="list-group-item list-group-item-action"><img
-                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
-                            </li>
-                            <li class="list-group-item list-group-item-action"><img
-                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
-                            </li>
-                            <li class="list-group-item list-group-item-action"><img
-                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
-                            </li>
-                            <li class="list-group-item list-group-item-action"><img
-                                    src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
-                            </li>
+                            @endforeach
+                            @else
+                            <p style="margin: 20px; margin-top: 0; font-size: 1.3rem">Nenhum candidato para mostrar.</p>
+                            @endif
                         </ul>
                     </div>
                 </div>
