@@ -109,6 +109,7 @@
                                                     </div>
                                                 </div>
 
+                                                @if ($publicacao['categoriaPostagem'] == 'emprego')
                                                 <div class="accordion" id="accordionExample">
                                                     <div class="accordion-item">
                                                         <h2 class="accordion-header">
@@ -140,13 +141,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
 
                                             </div>
 
                                         </div>
 
+                                        @if ($publicacao['categoriaPostagem'] == 'emprego')
                                         <hr>
-
                                         @if (isset($publicacao['candidatos']))
 
                                             <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
@@ -167,6 +169,7 @@
                                             @endforeach
                                         @else
                                             <p class="candidatos-text">Sem candidatos para essa vaga.</p>
+                                        @endif
                                         @endif
 
                                     </div>
@@ -264,7 +267,7 @@
         document.querySelectorAll('.message-icon').forEach(function (icon) {
             icon.addEventListener('click', function (event) {
                 event.preventDefault();
-                const idUsuario = this.getAttribute('data-id-usuario'); // Assumindo que você tem um atributo `data-id-usuario`
+                const idUsuario = this.getAttribute('data-id-usuario');
                 const modalId = 'modalMessage' + idUsuario;
                 const modalMessage = new bootstrap.Modal(document.getElementById(modalId), {
                     backdrop: 'static',

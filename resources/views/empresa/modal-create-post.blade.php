@@ -117,12 +117,12 @@
 
                         <div class="mb-3" id="divCargaHoraria">
                             <label for="cargaHoraria" class="form-label">Carga horária<span
-                                    class="obrigatorio">*</span><button class="tooltip-informacao" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="top"
+                                    class="obrigatorio">*</span><button class="tooltip-informacao" type="button"
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
                                     data-bs-title="O horário de trabalho deve corresponder à carga horária, com uma tolerância de até 1 hora extra, caso haja intervalo.">
                                     <img src="{{ asset('icons/pergunta.png') }}">
                                 </button></label>
-                                    
+
                             <div>
                                 <input type="number" name="cargaHoraria" id="cargaHoraria"
                                     placeholder="Digite as horas diárias de trabalho." required autocomplete="off"
@@ -294,6 +294,14 @@
     $('#btn-next-informativo').on('click', () => {
         tipo_post = 'informativo';
         showStep(1);
+        $('#divRequisitosVaga').hide();
+        $('#divSalarioVaga').hide();
+        $('#divCheckSalario').hide();
+        $('#divTipoContrato').hide();
+        $('#divEscolaridadeVaga').hide();
+        $('#divCargaHoraria').hide();
+        $('#divHorarioInicio').hide();
+        $('#divHorarioTermino').hide();
         $('#divDtFim').hide();
     });
 
@@ -314,23 +322,8 @@
 
             let tituloPosicao = $('#tituloPosicao').val();
             let descricaoVaga = $('#descricaoVaga').val();
-            let requisitosVaga = $('#requisitosVaga').val();
-            let salarioVaga = $('#salarioVaga').val();
-            let tipoContrato = $('#tipoContrato').val();
-            let escolaridadeVaga = $('#escolaridadeVaga').val();
-            let horarioInicio = $('#horarioInicio').val();
-            let horarioTermino = $('#horarioTermino').val();
-            let cargaHoraria = $('#cargaHoraria').val();
-            let dtFim = $('#dtFim').val();
             let dataHoje = new Date().toISOString().split('T')[0];
             let erro = false;
-
-            let [horasInicio, minutosInicio] = horarioInicio.split(':').map(Number);
-            let [horasTermino, minutosTermino] = horarioTermino.split(':').map(Number);
-            minutosInicio += horasInicio * 60;
-            minutosTermino += horasTermino * 60;
-            tempoTrabalhado = (minutosTermino - minutosInicio);
-            horasTrabalhadas = tempoTrabalhado / 60;
 
             if (!tituloPosicao) {
                 $('#error-message-titulo-posicao').text('Título é obrigatório.');
@@ -342,47 +335,63 @@
                 erro = true;
             }
 
-            if (!requisitosVaga) {
-                $('#error-message-requisitos').text('Requisitos são obrigatórios.');
-                erro = true;
-            }
-
-            if (!salarioVaga && !$('#checkSalario').is(':checked')) {
-                $('#error-message-salario').text('Selecione a opção "a combinar" se não for definir o salário agora.');
-                erro = true;
-            }
-
-            if (!tipoContrato) {
-                $('#error-message-tipo-contrato').text('Tipo de contrato é obrigatório.');
-                erro = true;
-            }
-
-            if (escolaridadeVaga === 'Escolha uma opção') {
-                $('#error-message-escolaridade').text('Escolaridade é obrigatória.');
-                erro = true;
-            }
-
-            if (!horarioInicio) {
-                $('#error-message-horario-inicio').text('Horário de início é obrigatório.');
-                erro = true;
-            }
-
-            if (!horarioTermino) {
-                $('#error-message-horario-termino').text('Horário de término é obrigatório.');
-                erro = true;
-            }
-
-            if (!cargaHoraria) {
-                $('#error-message-carga-horaria').text('Carga horária é obrigatória.');
-                erro = true;
-            }
-
-            if (parseInt(cargaHoraria, 10) + 1 < horasTrabalhadas || parseInt(cargaHoraria, 10) > horasTrabalhadas) {
-                $('#error-message-carga-horaria').text('A carga horária não condiz com o horário de trabalho.');
-                erro = true;
-            }
-
             if (tipo_post === 'emprego') {
+                let requisitosVaga = $('#requisitosVaga').val();
+                let salarioVaga = $('#salarioVaga').val();
+                let tipoContrato = $('#tipoContrato').val();
+                let escolaridadeVaga = $('#escolaridadeVaga').val();
+                let horarioInicio = $('#horarioInicio').val();
+                let horarioTermino = $('#horarioTermino').val();
+                let cargaHoraria = $('#cargaHoraria').val();
+                let dtFim = $('#dtFim').val();
+
+                let [horasInicio, minutosInicio] = horarioInicio.split(':').map(Number);
+                let [horasTermino, minutosTermino] = horarioTermino.split(':').map(Number);
+                minutosInicio += horasInicio * 60;
+                minutosTermino += horasTermino * 60;
+                tempoTrabalhado = (minutosTermino - minutosInicio);
+                horasTrabalhadas = tempoTrabalhado / 60;
+
+                if (!requisitosVaga) {
+                    $('#error-message-requisitos').text('Requisitos são obrigatórios.');
+                    erro = true;
+                }
+
+                if (!salarioVaga && !$('#checkSalario').is(':checked')) {
+                    $('#error-message-salario').text('Selecione a opção "a combinar" se não for definir o salário agora.');
+                    erro = true;
+                }
+
+                if (!tipoContrato) {
+                    $('#error-message-tipo-contrato').text('Tipo de contrato é obrigatório.');
+                    erro = true;
+                }
+
+                if (escolaridadeVaga === 'Escolha uma opção') {
+                    $('#error-message-escolaridade').text('Escolaridade é obrigatória.');
+                    erro = true;
+                }
+
+                if (!horarioInicio) {
+                    $('#error-message-horario-inicio').text('Horário de início é obrigatório.');
+                    erro = true;
+                }
+
+                if (!horarioTermino) {
+                    $('#error-message-horario-termino').text('Horário de término é obrigatório.');
+                    erro = true;
+                }
+
+                if (!cargaHoraria) {
+                    $('#error-message-carga-horaria').text('Carga horária é obrigatória.');
+                    erro = true;
+                }
+
+                if (parseInt(cargaHoraria, 10) + 1 < horasTrabalhadas || parseInt(cargaHoraria, 10) > horasTrabalhadas) {
+                    $('#error-message-carga-horaria').text('A carga horária não condiz com o horário de trabalho.');
+                    erro = true;
+                }
+
                 if (!dtFim) {
                     $('#error-message-data-fim').text('Data final é obrigatória.');
                     erro = true;
@@ -431,16 +440,16 @@
             const formData = new FormData();
             formData.append('tituloPosicao', $('#tituloPosicao').val());
             formData.append('descricaoVaga', $('#descricaoVaga').val());
-            formData.append('requisitosVaga', $('#requisitosVaga').val());
-            formData.append('salarioVaga', $('#salarioVaga').val());
-            formData.append('tipoContrato', $('#tipoContrato').val());
-            formData.append('escolaridadeVaga', $('#escolaridadeVaga').val());
-            formData.append('cargaHoraria', $('#cargaHoraria').val());
-            formData.append('horarioInicio', $('#horarioInicio').val());
-            formData.append('horarioTermino', $('#horarioTermino').val());
 
             if (tipo_post === 'emprego') {
                 formData.append('dtFim', $('#dtFim').val());
+                formData.append('requisitosVaga', $('#requisitosVaga').val());
+                formData.append('salarioVaga', $('#salarioVaga').val());
+                formData.append('tipoContrato', $('#tipoContrato').val());
+                formData.append('escolaridadeVaga', $('#escolaridadeVaga').val());
+                formData.append('cargaHoraria', $('#cargaHoraria').val());
+                formData.append('horarioInicio', $('#horarioInicio').val());
+                formData.append('horarioTermino', $('#horarioTermino').val());
             }
 
             formData.append('tipo', tipo_post);
