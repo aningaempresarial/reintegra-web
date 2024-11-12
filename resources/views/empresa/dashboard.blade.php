@@ -6,8 +6,10 @@
 @include('partials.profilebar')
 <?php 
     use Carbon\Carbon;
-    Carbon::setLocale('pt_BR');
+Carbon::setLocale('pt_BR');
+if (isset($post['dtPostagem'])) {
     $post['dtPostagem'] = Carbon::parse($post['dtPostagem'])->diffForHumans();
+}
 ?>
 @section('conteudo')
 @if (!empty($data) && is_array($data))
@@ -43,14 +45,15 @@
             <div class="col">
                 <div class="row">
                     <div class="panel">
-                        <h1 class="page-subtitle">Engajamento da última publicação</h1>
+                        <h1 class="page-subtitle">Engajamento da última publicação de emprego</h1>
                         @if (isset($post['tituloPostagem']))
                             <div class="card last-post">
                                 <img src="{{ $API_URL . $post['imagemPostagem'] }}" class="card-last-post-img-top">
                                 <div class="card-last-post-body">
                                     <h5 class="card-last-post-title">{{ $post['tituloPostagem'] }}</h5>
                                     <p class="card-last-post-text">{{ $post['conteudoPostagem'] }}</p>
-                                    <p class="card-last-post-text"><small class="text-body-secondary">Postado {{ $post['dtPostagem'] }}</small></p>
+                                    <p class="card-last-post-text"><small class="text-body-secondary">Postado
+                                            {{ $post['dtPostagem'] }}</small></p>
                                     <h4><span class="badge text-bg-primary">{{ $post['candidatos'] }} candidatos</span></h4>
                                 </div>
                             </div>
@@ -64,40 +67,51 @@
                     <div class="panel">
                         <div class="title-notificacao">
                             <h1 class="page-subtitle">Minhas últimas postagens</h1>
-                            <a href="#" class="button-viewmore">Ver mais</a>
+                            <a href="{{ url('/empresa/posts') }}" class="button-viewmore">Ver mais</a>
                         </div>
+                        <?php 
+                            $i = 0
+                        ?>
+                        @if (count($posts) > 0)
                         <div class="posts-panel">
-                            <div class="card card-post mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-4 card-post-img">
-                                        <img src="{{ asset('images/postagem-pic.png') }}" class="img-fluid rounded-start">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-post-body">
-                                            <h5 class="card-post-title">Curso de datilografia</h5>
-                                            <p class="card-post-text">Uma pequena descrição sobre a publicação.</p>
-                                            <p class="card-post-text"><small class="text-body-secondary">12
-                                                    visualizações</small></p>
+                            @php $i = 0; @endphp
+                            @foreach ($posts as $ps)
+                                @if ($i < 2)
+                                    <div class="card card-post mb-3">
+                                        <div class="row g-0">
+                                            <div class="col-md-4 card-post-img">
+                                                <img src="{{ $API_URL . $ps['imagemPostagem'] }}" class="img-fluid rounded-start">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-post-body">
+                                                    <h5 class="card-post-title">{{ $ps['tituloPostagem'] }}</h5>
+                                                    @php
+                                                    Carbon::setLocale('pt_BR');
+                                                    $ps['dtPostagem'] = Carbon::parse($ps['dtPostagem'])->diffForHumans();
+
+                                                    $maxLength = 50;
+
+                                                    if (strlen($ps['conteudoPostagem']) > $maxLength) {
+                                                        $cortada = substr($ps['conteudoPostagem'], 0, $maxLength) . "...";
+                                                    } else {
+                                                        $cortada = $ps['conteudoPostagem'];
+                                                    }
+                                                    @endphp
+                                                    <p class="card-post-text">{{ $cortada }}</p>
+                                                    <p class="card-post-text"><small class="text-body-secondary">{{ $ps['dtPostagem'] }}</small></p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card card-post mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-4 card-post-img">
-                                        <img src="{{ asset('images/postagem-pic.png') }}" class="img-fluid rounded-start">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-post-body">
-                                            <h5 class="card-post-title">Curso de datilografia</h5>
-                                            <p class="card-post-text">Uma pequena descrição sobre a publicação.</p>
-                                            <p class="card-post-text"><small class="text-body-secondary">12
-                                                    visualizações</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    @php $i++; @endphp
+                                @else
+                                    @break
+                                @endif
+                            @endforeach
                         </div>
+                        @else
+                        <p style="margin: 20px; padding: 8px; margin-top: 0; font-size: 1.3rem">Nenhuma postagem para mostrar ainda.</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -105,7 +119,7 @@
                 <div class="row">
                     <div class="panel">
                         <div class="title-notificacao">
-                            <h1 class="page-subtitle">Notificações</h1>
+                            <h1 class="page-subtitle">Candidatações</h1>
                             <a href="#" class="button-viewmore">Ver mais</a>
                         </div>
                         <ul class="list-group list-notificacao">
