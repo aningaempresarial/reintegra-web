@@ -54,6 +54,7 @@
         </thead>
         <tbody>
             @forelse ($publicacoes as $publicacao)
+            @if ($publicacao['statusPostagem'] == 'ativo')
                         <tr>
                             <td>{{ $publicacao['categoriaPostagem'] }}</td>
                             <td>{{ $publicacao['tituloPostagem'] }}</td>
@@ -188,27 +189,8 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="modal fade" id="modalDeletar{{ $publicacao['idPostagem'] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tem certeza disso?</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{{ url('/inativar-empresa/' . $data['usuario']) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="d-md-flex justify-content-md-end">
-                                            <button type="submit" class="btn btn-light">Não</button>
-                                            <button type="submit" class="btn btn-danger">Sim</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('empresa.modal-delete-post')
+            @endif
             @empty
 
             @endforelse

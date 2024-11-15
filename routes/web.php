@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CepController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,6 +88,7 @@ Route::get('/empresa/perfil', [EmpresaController::class, 'index'])->name('empres
 
 Route::put('/inativar-empresa/{usuario}', [UsuarioController::class, 'desativarConta']);
 
+Route::put('/delete-post/{id}', [PostController::class, 'deletePost']);
 
 Route::post('/login-usuario', [LoginController::class, 'login']);
 
@@ -104,3 +106,4 @@ Route::get('/admin/config', [AdminController::class, 'configData']);
 Route::post('/usuario/atualizar-dados', [UsuarioController::class,'updateDadosUsuario']);
 
 Route::post('/usuario/atualizar-senha', [UsuarioController::class,'updateSenhaUsuario']);
+

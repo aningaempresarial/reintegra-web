@@ -97,4 +97,13 @@ class PostController extends Controller
         }
     }
 
+    public function deletePost($id) {
+        $resposta = Http::put(env('EXTERNAL_API_URL') . '/post/status/' . $id);
+
+        if ($resposta->successful()) {
+            return redirect()->back();
+        } else {
+            return response()->json(['error' => 'Erro ao excluir a postagem: ' . $resposta->body()], 500);
+        }
+    }
 }
