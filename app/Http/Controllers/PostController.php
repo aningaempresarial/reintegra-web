@@ -106,4 +106,14 @@ class PostController extends Controller
             return response()->json(['error' => 'Erro ao excluir a postagem: ' . $resposta->body()], 500);
         }
     }
+
+    public function vagasStats() {
+        $resposta = Http::get(env('EXTERNAL_API_URL') . '/post/vaga-stats');
+    
+        if ($resposta->successful()) {
+            return response()->json($resposta->json());
+        } else {
+            return response()->json(['error' => 'Erro ao buscar os dados ou resposta inválida.', 'response' => $resposta->body()], 500);
+        }
+    }    
 }

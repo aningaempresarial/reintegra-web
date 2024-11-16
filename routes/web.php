@@ -101,6 +101,8 @@ Route::post('/admin/change', [AdminController::class, 'changeStatusUser']);
 
 Route::get('/admin/config', [AdminController::class, 'configData']);
 
+Route::get('/admin/vagas-stats', [PostController::class, 'vagasStats']);
+
 /* Alterar Usuario Dados */
 
 Route::post('/usuario/atualizar-dados', [UsuarioController::class,'updateDadosUsuario']);

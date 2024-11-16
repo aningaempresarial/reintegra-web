@@ -131,7 +131,7 @@
         <div class="col-4" style="padding-right: 0">
             <div class="panel">
                 <div class="title-notificacao">
-                    <h1 class="page-subtitle">Notificações</h1>
+                    <h1 class="page-subtitle">Cadastros</h1>
                     <a href="#" class="button-viewmore">Ver mais</a>
                 </div>
                 <ul class="list-group list-notificacao">
