@@ -17,7 +17,7 @@
         ]);
 
         var options = {
-          title: "Total de vagas por mês",
+          title: "Total de vagas de emprego abertas por mês",
           legend: { position: "none" },
           height: '100%',
           width: '100%',
