@@ -9,26 +9,26 @@
 <div class="panel cards-panel">
     <div class="card c1">
         <div class="card-body">
-            <div class="card-data">830</div>
+            <div class="card-data">{{ $stats['totalUsuarios'] }}</div>
             <div class="card-text">Usuários</div>
         </div>
     </div>
     <div class="card c2">
         <div class="card-body">
-            <div class="card-data">47</div>
+            <div class="card-data">{{ $stats['totalEmpresas'] }}</div>
             <div class="card-text">Empresas</div>
         </div>
     </div>
     <div class="card c3">
         <div class="card-body">
-            <div class="card-data">403</div>
-            <div class="card-text">Vagas de emprego</div>
+            <div class="card-data">{{ $stats['totalExDetentos'] }}</div>
+            <div class="card-text">Ex-detentos</div>
         </div>
     </div>
     <div class="card c4">
         <div class="card-body">
-            <div class="card-data">521</div>
-            <div class="card-text">ONGs</div>
+            <div class="card-data">{{ $stats['totalVagas'] }}</div>
+            <div class="card-text">Vagas de emprego</div>
         </div>
     </div>
 </div>

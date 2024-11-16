@@ -20,8 +20,10 @@ class AdminController extends Controller
 
         $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
 
+        $stats = Http::get(env('EXTERNAL_API_URL') . '/admin/stats');
+
         if ($resposta->successful()) {
-            return view('admin/dashboard', ['nome' => $resposta['nomeAdmin'], 'data' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL')]);
+            return view('admin/dashboard', ['nome' => $resposta['nomeAdmin'], 'data' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL'), 'stats' => $stats]);
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();

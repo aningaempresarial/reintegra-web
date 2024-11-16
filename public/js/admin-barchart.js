@@ -11,7 +11,7 @@
           ...stats.map(row => [
             `${row.mes} ${row.ano}`,
             row.totalVagas,
-            '#ffbaba',
+            '#ffdad5',
             `<b>${row.mes} ${row.ano}:</b> ${row.totalVagas} vagas`
           ])
         ]);
