@@ -118,12 +118,19 @@ body {
 
 .chart-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #barchart_values {
     width: 900px;
     height: 500px;
+}
+
+#piechart_values, #linechart_values {
+    height: 500px;
+    width: 100%;
 }
 
 .list-group-item {

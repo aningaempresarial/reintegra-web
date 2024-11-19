@@ -22,7 +22,7 @@
           height: '100%',
           width: '100%',
           chartArea: { width: '80%', height: '70%' },
-          tooltip: { isHtml: true }
+          tooltip: { isHtml: true },
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById("barchart_values"));

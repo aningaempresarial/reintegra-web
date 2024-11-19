@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -22,8 +23,17 @@ class AdminController extends Controller
 
         $stats = Http::get(env('EXTERNAL_API_URL') . '/admin/stats');
 
+        Carbon::setLocale('pt_BR');
+        $cadastros = Http::get(env('EXTERNAL_API_URL') . '/admin/usuario/lasts')->json();
+        $cadastros = collect($cadastros)->map(function ($cadastro) {
+            if (isset($cadastro['dataCriacao'])) {
+                $cadastro['dataCriacao'] = Carbon::parse($cadastro['dataCriacao'])->diffForHumans();
+            }
+            return $cadastro;
+        });
+
         if ($resposta->successful()) {
-            return view('admin/dashboard', ['nome' => $resposta['nomeAdmin'], 'data' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL'), 'stats' => $stats]);
+            return view('admin/dashboard', ['nome' => $resposta['nomeAdmin'], 'data' => $resposta->json(), 'API_URL' => env('EXTERNAL_API_URL'), 'stats' => $stats, 'cadastros' => $cadastros]);
         } else {
             $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado. Faça o login novamente.']);
             return redirect()->back()->withErrors($errorMessages)->withInput();
@@ -151,4 +161,22 @@ class AdminController extends Controller
         }
     }
 
+    public function setoresEmpresas() {
+        $resposta = Http::get(env('EXTERNAL_API_URL') . '/admin/setoresempresas');
+    
+        if ($resposta->successful()) {
+            return response()->json($resposta->json());
+        } else {
+            return response()->json(['error' => 'Erro ao buscar os dados ou resposta inválida.', 'response' => $resposta->body()], 500);
+        }
+    }
+    public function usuariosMensais() {
+        $resposta = Http::get(env('EXTERNAL_API_URL') . '/admin/usuario/mensal');
+    
+        if ($resposta->successful()) {
+            return response()->json($resposta->json());
+        } else {
+            return response()->json(['error' => 'Erro ao buscar os dados ou resposta inválida.', 'response' => $resposta->body()], 500);
+        }
+    }
 }

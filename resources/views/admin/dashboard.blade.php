@@ -34,9 +34,18 @@
 </div>
 <div class="panel main-panel panel-admin">
     <div class="row">
-        <div class="panel">
-            <div class="chart-container">
-                <div id="barchart_values"></div>
+        <div class="col">
+            <div class="panel">
+                <div class="chart-container">
+                    <div id="piechart_values"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="panel">
+                <div class="chart-container">
+                    <div id="barchart_values"></div>
+                </div>
             </div>
         </div>
         <!-- <div class="panel">
@@ -104,46 +113,24 @@
     <div class="row">
         <div class="col-8" style="padding-left: 0">
             <div class="panel">
-                <h1 class="page-subtitle">Crescimento dos usuários</h1>
-                <div id="my-chart">
-                    <table class="charts-css line multiple">
-                        <caption class="title-chart">Crescimento da base de ex-presidiários
-                            e empresas cadastradas
-                        </caption>
-                        <tr>
-                            <td style="--start: 0.2; --end: 0.4;"> <span class="data"> Jan </span> </td>
-                            <td style="--start: 0.4; --end: 0.6;"> <span class="data"> Jan </span> </td>
-                        </tr>
-                        <tr>
-                            <td style="--start: 0.4; --end: 0.5;"> <span class="data"> Fev </span> </td>
-                            <td style="--start: 0.6; --end: 0.6;"> <span class="data"> Fev </span> </td>
-                        </tr>
-                        <tr>
-                            <td style="--start: 0.5; --end: 0.7;"> <span class="data"> Mar </span> </td>
-                            <td style="--start: 0.6; --end: 0.6;"> <span class="data"> Mar </span> </td>
-                        </tr>
-
-                    </table>
-
+                <div class="chart-container">
+                    <div id="linechart_values"></div>
                 </div>
             </div>
         </div>
         <div class="col-4" style="padding-right: 0">
             <div class="panel">
                 <div class="title-notificacao">
-                    <h1 class="page-subtitle">Cadastros</h1>
+                    <h1 class="page-subtitle">Últimos cadastros</h1>
                     <a href="#" class="button-viewmore">Ver mais</a>
                 </div>
                 <ul class="list-group list-notificacao">
-                    <li class="list-group-item list-group-item-action"><img
-                            src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
-                    </li>
-                    <li class="list-group-item list-group-item-action"><img
-                            src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
-                    </li>
-                    <li class="list-group-item list-group-item-action"><img
-                            src="{{ asset('images/image-icon.png') }}">Curso de estética <span>Há 1 minuto</span>
-                    </li>
+                    @foreach ($cadastros as $cadastro)
+                            <li class="list-group-item list-group-item-action">
+                            <img
+                            src="{{ $API_URL . $cadastro['fotoPerfil'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">{{ $cadastro['nomeUsuario'] }} <span>Cadastro feito {{ $cadastro['dataCriacao'] }}</span>
+                            </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -153,3 +140,5 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="{{ asset('js/admin-barchart.js') }}"></script>
+<script src="{{ asset('js/admin-piechart.js') }}"></script>
+<script src="{{ asset('js/admin-linechart.js') }}"></script>

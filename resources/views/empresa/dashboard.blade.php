@@ -127,7 +127,7 @@ if (isset($post['dtPostagem'])) {
                             @foreach ($candidatacoes as $candidato)
                             <li class="list-group-item list-group-item-action"><img
                                     src="{{ $API_URL . $candidato['fotoPerfil'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">{{ $candidato['nomeExDetento'] }}
-                                    <p style="margin: 5px; font-size: 1.3rem">Candidatou-se a {{ $candidato['nomeVaga'] }}</p><span>Há 1 minuto</span>
+                                    <p style="margin: 5px; font-size: 1.3rem">Candidatou-se a {{ $candidato['nomeVaga'] }}</p>
                             </li>
                             @endforeach
                             @else
