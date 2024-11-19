@@ -70,6 +70,35 @@ class AdminController extends Controller
         }
     }
 
+    public function getPosts(Request $request) {
+        $tipoEntidade = $request->query('tipoEntidade');
+        $nome = $request->query('nome');
+
+        $dados = [
+            'token' => session('token'),
+            'tipoEntidade' => $tipoEntidade,
+            'nome' => $nome,
+        ];
+
+        $resposta = Http::asMultipart()->post(env('EXTERNAL_API_URL') . '/admin/getdata', $dados);
+        $dados_posts = Http::get(env('EXTERNAL_API_URL') . '/admin/postagens', [
+            'tipoEntidade' => $tipoEntidade,
+            'nome' => $nome
+        ]);
+
+        if ($resposta->successful()) {
+            return view('admin/posts', [
+                'data' => $resposta->json(),
+                'API_URL' => env('EXTERNAL_API_URL'),
+                'nome' => $resposta['nomeAdmin'],
+                'posts' => $dados_posts->json(),
+            ]);
+        } else {
+            $errorMessages = $resposta->json('errors', ['error' => 'Erro inesperado.']);
+            return redirect()->back()->withErrors($errorMessages)->withInput();
+        }
+    }
+
     public function changeStatusUser(Request $request) {
         $usuario = $request->get('usuario');
         $status = $request->get('status');

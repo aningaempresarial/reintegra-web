@@ -1,0 +1,137 @@
+.title {
+    text-align: center;
+    margin: 24px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+}
+
+.div-banner {
+    background-color: rgb(255, 240, 225);
+    display: flex;
+    height: 35vh;
+    border-radius: 15px;
+}
+
+.div-pesquisa {
+    flex: 2;
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.div-image {
+    flex: 1;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.div-image img {
+    width: auto;
+    height: 93%;
+    
+}
+
+.div-pesquisa input {
+    width: 100%;
+    background-color: #ffffff;
+    font-size: larger;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.div-pesquisa input:focus-visible {
+    outline: #ffa856 auto 1px;;
+}
+
+.div-pesquisa input::placeholder {
+    color: #545454;
+    opacity: 1;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.div-add-post {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.div-add-post img {
+    margin-left: 10px;
+    width: 50px;
+}
+
+.div-add-post:hover .txt-post {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.div-add-post h4:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.input-field {
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    border-radius: 2px;
+    padding: 15px 20px;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    width: 100%;
+}
+
+
+.input-field select {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    width: 100%;
+}
+
+.input-field:focus-visible {
+    outline: none !important;
+}
+
+.table td, .table th {
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
+
+.table {
+    margin: 0;
+}
+
+.icon {
+    width: 60px;
+}
+
+.img-post {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}

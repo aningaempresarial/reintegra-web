@@ -60,6 +60,8 @@ Route::get('/admin/dashboard', [AdminController::class, 'getData']);
 
 Route::get('/admin/users', [AdminController::class, 'getUsers']);
 
+Route::get('/admin/posts', [AdminController::class, 'getPosts']);
+
 Route::get('/admin/perfil', [AdminController::class, 'indexPerfil']);
 
 Route::get('/empresa/dashboard', [EmpresaController::class, 'index'])->name('empresa-dashboard');
