@@ -36,6 +36,7 @@
     <div class="row">
         <div class="col" style="padding-left: 0">
             <div class="panel">
+                <h1 class="page-subtitle" style="padding-bottom: 0; margin-bottom: 0">Empresas por setor</h1>
                 <div class="chart-container">
                     <div id="piechart_values"></div>
                 </div>
@@ -43,76 +44,17 @@
         </div>
         <div class="col-8" style="padding-right: 0">
             <div class="panel">
+                <h1 class="page-subtitle" style="padding-bottom: 0; margin-bottom: 0">Vagas abertas por mês</h1>
                 <div class="chart-container">
                     <div id="barchart_values"></div>
                 </div>
             </div>
         </div>
-        <!-- <div class="panel">
-            <h1 class="page-subtitle">Taxa de emprego por mês em 2024</h1>
-            <div id="my-chart">
-                <table class="charts-css column show-labels">
-
-                    <caption class="title-chart">Taxa de emprego por mês em 2024</caption>
-
-                    <tbody>
-                        <tr>
-                            <th scope="row"> Jan </th>
-                            <td style="--size: 0.3; --color: #ffbaba"> <span class="data"> 30 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Fev </th>
-                            <td style="--size: 0.5; --color: #ffdfba"> <span class="data"> 50 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Mar </th>
-                            <td style="--size: 0.8; --color: #ffffba"> <span class="data"> 80 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Abr </th>
-                            <td style="--size: 0.9; --color: #d0ffba"> <span class="data"> 90 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Mai </th>
-                            <td style="--size: 0.65; --color: #bafffc"> <span class="data"> 65 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Jun </th>
-                            <td style="--size: 0.45; --color: #bae2ff"> <span class="data"> 45 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Jul </th>
-                            <td style="--size: 0.15; --color: #babfff"> <span class="data"> 15 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Ago </th>
-                            <td style="--size: 0.32; --color: #e6baff"> <span class="data"> 32 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Set </th>
-                            <td style="--size: 0.6; --color: #ffbaf9"> <span class="data"> 60 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Out </th>
-                            <td style="--size: 0.9; --color: #ffbaba"> <span class="data"> 90 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Nov </th>
-                            <td style="--size: 0.55; --color: #ffdfba"> <span class="data"> 55 </span> </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Dez </th>
-                            <td style="--size: 0.4; --color: #ffffba"> <span class="data"> 40 </span> </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-            </div>
-        </div> -->
     </div>
     <div class="row">
         <div class="col-8" style="padding-left: 0">
             <div class="panel">
+                <h1 class="page-subtitle" style="padding-bottom: 0; margin-bottom: 0">Cadastros de usuários mensais</h1>
                 <div class="chart-container">
                     <div id="linechart_values"></div>
                 </div>

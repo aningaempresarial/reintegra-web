@@ -18,7 +18,6 @@ async function fetchDataAndDrawChart() {
         const data = google.visualization.arrayToDataTable(chartData);
 
         const options = {
-            title: "Cadastros de usuários mensais",
             curveType: "function",
             legend: { position: "bottom" },
             hAxis: { title: "Mês" },
