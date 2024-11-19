@@ -128,9 +128,13 @@ body {
     height: 500px;
 }
 
-#piechart_values, #linechart_values {
+#piechart_values {
     height: 500px;
-    width: 100%;
+}
+
+#linechart_values {
+    height: 478px;
+    width: 900px;
 }
 
 .list-group-item {

@@ -34,14 +34,14 @@
 </div>
 <div class="panel main-panel panel-admin">
     <div class="row">
-        <div class="col">
+        <div class="col" style="padding-left: 0">
             <div class="panel">
                 <div class="chart-container">
                     <div id="piechart_values"></div>
                 </div>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-8" style="padding-right: 0">
             <div class="panel">
                 <div class="chart-container">
                     <div id="barchart_values"></div>
