@@ -70,47 +70,49 @@ if (isset($post['dtPostagem'])) {
                             <a href="{{ url('/empresa/posts') }}" class="button-viewmore">Ver mais</a>
                         </div>
                         <?php 
-                            $i = 0
-                        ?>
+                                $i = 0
+                            ?>
                         @if (count($posts) > 0)
-                        <div class="posts-panel">
-                            @php $i = 0; @endphp
-                            @foreach ($posts as $ps)
-                                @if ($i < 2)
-                                    <div class="card card-post mb-3">
-                                        <div class="row g-0">
-                                            <div class="col-md-4 card-post-img">
-                                                <img src="{{ $API_URL . $ps['imagemPostagem'] }}" class="img-fluid rounded-start">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-post-body">
-                                                    <h5 class="card-post-title">{{ $ps['tituloPostagem'] }}</h5>
-                                                    @php
-                                                    Carbon::setLocale('pt_BR');
-                                                    $ps['dtPostagem'] = Carbon::parse($ps['dtPostagem'])->diffForHumans();
+                                <div class="posts-panel">
+                                    @php        $i = 0; @endphp
+                                    @foreach ($posts as $ps)
+                                                @if ($i < 2)
+                                                            <div class="card card-post mb-3">
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-4 card-post-img">
+                                                                        <img src="{{ $API_URL . $ps['imagemPostagem'] }}" class="img-fluid rounded-start">
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <div class="card-post-body">
+                                                                            <h5 class="card-post-title">{{ $ps['tituloPostagem'] }}</h5>
+                                                                            @php
+                                                                                Carbon::setLocale('pt_BR');
+                                                                                $ps['dtPostagem'] = Carbon::parse($ps['dtPostagem'])->diffForHumans();
 
-                                                    $maxLength = 50;
+                                                                                $maxLength = 50;
 
-                                                    if (strlen($ps['conteudoPostagem']) > $maxLength) {
-                                                        $cortada = substr($ps['conteudoPostagem'], 0, $maxLength) . "...";
-                                                    } else {
-                                                        $cortada = $ps['conteudoPostagem'];
-                                                    }
-                                                    @endphp
-                                                    <p class="card-post-text">{{ $cortada }}</p>
-                                                    <p class="card-post-text"><small class="text-body-secondary">{{ $ps['dtPostagem'] }}</small></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @php $i++; @endphp
-                                @else
-                                    @break
-                                @endif
-                            @endforeach
-                        </div>
+                                                                                if (strlen($ps['conteudoPostagem']) > $maxLength) {
+                                                                                    $cortada = substr($ps['conteudoPostagem'], 0, $maxLength) . "...";
+                                                                                } else {
+                                                                                    $cortada = $ps['conteudoPostagem'];
+                                                                                }
+                                                                            @endphp
+                                                                            <p class="card-post-text">{{ $cortada }}</p>
+                                                                            <p class="card-post-text"><small
+                                                                                    class="text-body-secondary">{{ $ps['dtPostagem'] }}</small></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @php                $i++; @endphp
+                                                @else
+                                                    @break
+                                                @endif
+                                    @endforeach
+                                </div>
                         @else
-                        <p style="margin: 20px; padding: 8px; margin-top: 0; font-size: 1.3rem">Nenhuma postagem para mostrar ainda.</p>
+                            <p style="margin: 20px; padding: 8px; margin-top: 0; font-size: 1.3rem">Nenhuma postagem para
+                                mostrar ainda.</p>
                         @endif
                     </div>
                 </div>
@@ -123,15 +125,25 @@ if (isset($post['dtPostagem'])) {
                             <a href="{{ url('/empresa/posts') }}" class="button-viewmore">Ver mais</a>
                         </div>
                         <ul class="list-group list-notificacao">
-                            @if (isset($candidatacoes[0]))
-                            @foreach ($candidatacoes as $candidato)
-                            <li class="list-group-item list-group-item-action"><img
-                                    src="{{ $API_URL . $candidato['fotoPerfil'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">{{ $candidato['nomeExDetento'] }}
-                                    <p style="margin: 5px; font-size: 1.3rem">Candidatou-se a {{ $candidato['nomeVaga'] }}</p>
-                            </li>
-                            @endforeach
+                            @php
+                                $candidatosAtivos = collect($candidatacoes)->filter(function ($candidato) {
+                                    return $candidato['statusCandidato'] === 'ativo';
+                                });
+                            @endphp
+
+                            @if ($candidatosAtivos->isNotEmpty())
+                                @foreach ($candidatosAtivos as $candidato)
+                                    <li class="list-group-item list-group-item-action">
+                                        <img src="{{ $API_URL . $candidato['fotoPerfil'] }}"
+                                            onerror="this.src='{{ asset('images/profile-photo.png') }}'">
+                                        {{ $candidato['nomeExDetento'] }}
+                                        <p style="margin: 5px; font-size: 1.3rem">
+                                            Candidatou-se a {{ $candidato['nomeVaga'] }}
+                                        </p>
+                                    </li>
+                                @endforeach
                             @else
-                            <p style="margin: 20px; margin-top: 0; font-size: 1.3rem">Nenhum candidato para mostrar.</p>
+                                <p style="margin: 20px; margin-top: 0; font-size: 1.3rem">Nenhum candidato para mostrar.</p>
                             @endif
                         </ul>
                     </div>
