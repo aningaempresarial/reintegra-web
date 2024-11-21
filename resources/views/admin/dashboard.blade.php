@@ -70,7 +70,7 @@
                     @foreach ($cadastros as $cadastro)
                             <li class="list-group-item list-group-item-action">
                             <img
-                            src="{{ $API_URL . $cadastro['fotoPerfil'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">{{ $cadastro['nomeUsuario'] }} <span>Cadastro feito {{ $cadastro['dataCriacao'] }}</span>
+                            src="{{ $API_URL . $cadastro['fotoPerfil'] }}" onerror="this.src='{{ asset('images/profile-photo.png') }}'">{{ $cadastro['nomeUsuario'] }} <span class="tiny-text">Cadastro feito {{ $cadastro['dataCriacao'] }}</span>
                             </li>
                     @endforeach
                 </ul>

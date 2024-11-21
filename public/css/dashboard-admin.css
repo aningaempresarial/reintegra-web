@@ -133,10 +133,14 @@ body {
 }
 
 #linechart_values {
-    height: 415px;
+    height: 440px;
     width: 900px;
 }
 
 .list-group-item {
     font-size: 1.5rem;
+}
+
+.tiny-text {
+    font-size: 1rem !important;
 }
