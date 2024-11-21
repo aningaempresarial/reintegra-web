@@ -41,16 +41,18 @@
                 </thead>
                 <tbody>
                     @foreach ($posts as $post)
+                        @if ($post['statusPostagem'] == 'ativo')
                         <tr>
                             <td><img src="{{ $API_URL . $post['imagemPostagem'] }}" class="img-post" onerror="this.src='{{ asset('images/imagem-padrao.png') }}'"></td>
                             <td>{{ $post['tituloPostagem'] }}</td>
                             <td>{{ $post['categoriaPostagem'] }}</td>
                             <td>{{ $post['dataCriacao'] }}</td>
                             <td>
-                                <form action="/admin/change" method="POST"
+                                <form action="{{ url('delete-post/' . $post['idPostagem']) }}" method="POST"
                                     onsubmit="return confirm('Tem certeza que deseja excluir este conteúdo?');"
                                     enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <input type="hidden" name="usuario" value="{{ $post['idPostagem'] }}">
                                     <input type="hidden" name="status" value="excluido">
                                     <button type="submit" style="border: none; background: none;">
@@ -60,6 +62,7 @@
                                 </form>
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
