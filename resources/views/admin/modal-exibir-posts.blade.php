@@ -15,12 +15,12 @@
                         .then(data => {
                             if (data && data.vaga) {
                                 detailsContainer.innerHTML = `
-                                    <p>Requisitos: ${data.vaga.requisitosVaga || 'Não informado'}</p>
-                                    <p>Salário: R$ ${data.vaga.salarioVaga || 'Não informado'}</p>
-                                    <p>Tipo de contrato: ${data.vaga.tipoContrato || 'Não informado'}</p>
-                                    <p>Escolaridade mínima: ${data.vaga.tipoEscolaridade || 'Não informado'}</p>
-                                    <p>Carga horária: ${data.vaga.cargaHoraria || 'Não informado'} h</p>
-                                    <p>Horário: ${data.vaga.horarioVaga || 'Não informado'}</p>
+                                    <p><span>Requisitos:</span> ${data.vaga.requisitosVaga || 'Não informado'}</p>
+                                    <p><span>Salário:</span> R$ ${data.vaga.salarioVaga || 'Não informado'}</p>
+                                    <p><span>Tipo de contrato:</span> ${data.vaga.tipoContrato || 'Não informado'}</p>
+                                    <p><span>Escolaridade mínima:</span> ${data.vaga.tipoEscolaridade || 'Não informado'}</p>
+                                    <p><span>Carga horária:</span> ${data.vaga.cargaHoraria || 'Não informado'} h</p>
+                                    <p><span>Horário:</span> ${data.vaga.horarioVaga || 'Não informado'}</p>
                                 `;
                             } else {
                                 detailsContainer.innerHTML = '<p>Detalhes não encontrados.</p>';
@@ -49,6 +49,10 @@
                                             <div class="card">
 
                                                 <div class="card-body">
+                                                    <div class="info-usuario">
+                                                        <img class="foto-perfil" src="{{ $API_URL . $publicacao['fotoPerfil'] }}">
+                                                        <p class="nome-perfil">{{ $publicacao['nomeEmpresa'] ?? $nome ?? 'Martha' }}</p>
+                                                    </div>
                                     
                                                     <h3 class="tituloPost">{{ $publicacao['tituloPostagem'] }}</h3>
                                                     <p class="textoPost">

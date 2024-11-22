@@ -122,6 +122,10 @@
     white-space: nowrap;
 }
 
+.see-post-td {
+    white-space: normal !important;
+}
+
 .table {
     margin: 0;
 }
@@ -183,5 +187,35 @@
 .textoPost {
     width: 100%;
     font-size: medium;
-    text-align: left;
+    text-align: justify;
+}
+
+.accordion-body p {
+    font-size: medium;
+}
+
+.accordion-body p span {
+    font-weight: bold;
+}
+
+.info-usuario {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.foto-perfil {
+    width: 50px;
+    border-radius: 100%;
+    background-color: white;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.nome-perfil {
+    text-decoration: none;
+}
+
+.nome-perfil p {
+    font-size: large;
 }

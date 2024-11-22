@@ -56,7 +56,7 @@
                             <td>{{ $usuario['statusEntidade'] }}</td>
                             <td>
                             <button type="button" style="border: none; background: none;" onclick="viewUserProfile({{ json_encode($usuario) }})">
-                                <img src="{{ asset('images/view-icon.png') }}" class="icon edit-icon" alt="Visualizar">
+                                <img src="{{ asset('images/see-icon.png') }}" class="icon edit-icon" alt="Visualizar">
                             </button>
                             </td>
 

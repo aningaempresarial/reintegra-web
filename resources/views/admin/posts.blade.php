@@ -48,7 +48,7 @@
                             <td>{{ $publicacao['tituloPostagem'] }}</td>
                             <td>{{ $publicacao['categoriaPostagem'] }}</td>
                             <td>{{ \Carbon\Carbon::parse($publicacao['dataCriacao'])->format('d/m/Y') }}</td>
-                            <td>
+                            <td class="see-post-td">
                                 <button type="submit" style="border: none; background: none;" data-bs-toggle="modal"
                                 data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}">
                                     <img src="{{ asset('images/see-icon.png') }}" class="icon see-icon"
