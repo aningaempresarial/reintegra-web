@@ -135,3 +135,53 @@
     height: 80px;
     object-fit: cover;
 }
+
+#modalPost .modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 70vh;
+    max-height: 80vh;
+    padding: 0;
+}
+
+.card {
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-top {
+    display: block;
+    padding: 16px;
+}
+
+.card-top img {
+    width: 100%;
+}
+
+.centered-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 128px;
+}
+
+.centered-item .card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    background-color: #f7f7f7;
+}
+
+.tituloPost {
+    width: 100%;
+    text-align: left;
+    font-size: larger;
+}
+
+.textoPost {
+    width: 100%;
+    font-size: medium;
+    text-align: left;
+}

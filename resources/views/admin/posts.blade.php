@@ -36,24 +36,33 @@
                         <th scope="col">Título</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Data de criação</th>
+                        <th scope="col">Exibir</th>
                         <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($posts as $post)
-                        @if ($post['statusPostagem'] == 'ativo')
+                    @foreach ($publicacoes as $publicacao)
+                        @if ($publicacao['statusPostagem'] == 'ativo')
                         <tr>
-                            <td><img src="{{ $API_URL . $post['imagemPostagem'] }}" class="img-post" onerror="this.src='{{ asset('images/imagem-padrao.png') }}'"></td>
-                            <td>{{ $post['tituloPostagem'] }}</td>
-                            <td>{{ $post['categoriaPostagem'] }}</td>
-                            <td>{{ $post['dataCriacao'] }}</td>
+                            <td><img src="{{ $API_URL . $publicacao['imagemPostagem'] }}" class="img-post" onerror="this.src='{{ asset('images/imagem-padrao.png') }}'"></td>
+                            <td>{{ $publicacao['tituloPostagem'] }}</td>
+                            <td>{{ $publicacao['categoriaPostagem'] }}</td>
+                            <td>{{ \Carbon\Carbon::parse($publicacao['dataCriacao'])->format('d/m/Y') }}</td>
                             <td>
-                                <form action="{{ url('delete-post/' . $post['idPostagem']) }}" method="POST"
+                                <button type="submit" style="border: none; background: none;" data-bs-toggle="modal"
+                                data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}">
+                                    <img src="{{ asset('images/see-icon.png') }}" class="icon see-icon"
+                                        alt="Exibir">
+                                </button>
+                                @include('admin.modal-exibir-posts')
+                            </td>
+                            <td>
+                                <form action="{{ url('delete-post/' . $publicacao['idPostagem']) }}" method="POST"
                                     onsubmit="return confirm('Tem certeza que deseja excluir este conteúdo?');"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <input type="hidden" name="usuario" value="{{ $post['idPostagem'] }}">
+                                    <input type="hidden" name="usuario" value="{{ $publicacao['idPostagem'] }}">
                                     <input type="hidden" name="status" value="excluido">
                                     <button type="submit" style="border: none; background: none;">
                                         <img src="{{ asset('images/delete-icon.png') }}" class="icon delete-icon"

@@ -6,7 +6,7 @@
 @endsection
 @include('partials.profilebar')
 @section('conteudo')
-<div class="panel main-panel panel-empresa">
+<div class="panel main-panel panel-empresa" style="margin-bottom: 30px">
     <div class="row">
         <div class="col-4">
             <div class="panel panel-contato">

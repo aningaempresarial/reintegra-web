@@ -109,6 +109,8 @@ Route::get('/admin/setores-empresas', [AdminController::class, 'setoresEmpresas'
 
 Route::get('/admin/usuarios-mensais', [AdminController::class, 'usuariosMensais']);
 
+Route::get('admin/post/vagas/{idPostagem}', [AdminController::class, 'vagaPost']);
+
 /* Alterar Usuario Dados */
 
 Route::post('/usuario/atualizar-dados', [UsuarioController::class,'updateDadosUsuario']);

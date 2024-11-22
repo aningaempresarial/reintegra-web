@@ -52,34 +52,33 @@
                     </div>
 
                     <div class="mb-3" id="divTipoContrato">
-                        <label for="tipoContrato" class="form-label">Tipo de contrato<span
-                                class="obrigatorio">*</span></label>
+                        <label for="tipoContrato" class="form-label">Tipo de contrato<span class="obrigatorio">*</span></label>
                         <select class="form-select" id="tipoContrato" name="tipoContrato" required>
-                            <option value="" selected>Escolha uma opção</option>
-                            <option value="CLT">CLT</option>
-                            <option value="PJ">PJ</option>
-                            <option value="Estágio">Estágio</option>
-                            <option value="Aprendiz">Aprendiz</option>
-                            <option value="Temporário">Temporário</option>
+                            <option value="" disabled {{ empty($vaga['tipoContrato']) ? 'selected' : '' }}>Selecione o tipo de contrato</option>
+                            <option value="CLT" {{ $vaga['tipoContrato'] === 'CLT' ? 'selected' : '' }}>CLT</option>
+                            <option value="PJ" {{ $vaga['tipoContrato'] === 'PJ' ? 'selected' : '' }}>PJ</option>
+                            <option value="Estágio" {{ $vaga['tipoContrato'] === 'Estágio' ? 'selected' : '' }}>Estágio</option>
+                            <option value="Aprendiz" {{ $vaga['tipoContrato'] === 'Aprendiz' ? 'selected' : '' }}>Aprendiz</option>
+                            <option value="Temporário" {{ $vaga['tipoContrato'] === 'Temporário' ? 'selected' : '' }}>Temporário</option>
                         </select>
                         <span class="error-message" id="error-message-tipo-contrato"></span>
                     </div>
 
+
                     <div class="mb-3" id="divEscolaridadeVaga">
-                        <label for="escolaridadeVaga" class="form-label">Escolaridade mínima<span
-                                class="obrigatorio">*</span></label>
+                        <label for="escolaridadeVaga" class="form-label">Escolaridade mínima<span class="obrigatorio">*</span></label>
                         <select class="form-select" id="escolaridadeVaga" name="escolaridadeVaga" required>
-                            <option selected>Escolha uma opção</option>
-                            <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
-                            <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
-                            <option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
-                            <option value="Ensino Médio Completo">Ensino Médio Completo</option>
-                            <option value="Técnico">Técnico</option>
-                            <option value="Superior Incompleto">Superior Incompleto</option>
-                            <option value="Superior Completo">Superior Completo</option>
-                            <option value="Pós-Graduação">Pós-Graduação</option>
-                            <option value="Mestrado">Mestrado</option>
-                            <option value="Doutorado">Doutorado</option>
+                            <option value="" disabled {{ empty($vaga['tipoEscolaridade']) ? 'selected' : '' }}>Escolha uma opção</option>
+                            <option value="Ensino Fundamental Incompleto" {{ $vaga['tipoEscolaridade'] === 'Ensino Fundamental Incompleto' ? 'selected' : '' }}>Ensino Fundamental Incompleto</option>
+                            <option value="Ensino Fundamental Completo" {{ $vaga['tipoEscolaridade'] === 'Ensino Fundamental Completo' ? 'selected' : '' }}>Ensino Fundamental Completo</option>
+                            <option value="Ensino Médio Incompleto" {{ $vaga['tipoEscolaridade'] === 'Ensino Médio Incompleto' ? 'selected' : '' }}>Ensino Médio Incompleto</option>
+                            <option value="Ensino Médio Completo" {{ $vaga['tipoEscolaridade'] === 'Ensino Médio Completo' ? 'selected' : '' }}>Ensino Médio Completo</option>
+                            <option value="Técnico" {{ $vaga['tipoEscolaridade'] === 'Técnico' ? 'selected' : '' }}>Técnico</option>
+                            <option value="Superior Incompleto" {{ $vaga['tipoEscolaridade'] === 'Superior Incompleto' ? 'selected' : '' }}>Superior Incompleto</option>
+                            <option value="Superior Completo" {{ $vaga['tipoEscolaridade'] === 'Superior Completo' ? 'selected' : '' }}>Superior Completo</option>
+                            <option value="Pós-Graduação" {{ $vaga['tipoEscolaridade'] === 'Pós-Graduação' ? 'selected' : '' }}>Pós-Graduação</option>
+                            <option value="Mestrado" {{ $vaga['tipoEscolaridade'] === 'Mestrado' ? 'selected' : '' }}>Mestrado</option>
+                            <option value="Doutorado" {{ $vaga['tipoEscolaridade'] === 'Doutorado' ? 'selected' : '' }}>Doutorado</option>
                         </select>
                         <span class="error-message" id="error-message-escolaridade"></span>
                     </div>
@@ -95,27 +94,20 @@
                         <div>
                             <input type="number" name="cargaHoraria" id="cargaHoraria"
                                 placeholder="Digite as horas diárias de trabalho." required autocomplete="off"
-                                class="form-control form-control-lg" />
+                                class="form-control form-control-lg" value="{{ $vaga['cargaHoraria'] }}"/>
                         </div>
                         <span class="error-message" id="error-message-carga-horaria"></span>
                     </div>
 
-                    <div class="mb-3" id="divHorarioInicio">
-                        <label for="horarioInicio" class="form-label">Horário de início<span
+                    <div class="mb-3" id="divHorarioVaga">
+                        <label for="horarioVaga" class="form-label">Horário de trabalho<span
                                 class="obrigatorio">*</span></label>
-                        <input type="time" name="horarioInicio" id="horarioInicio" class="form-control form-control-lg"
-                            placeholder="Horário de início do trabalho" required autocomplete="off" />
+                        <input name="horarioVaga" id="horarioVaga" class="form-control form-control-lg"
+                            placeholder="Horário de início do trabalho" required autocomplete="off" value="{{ $vaga['horarioVaga'] }}"/>
                         <span class="error-message" id="error-message-horario-inicio"></span>
                     </div>
 
-                    <div class="mb-3" id="divHorarioTermino">
-                        <label for="horarioTermino" class="form-label">Horário de término<span
-                                class="obrigatorio">*</span></label>
-                        <input type="time" name="horarioTermino" id="horarioTermino"
-                            class="form-control form-control-lg" placeholder="Horário de término do trabalho" required
-                            autocomplete="off" />
-                        <span class="error-message" id="error-message-horario-termino"></span>
-                    </div>
+                    @endif
 
                     <div class="mb-3" id="divDtFim">
                         <label for="dtFim" class="form-label">Data final<span class="obrigatorio">*</span>
@@ -126,16 +118,14 @@
                             </button>
                         </label>
                         <div>
-                            <input type="date" name="dtFim" id="dtFim" class="form-control form-control-lg" required
-                                autocomplete="off" />
+                            <input name="dtFim" id="dtFim" class="form-control form-control-lg" required
+                                autocomplete="off" value="{{ $publicacao['dataFim'] }}"/>
                         </div>
                         <span class="error-message" id="error-message-data-fim"></span>
                     </div>
 
-                    @endif
-
                     <div class="button-div">
-                        <button type="button" class="btn-form btn btn-light" id="btnContinuar">Continuar</button>
+                        <button type="button" class="btn-form btn btn-light" id="btnContinuar">Finalizar</button>
                     </div>
                 </div>
             </div>
