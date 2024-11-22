@@ -19,7 +19,9 @@
             @yield('conteudo')
         </div>
         <!-- Footer -->
-        @include('partials.footer-dashboard')
+        @unless(Route::currentRouteName() == 'empresa-mensagens')
+            @include('partials.footer-dashboard')
+        @endunless
         <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 
 
