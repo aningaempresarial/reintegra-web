@@ -164,6 +164,7 @@
                                             <h2 class="title" style="font-size: 1.5rem">Candidatos</h2>
 
                                             @foreach($publicacao['candidatos'] as $candidato)
+                                                @if ($candidato['status'] == 'ativo')
                                                 <div class="candidato-div">
                                                     <img class="foto-perfil" src="{{ $API_URL . $candidato['foto'] }}"
                                                         onerror="this.src='{{ asset('images/profile-photo.png') }}'">
@@ -176,6 +177,7 @@
                                                 </div>
                                                 @include('empresa/modal-novo-contato')
                                                 @include('empresa/modal-candidato')
+                                                @endif
                                             @endforeach
                                         @else
                                             <p class="candidatos-text">Sem candidatos para essa vaga.</p>

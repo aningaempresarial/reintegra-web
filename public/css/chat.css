@@ -132,3 +132,12 @@
 .btn-novo-chat a {
     margin-left: 5px;
 }
+
+.message-time {
+    font-size: 0.9rem !important;
+    color: #595959 !important;
+}
+
+.message-date-header {
+    text-align: center;
+}
