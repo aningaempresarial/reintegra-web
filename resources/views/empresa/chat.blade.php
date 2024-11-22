@@ -15,7 +15,7 @@
                     @forelse ($mensagensAgrupadas as $contato)
                         <li class="list-group-item list-group-item-action list-item-contato"
                             data-id="{{ $contato['usuario'] }}" onclick="carregarMensagens(this)">
-                            <img style="border-radius: 100%" src="{{ asset('images/image-icon.png') }}"><span
+                            <img style="border-radius: 100%" src="{{ $API_URL . $contato['pdPerfil'] }}"><span
                                 class="nomeContatoLista">{{ $contato['nomeUsuario'] }}</span>
                         </li>
                     @empty

@@ -99,6 +99,7 @@ class AdminController extends Controller
     public function changeStatusUser(Request $request) {
         $usuario = $request->get('usuario');
         $status = $request->get('status');
+        $motivo = $request->get('motivo');
 
         $dados = [
             'token' => session('token'),
@@ -120,6 +121,7 @@ class AdminController extends Controller
 
             $dados = [
                 'status' => $status,
+                'motivo' => $motivo
             ];
 
             $resposta = Http::asMultipart()->put(env('EXTERNAL_API_URL') . '/admin/usuario/status/' . $usuario, $dados);
@@ -189,7 +191,7 @@ class AdminController extends Controller
 
     public function setoresEmpresas() {
         $resposta = Http::get(env('EXTERNAL_API_URL') . '/admin/setoresempresas');
-    
+
         if ($resposta->successful()) {
             return response()->json($resposta->json());
         } else {
@@ -198,7 +200,7 @@ class AdminController extends Controller
     }
     public function usuariosMensais() {
         $resposta = Http::get(env('EXTERNAL_API_URL') . '/admin/usuario/mensal');
-    
+
         if ($resposta->successful()) {
             return response()->json($resposta->json());
         } else {
