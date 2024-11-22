@@ -73,7 +73,7 @@
         </div>
 
         <div class="publicacoes">
-            <h5>Publicações</h5>
+
         </div>
     </div>
 

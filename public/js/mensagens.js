@@ -40,9 +40,9 @@ function carregarMensagens(contato) {
                 const li = document.createElement("li");
                 li.classList.add("list-group-item");
 
-                const BASE_URL = "http://localhost:8080/";
+                const BASE_URL = "http://localhost:8080";
 
-                const fotoPerfil = mensagem.fotoPerfil != null ? BASE_URL + mensagem.fotoPerfil : `http://127.0.0.1:8000/images/image-icon.png`;
+                const fotoPerfil = BASE_URL + mensagem.fotoPerfil;
 
                 const img = document.createElement("img");
                 img.src = fotoPerfil;
