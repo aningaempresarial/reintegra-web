@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/dashboard-empresa.css') }}">
 @endsection
 @include('partials.profilebar')
-<?php 
+<?php
     use Carbon\Carbon;
 Carbon::setLocale('pt_BR');
 if (isset($post['dtPostagem'])) {
@@ -69,7 +69,7 @@ if (isset($post['dtPostagem'])) {
                             <h1 class="page-subtitle">Minhas últimas postagens</h1>
                             <a href="{{ url('/empresa/posts') }}" class="button-viewmore">Ver mais</a>
                         </div>
-                        <?php 
+                        <?php
                                 $i = 0
                             ?>
                         @if (count($posts) > 0)
@@ -126,10 +126,11 @@ if (isset($post['dtPostagem'])) {
                         </div>
                         <ul class="list-group list-notificacao">
                             @php
-                                $candidatosAtivos = collect($candidatacoes)->filter(function ($candidato) {
-                                    return $candidato['statusCandidato'] === 'ativo';
+                                $candidatosAtivos = collect($candidatacoes ?? [])->filter(function ($candidato) {
+                                    return isset($candidato['statusCandidato']) && $candidato['statusCandidato'] === 'ativo';
                                 });
                             @endphp
+
 
                             @if ($candidatosAtivos->isNotEmpty())
                                 @foreach ($candidatosAtivos as $candidato)
