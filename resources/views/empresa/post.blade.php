@@ -71,6 +71,9 @@
                                     data-bs-target="#modalVisualizar{{ $publicacao['idPostagem'] }}"><img
                                         src="{{ asset('images/view-icon.png') }}"></button>
                                 <button class="btn btn-icon" data-bs-toggle="modal"
+                                    data-bs-target="#modalEditar{{ $publicacao['idPostagem'] }}"><img
+                                        src="{{ asset('images/change-icon.png') }}"></button>
+                                <button class="btn btn-icon" data-bs-toggle="modal"
                                     data-bs-target="#modalDeletar{{ $publicacao['idPostagem'] }}"><img
                                         src="{{ asset('images/trash-icon.png') }}"></button>
                             </td>
@@ -191,6 +194,7 @@
                                 </div>
                             </div>
                         </div>
+                        @include('empresa.modal-edit-post')
                         @include('empresa.modal-delete-post')
             @endif
             @empty
