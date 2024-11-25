@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="modalPost" tabindex="-1" aria-labelledby="modalPostLabel" aria-hidden="true"
     data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -165,7 +166,7 @@
                         </div>
 
                         <div class="button-div">
-                            <button type="button" class="btn-form btn btn-light" id="btnContinuar">Continuar</button>
+                            <button type="button" class="btn-form btn btn-light" id="btnlegalsemerro">Continuar</button>
                         </div>
 
                     </div>
@@ -217,7 +218,7 @@
 
                     <div class="button-div">
                         <button type="button" class="btn btn-danger btn-form" id="btnCancelar">Cancelar</button>
-                        <button type="button" class="btn btn-light btn-form" id="btnCadastrar">Publicar</button>
+                        <button type="button" class="btn btn-light btn-form" id="erronobotaolegalid">Publicar</button>
                     </div>
 
                 </div>
@@ -317,7 +318,7 @@
 
 <script>
     $(document).ready(() => {
-        $('#btnContinuar').click(() => {
+        $('#btnlegalsemerro').click(() => {
             $('.error-message').text('');
 
             let tituloPosicao = $('#tituloPosicao').val();
@@ -436,7 +437,7 @@
             showStep(0);
         });
 
-        $('#btnCadastrar').click(async () => {
+        $('#erronobotaolegalid').click(async () => {
             const formData = new FormData();
             formData.append('tituloPosicao', $('#tituloPosicao').val());
             formData.append('descricaoVaga', $('#descricaoVaga').val());

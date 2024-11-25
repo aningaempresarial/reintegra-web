@@ -9,51 +9,51 @@
             <div class="modal-body" id="modalEditBody">
                 <div class="form-input">
 
-                    <div class="mb-3" id="divTituloPosicao">
-                        <label for="tituloPosicao" class="form-label">Título<span class="obrigatorio">*</span></label>
-                        <input type="text" name="tituloPosicao" id="tituloPosicao" class="form-control form-control-lg"
+                    <div class="mb-3">
+                        <label class="form-label">Título<span class="obrigatorio">*</span></label>
+                        <input type="text" name="tituloPosicao" class="form-control form-control-lg"
                             placeholder="Título chamativo" required autocomplete="off" value="{{ $publicacao['tituloPostagem'] }}"/>
-                        <span class="error-message" id="error-message-titulo-posicao"></span>
+                        <span class="error-message" ></span>
                     </div>
 
-                    <div class="mb-3" id="divDescricaoVaga">
+                    <div class="mb-3">
                         <label for="descricaoVaga" class="form-label">Descrição<span
                                 class="obrigatorio">*</span></label>
-                        <textarea id="descricaoVaga" class="form-control form-control-lg" rows="10"
+                        <textarea  class="form-control form-control-lg" rows="10"
                             placeholder="Fale sobre o processo seletivo, benefícios, etc.">{{ $publicacao['conteudoPostagem'] }}</textarea>
-                        <span class="error-message" id="error-message-descricao-vaga"></span>
+                        <span class="error-message"></span>
                     </div>
 
                     @if ($publicacao['categoriaPostagem'] == 'emprego')
 
-                    <div class="mb-3" id="divRequisitosVaga">
+                    <div class="mb-3" >
                         <label for="requisitosVaga" class="form-label">Requisitos<span
                                 class="obrigatorio">*</span></label>
-                        <textarea id="requisitosVaga" class="form-control form-control-lg" rows="10"
+                        <textarea  class="form-control form-control-lg" rows="10"
                             placeholder="Enumere os requisitos da função.">{{ $vaga['requisitosVaga'] }}</textarea>
-                        <span class="error-message" id="error-message-requisitos"></span>
+                        <span class="error-message" ></span>
                     </div>
 
-                    <div class="mb-2" id="divSalarioVaga">
+                    <div class="mb-2" >
                         <label for="salarioVaga" class="form-label">Salário</label>
                         <div>
-                            <input type="number" step="0.01" name="salarioVaga" id="salarioVaga"
+                            <input type="number" step="0.01" name="salarioVaga" 
                                 placeholder="Digite o salário ofertado." required autocomplete="off"
                                 class="form-control form-control-lg" value="{{ $vaga['salarioVaga'] }}"/>
                         </div>
-                        <span class="error-message" id="error-message-salario"></span>
+                        <span class="error-message" ></span>
                     </div>
 
-                    <div class="mb-3" id="divCheckSalario">
+                    <div class="mb-3">
                         <div class="check-form">
-                            <input type="checkbox" value="" id="checkSalario">
+                            <input type="checkbox" value="" >
                             <label for="checkSalario">A combinar</label>
                         </div>
                     </div>
 
-                    <div class="mb-3" id="divTipoContrato">
+                    <div class="mb-3" >
                         <label for="tipoContrato" class="form-label">Tipo de contrato<span class="obrigatorio">*</span></label>
-                        <select class="form-select" id="tipoContrato" name="tipoContrato" required>
+                        <select class="form-select"  name="tipoContrato" required>
                             <option value="" disabled {{ empty($vaga['tipoContrato']) ? 'selected' : '' }}>Selecione o tipo de contrato</option>
                             <option value="CLT" {{ $vaga['tipoContrato'] === 'CLT' ? 'selected' : '' }}>CLT</option>
                             <option value="PJ" {{ $vaga['tipoContrato'] === 'PJ' ? 'selected' : '' }}>PJ</option>
@@ -61,13 +61,13 @@
                             <option value="Aprendiz" {{ $vaga['tipoContrato'] === 'Aprendiz' ? 'selected' : '' }}>Aprendiz</option>
                             <option value="Temporário" {{ $vaga['tipoContrato'] === 'Temporário' ? 'selected' : '' }}>Temporário</option>
                         </select>
-                        <span class="error-message" id="error-message-tipo-contrato"></span>
+                        <span class="error-message" ></span>
                     </div>
 
 
-                    <div class="mb-3" id="divEscolaridadeVaga">
+                    <div class="mb-3">
                         <label for="escolaridadeVaga" class="form-label">Escolaridade mínima<span class="obrigatorio">*</span></label>
-                        <select class="form-select" id="escolaridadeVaga" name="escolaridadeVaga" required>
+                        <select class="form-select" name="escolaridadeVaga" required>
                             <option value="" disabled {{ empty($vaga['tipoEscolaridade']) ? 'selected' : '' }}>Escolha uma opção</option>
                             <option value="Ensino Fundamental Incompleto" {{ $vaga['tipoEscolaridade'] === 'Ensino Fundamental Incompleto' ? 'selected' : '' }}>Ensino Fundamental Incompleto</option>
                             <option value="Ensino Fundamental Completo" {{ $vaga['tipoEscolaridade'] === 'Ensino Fundamental Completo' ? 'selected' : '' }}>Ensino Fundamental Completo</option>
@@ -80,10 +80,10 @@
                             <option value="Mestrado" {{ $vaga['tipoEscolaridade'] === 'Mestrado' ? 'selected' : '' }}>Mestrado</option>
                             <option value="Doutorado" {{ $vaga['tipoEscolaridade'] === 'Doutorado' ? 'selected' : '' }}>Doutorado</option>
                         </select>
-                        <span class="error-message" id="error-message-escolaridade"></span>
+                        <span class="error-message" ></span>
                     </div>
 
-                    <div class="mb-3" id="divCargaHoraria">
+                    <div class="mb-3">
                         <label for="cargaHoraria" class="form-label">Carga horária<span
                                 class="obrigatorio">*</span><button class="tooltip-informacao" type="button"
                                 data-bs-toggle="tooltip" data-bs-placement="top"
@@ -92,24 +92,24 @@
                             </button></label>
 
                         <div>
-                            <input type="number" name="cargaHoraria" id="cargaHoraria"
+                            <input type="number" name="cargaHoraria" 
                                 placeholder="Digite as horas diárias de trabalho." required autocomplete="off"
                                 class="form-control form-control-lg" value="{{ $vaga['cargaHoraria'] }}"/>
                         </div>
-                        <span class="error-message" id="error-message-carga-horaria"></span>
+                        <span class="error-message" ></span>
                     </div>
 
-                    <div class="mb-3" id="divHorarioVaga">
+                    <div class="mb-3" >
                         <label for="horarioVaga" class="form-label">Horário de trabalho<span
                                 class="obrigatorio">*</span></label>
-                        <input name="horarioVaga" id="horarioVaga" class="form-control form-control-lg"
+                        <input name="horarioVaga"  class="form-control form-control-lg"
                             placeholder="Horário de início do trabalho" required autocomplete="off" value="{{ $vaga['horarioVaga'] }}"/>
-                        <span class="error-message" id="error-message-horario-inicio"></span>
+                        <span class="error-message"></span>
                     </div>
 
                     @endif
 
-                    <div class="mb-3" id="divDtFim">
+                    <div class="mb-3" >
                         <label for="dtFim" class="form-label">Data final<span class="obrigatorio">*</span>
                             <button class="tooltip-informacao" type="button" data-bs-toggle="tooltip"
                                 data-bs-placement="top"
@@ -118,14 +118,14 @@
                             </button>
                         </label>
                         <div>
-                            <input name="dtFim" id="dtFim" class="form-control form-control-lg" required
+                            <input name="dtFim" class="form-control form-control-lg" required
                                 autocomplete="off" value="{{ $publicacao['dataFim'] }}"/>
                         </div>
-                        <span class="error-message" id="error-message-data-fim"></span>
+                        <span class="error-message" ></span>
                     </div>
 
                     <div class="button-div">
-                        <button type="button" class="btn-form btn btn-light" id="btnContinuar">Finalizar</button>
+                        <button type="button" class="btn-form btn btn-light" id="aaaaa" onclick="window.location.reload()">Finalizar</button>
                     </div>
                 </div>
             </div>

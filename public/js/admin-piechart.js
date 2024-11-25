@@ -15,73 +15,37 @@ function drawChart() {
             const options = {
                 legend: "none",
                 colors: [
-                    "#FFE066",
-                    "#FFB000",
-                    "#FF7700",
-                    "#FF5500",
-                    "#E60000",
-                    "#CC3300",
-                    "#FF4000",
-                    "#FF5533",
-                    "#FF7020",
-                    "#FF9933",
-                    "#FFB366",
-                    "#FFD6A0",
-                    "#FFCC66",
-                    "#FF9966",
-                    "#FF7040",
-                    "#E65C00",
-                    "#FF8000",
-                    "#FF9500",
-                    "#FF6600",
-                    "#FF3300",
-                    "#E53935",
-                    "#FF5722",
-                    "#FF6F43",
-                    "#FF8565",
-                    "#FFA091",
-                    "#FF8A00",
-                    "#FF9300",
-                    "#FF7400",
-                    "#FF4800",
-                    "#E50000",
-                    "#B71C1C",
-                    "#9C1F4D",
-                    "#7C1A8A",
-                    "#6B1D92",
-                    "#571486",
-                    "#460C7B",
-                    "#5B37A0",
-                    "#4C2596",
-                    "#303F9F",
-                    "#1E88E5",
-                    "#00ACC1",
-                    "#008975",
-                    "#2E7D32",
-                    "#388E3C",
-                    "#689F38",
-                    "#AFB42B",
-                    "#FFEA00",
-                    "#FFC107",
-                    "#FF9800",
-                    "#FF5722",
-                    "#E53935",
-                    "#C2185B",
-                    "#880E4F",
-                    "#5E35B1",
-                    "#7B1FA2",
-                    "#FF1F00",
-                    "#FF3300",
-                    "#FF5300",
-                    "#FF6F00",
-                    "#FF8A00",
-                    "#FF9900",
-                    "#FFB800",
-                    "#FFCC00",
-                    "#FFBB00",
-                    "#FF9A00",
-                    "#FF6C00",
+                    "#800080", // Laranja forte
+                    "#FF6347", // Vermelho tomate
+                    "#FF1493", // Coral
+                    "#FF8C00", // Laranja escuro
+                    "#FFD700", // Dourado
+                    "#1E90FF", // Amarelo vibrante
+                    "#ADFF2F", // Verde lima
+                    "#32CD32", // Verde limão
+                    "#00FA9A", // Verde primavera
+                    "#20B2AA", // Verde água escuro
+                    "#1E90FF", // Azul Dodger
+                    "#4169E1", // Azul royal
+                    "#6A5ACD", // Azul ardósia médio
+                    "#800080", // Roxo
+                    "#C71585", // Magenta médio
+                    "#FF1493", // Rosa profundo
+                    "#FF69B4", // Rosa choque
+                    "#FFB6C1", // Rosa claro
+                    "#FFA07A", // Salmão claro
+                    "#DC143C", // Carmesim
+                    "#B22222", // Tijolo
+                    "#8B0000", // Vermelho escuro
+                    "#DAA520", // Ouro velho
+                    "#CD5C5C", // Rosa indiano
+                    "#8FBC8F", // Verde claro suave
+                    "#4682B4", // Azul aço
+                    "#7FFFD4", // Água-marinha
+                    "#40E0D0", // Turquesa
+                    "#00CED1", // Turquesa escuro
                 ],
+                
             };
 
             const chart = new google.visualization.PieChart(

@@ -1,15 +1,8 @@
 <?php
-function calcularIdade($dataNascimento)
-{
-    $dataNascimento = new DateTime($dataNascimento);
-    $dataAtual = new DateTime();
-    $diferenca = $dataNascimento->diff($dataAtual);
 
-    return $diferenca->y;
-}
 
 $dataNasc = $candidato['dataNasc'];
-$idade = calcularIdade($dataNasc);
+$idade = 32;
 ?>
 
 <div class="modal fade" id="modalCandidato{{ $candidato['idUsuario'] }}" tabindex="-1"

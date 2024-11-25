@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}">
 <link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css')  }}">
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 @endsection
 
 
@@ -42,7 +44,7 @@
         </div>
     </div>
 
-    <table id="publicacoes-table" class="table table-hover align-middle table-lg">
+    <table id="publicacoes-table mt-5" class="table table-hover align-middle table-lg">
         <thead>
             <tr>
                 <th>Tipo</th>
@@ -211,7 +213,6 @@
 @endsection
 
 @section('footer')
-<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/dataTables.min.js') }}"></script>
 <script src="{{ asset('js/cropper.min.js') }}"></script>
 

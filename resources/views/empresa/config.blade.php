@@ -16,8 +16,6 @@
             data-bs-target="#editModalEmpresa">Editar dados da empresa</a>
             <a class="list-group-item button-config" data-bs-toggle="modal" data-bs-target="#editModal">Editar dados de usuário</a>
             <a class="list-group-item button-config" data-bs-toggle="modal" data-bs-target="#editModalPass">Atualizar senha</a>
-            <a class="list-group-item button-config">Gerenciar templates de e-mail</a>
-            <a class="list-group-item button-config">Gerar relatório completo</a>
             <a class="list-group-item button-config" data-bs-toggle="modal" data-bs-target="#inativaContaModal">Inativar conta</a>
         </ul>
     </div>
